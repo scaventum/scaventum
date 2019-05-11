@@ -1,0 +1,24 @@
+version: '3'
+services:
+  web:
+    volumes:
+      - ./:/var/www/html/
+    image: aspendigital/octobercms:build.447-php7.1-apache
+    ports:
+      - 80:80
+    environment:
+      - DB_TYPE=mysql
+      - DB_HOST=mysql #DB_HOST should match the service name of the database container
+      - DB_DATABASE=scaventum
+      - DB_USERNAME=root
+      - DB_PASSWORD=root
+
+  mysql:
+    volumes:
+      - ./mysql:/var/lib/mysql/
+    image: mysql:5.7
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=scaventum
