@@ -7,23 +7,39 @@ default = 0
 {% partial 'head' %}
 
 <body>
-    <h1>{text name="heading" label="Heading" tab="Copy" span="left"}{/text}</h1>
-    <h2>{text name="subheading" label="Subheading" tab="Copy" span="right"}{/text}</h2>
-    <h3>{textarea name="description" label="Description" tab="Copy"}{/textarea}</h3>
+    <section class="landing" style="background-image:url('{mediafinder mode="image" name="backgroundImage" label="Image" span="left" tab="Background"}{/mediafinder}')">
 
-    {variable type="switch" name="enableButton" label="Enable Button" tab="Button" span="left"}{/variable}
-    {variable type="switch" name="externalLink" label="External Link" tab="Button" span="right"}{/variable}
-    {variable type="text" name="buttonLabel" label="Label" tab="Button" span="left"}{/variable}
-    {variable type="text" name="buttonLink" label="Link" tab="Button" span="right"}{/variable}
+        <div class="landing--caption">
+            <div class="pure-g">
+                <div class="pure-u-1-2 px-1">
+                    {variable type="text" name="heading" label="Heading" tab="Copy" span="left"}{/variable}
+                    {% if heading %}<h1 class="landing--caption--heading">{{ heading }}</h1>{% endif %}
+                </div>
+                <div class="pure-u-1-2 px-1">
 
-    {% if enableButton %}
-        {% if externalLink %}
-            <a href="{{ buttonLink }}" target="_blank">
-        {% else %}
-            <a href="{{ buttonLink|app }}">
-        {% endif %}
-            <button>{{ buttonLabel }}</button>
-        </a>
-    {% endif %}
+                    {variable type="text" name="subheading" label="Subheading" tab="Copy" span="right"}{/variable}
+                    {% if subheading %}<h2 class="landing--caption--subheading">{{ subheading }}</h2>{% endif %}
+
+                    {variable type="textarea" name="description" label="Description" tab="Copy"}{/variable}
+                    {% if description %}<h3 class="landing--caption--description">{{ description }}</h3>{% endif %}
+                    
+
+                    {variable type="switch" name="enableButton" label="Enable Button" tab="Button" span="left"}{/variable}
+                    {variable type="switch" name="externalLink" label="External Link" tab="Button" span="right"}{/variable}
+                    {variable type="text" name="buttonLabel" label="Label" tab="Button" span="left"}{/variable}
+                    {variable type="text" name="buttonLink" label="Link" tab="Button" span="right"}{/variable}
+                    {% if enableButton %}
+                        {% if externalLink %}
+                            <a href="{{ buttonLink }}" target="_blank">
+                        {% else %}
+                            <a href="{{ buttonLink|app }}">
+                        {% endif %}
+                            <button class="landing--caption--button button--primary">{{ buttonLabel }}</button>
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
 </html>

@@ -18,10 +18,75 @@ description = "Head of html page"
 
     <style>
         @import url('https://fonts.googleapis.com/css?family=Ubuntu:300,700');
-        body{
+        html,body{
+            margin: 0;
+            padding: 0;
             font-family: 'Ubuntu', sans-serif;
+            color: #333333;
         }
+
+        .landing{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            background-size: cover;
+        }
+
+        .landing--caption{
+            z-index: 1;
+            max-width: 992px;
+            width:calc(100% - 2rem);
+            padding: 1rem;
+        }
+
+        .landing--caption--heading{
+            font-family: 'Ubuntu', sans-serif;
+            font-size: 72px;
+            font-weight: 300 !important;
+            margin:0.25em 0;
+            text-align: right;
+        }
+
+        .landing--caption--subheading{
+            font-family: 'Ubuntu', sans-serif;
+            font-size: 24px;
+            font-weight: 300 !important;
+        }
+
+        .landing--caption--description{
+            font-family: 'Ubuntu', sans-serif;
+            font-size: 18px;
+            font-weight: 300 !important;
+        }
+
+        .landing--caption--button{
+            font-family: 'Ubuntu', sans-serif;
+
+        }
+
+        .button--primary{
+            background-color: #FF0000;
+            border: none;
+            padding: 0.5em 2em 0.5em 2em;
+            color: #FFF;
+        }
+
+        .button--primary:hover{
+            background-color: #000000;
+            border: none;
+            padding: 0.5em 2em 0.5em 2em;
+            color: #FFF;
+        }
+
+        .px-1{
+            padding:0 1rem 0 1rem;
+            box-sizing: border-box;
+        }
+
+
     </style>
     
-    <title>{{ this.page.title }}</title>
+    <title>{{ this.page.title }} | Scaventum</title>
 </head>
