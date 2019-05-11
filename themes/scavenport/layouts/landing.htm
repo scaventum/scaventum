@@ -1,0 +1,29 @@
+description = "Landing Template"
+
+[staticPage]
+useContent = 1
+default = 0
+==
+{% partial 'head' %}
+
+<body>
+    <h1>{text name="heading" label="Heading" tab="Copy" span="left"}{/text}</h1>
+    <h2>{text name="subheading" label="Subheading" tab="Copy" span="right"}{/text}</h2>
+    <h3>{textarea name="description" label="Description" tab="Copy"}{/textarea}</h3>
+
+    {variable type="switch" name="enableButton" label="Enable Button" tab="Button" span="left"}{/variable}
+    {variable type="switch" name="externalLink" label="External Link" tab="Button" span="right"}{/variable}
+    {variable type="text" name="buttonLabel" label="Label" tab="Button" span="left"}{/variable}
+    {variable type="text" name="buttonLink" label="Link" tab="Button" span="right"}{/variable}
+
+    {% if enableButton %}
+        {% if externalLink %}
+            <a href="{{ buttonLink }}" target="_blank">
+        {% else %}
+            <a href="{{ buttonLink|app }}">
+        {% endif %}
+            <button>{{ buttonLabel }}</button>
+        </a>
+    {% endif %}
+</body>
+</html>
