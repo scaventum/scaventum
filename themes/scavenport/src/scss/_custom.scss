@@ -1,0 +1,13 @@
+$min_width: 320px;
+$max_width: 1200px;
+
+$min_font: 12px;
+$max_font: 18px;
+
+html,body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Saira', sans-serif;
+    color: $gray-900;
+    @include fluid-type($min_width, $max_width, $min_font, $max_font);
+}

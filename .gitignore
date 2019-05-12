@@ -22,3 +22,6 @@ nbproject
 
 # for mysql image
 /mysql
+
+# for npm
+/node_modules
