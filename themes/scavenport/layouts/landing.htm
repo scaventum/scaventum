@@ -12,15 +12,15 @@ default = 0
     <div class="landing--mask d-flex align-items-center justify-content-center">
         <div class="row landing--caption p-3">
             <div class="col-12 col-md-6">
-                {variable type="text" name="heading" label="Heading" tab="Copy" span="left"}{/variable}
+                {variable type="text" name="heading" label="Heading" tab="Caption" span="left"}{/variable}
                 {% if heading %}<h1 class="landing--caption--heading m-0">{{ heading }}</h1>{% endif %}
             </div>
             <div class="col-12 col-md-6">
 
-                {variable type="text" name="subheading" label="Subheading" tab="Copy" span="right"}{/variable}
+                {variable type="text" name="subheading" label="Subheading" tab="Caption" span="right"}{/variable}
                 {% if subheading %}<h2 class="landing--caption--subheading mt-3 m-0">{{ subheading }}</h2>{% endif %}
 
-                {variable type="textarea" name="description" label="Description" tab="Copy"}{/variable}
+                {variable type="textarea" name="description" label="Description" tab="Caption"}{/variable}
                 {% if description %}<h3 class="landing--caption--description mt-3 m-0">{{ description }}</h3>{% endif %}
                 
 

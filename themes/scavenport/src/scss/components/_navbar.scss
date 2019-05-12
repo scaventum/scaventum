@@ -13,8 +13,14 @@
         }
     }
     &-nav{
-        text-align: right;
+        @include media-breakpoint-up(md){
+            align-items: flex-end;
+        }
         .nav-item{
+            text-align: right;
+            @include media-breakpoint-up(md){
+                width: 100px !important;
+            }
             .nav-link{
                 color:$gray-900;
                 &:hover{

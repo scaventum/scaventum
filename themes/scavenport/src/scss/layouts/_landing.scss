@@ -40,5 +40,8 @@ $description_max_font: 18px;
             text-align: justify;
             font-weight: 300 !important;
         }
+        &--button{
+            @include fluid-type($min_width, $max_width, $description_min_font, $description_max_font);
+        }
     }
 }
