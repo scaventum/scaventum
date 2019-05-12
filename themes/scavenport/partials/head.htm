@@ -8,81 +8,88 @@ description = "Head of html page"
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
-    <!--[if lte IE 8]>
-        <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-old-ie-min.css">
-    <![endif]-->
-    <!--[if gt IE 8]><!-->
-        <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-min.css">
-    <!--<![endif]-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <style>
-        @import url('https://fonts.googleapis.com/css?family=Ubuntu:300,700');
+        @import url('https://fonts.googleapis.com/css?family=Saira:300,700');
         html,body{
             margin: 0;
             padding: 0;
-            font-family: 'Ubuntu', sans-serif;
+            font-family: 'Saira', sans-serif;
             color: #333333;
         }
 
         .landing{
             height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             overflow: hidden;
             background-size: cover;
         }
 
+        .landing--mask{
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            background-color: rgba(255,255,255,0.5);
+        }
+
         .landing--caption{
             z-index: 1;
-            max-width: 992px;
+            max-width: 1000px;
             width:calc(100% - 2rem);
             padding: 1rem;
         }
 
         .landing--caption--heading{
-            font-family: 'Ubuntu', sans-serif;
             font-size: 72px;
             font-weight: 300 !important;
-            margin:0.25em 0;
-            text-align: right;
+           
         }
 
         .landing--caption--subheading{
-            font-family: 'Ubuntu', sans-serif;
             font-size: 24px;
             font-weight: 300 !important;
         }
 
         .landing--caption--description{
-            font-family: 'Ubuntu', sans-serif;
             font-size: 18px;
             font-weight: 300 !important;
         }
 
         .landing--caption--button{
-            font-family: 'Ubuntu', sans-serif;
 
         }
 
-        .button--primary{
+        .btn{
+            border-radius: 0;
+        }
+        .btn-primary{
             background-color: #FF0000;
-            border: none;
-            padding: 0.5em 2em 0.5em 2em;
+            border-color: #FF0000;
             color: #FFF;
         }
 
-        .button--primary:hover{
+        .btn-primary:hover{
             background-color: #000000;
-            border: none;
-            padding: 0.5em 2em 0.5em 2em;
-            color: #FFF;
+            border-color: #000000;
         }
 
-        .px-1{
-            padding:0 1rem 0 1rem;
-            box-sizing: border-box;
+        .landing--caption--heading {
+            font-size: 36px;
+        }
+        @media screen and (min-width: 576px) {
+            .landing--caption--heading {
+                font-size: calc(36px + 36 * ((100vw - 576px) / 416));
+            }
+        }
+        @media screen and (min-width: 992px) {
+            .landing--caption--heading {
+                font-size: 72px;
+            }
+        }
+        @media screen and (min-width: 768px) {
+            .landing--caption--heading {
+                text-align: right;
+            }
         }
 
 
