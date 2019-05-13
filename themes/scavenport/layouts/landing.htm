@@ -8,7 +8,29 @@ default = 0
 
 {% partial 'navbar' %}
 
-<section class="landing" style="background-image:url('{mediafinder mode="image" name="backgroundImage" label="Image" span="left" tab="Background"}{/mediafinder}')">
+{variable type="dropdown" name="backgroundSource" label="Source" span="full" tab="Background" options="image:Image|video_upload:Video Upload|video_link:Video Link"}{/variable}
+{variable type="mediafinder" mode="image" name="backgroundImage" label="Image" span="left" tab="Background"}{/variable}
+{variable type="mediafinder" mode="file" name="backgroundVideoUpload" label="Video Upload" span="right" tab="Background"}{/variable}
+{variable type="text" name="backgroundVideoLink" label="Video Link" span="right" tab="Background"}{/variable}
+
+<section class="landing" 
+    {% if backgroundSource == 'image' %}
+        style="background-image:url('{{ backgroundImage|media }}')"
+    {% endif %}
+>
+    
+    {% if backgroundSource == 'video_upload' %}
+        <video autoplay muted loop class="landing--video">
+            <source src="{{ backgroundVideoUpload|media }}" type="video/mp4">
+        </video>
+    {% endif %}
+
+    {% if backgroundSource == 'video_link' %}
+        <iframe frameborder="0" height="100%" width="100%" class="landing--video"
+            src="{{ backgroundVideoLink }}" allowfullscreen>
+        </iframe>
+    {% endif %}
+
     <div class="landing--mask d-flex align-items-center justify-content-center">
         <div class="row landing--caption p-3">
             <div class="col-12 col-md-6">

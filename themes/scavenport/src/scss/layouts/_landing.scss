@@ -12,6 +12,15 @@ $description_max_font: 18px;
     height: 100vh;
     overflow: hidden;
     background-size: cover;
+    /* Style the video: 100% width and height to cover the entire window */
+    &--video {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        min-width: 100%; 
+        min-height: 100%;
+    }
+  
     &--mask{
         position: absolute;
         height: 100%;
