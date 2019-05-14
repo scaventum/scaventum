@@ -1,6 +1,9 @@
 description = "Navigation bar"
 
 [viewBag]
+
+[staticMenu mainMenu]
+code = "main-menu"
 ==
 <nav class="navbar fixed-top">
     <a class="navbar-brand" href="/">Scaventum</a>
@@ -11,15 +14,11 @@ description = "Navigation bar"
 
     <div class="collapse navbar-collapse" id="navbar-list">
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="/portfolios">Portfolio</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/blogs">Blog</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/about">About</a>
-            </li>
+            {% for item in mainMenu.menuItems %}
+                <li class="nav-item {{ item.isActive ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ item.url }}">{{ item.title }}</a>
+                </li>
+            {% endfor %}
         </ul>
     </div>
 </nav>

@@ -1,2 +1,5 @@
 static-pages:
     index: {  }
+    portfolios: {  }
+    blogs: {  }
+    about: {  }
