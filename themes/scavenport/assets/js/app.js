@@ -17852,7 +17852,7 @@ function landing() {
   } // Find all YouTube videos
 
 
-  var $allVideos = jquery__WEBPACK_IMPORTED_MODULE_0___default()("iframe[src^='https://www.youtube.com']"),
+  var $allVideos = jquery__WEBPACK_IMPORTED_MODULE_0___default()(".landing--video-link"),
       // The element that is fluid width
   $fluidEl = jquery__WEBPACK_IMPORTED_MODULE_0___default()(".landing"); // Figure out and save aspect ratio for each video
 

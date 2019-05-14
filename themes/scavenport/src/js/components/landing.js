@@ -28,7 +28,7 @@ export default function landing() {
     }
 
 	// Find all YouTube videos
-	var $allVideos = $("iframe[src^='https://www.youtube.com']"),
+	var $allVideos = $(".landing--video-link"),
 	// The element that is fluid width
     $fluidEl = $(".landing")
     
