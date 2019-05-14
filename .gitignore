@@ -25,3 +25,5 @@ nbproject
 
 # for npm
 /node_modules
+*.css.map
+*.js.map

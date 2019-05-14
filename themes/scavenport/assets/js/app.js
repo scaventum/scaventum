@@ -17800,11 +17800,84 @@ module.exports = g;
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_navbar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/navbar */ "./themes/scavenport/src/js/components/navbar.js");
+/* harmony import */ var _components_landing__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/landing */ "./themes/scavenport/src/js/components/landing.js");
+
 
 
 __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.js");
 
 Object(_components_navbar__WEBPACK_IMPORTED_MODULE_0__["default"])();
+Object(_components_landing__WEBPACK_IMPORTED_MODULE_1__["default"])();
+
+/***/ }),
+
+/***/ "./themes/scavenport/src/js/components/landing.js":
+/*!********************************************************!*\
+  !*** ./themes/scavenport/src/js/components/landing.js ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return landing; });
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+
+function landing() {
+  // By Chris Coyier & tweaked by Mathias Bynens
+  var isMobile = {
+    Android: function Android() {
+      return navigator.userAgent.match(/Android/i);
+    },
+    BlackBerry: function BlackBerry() {
+      return navigator.userAgent.match(/BlackBerry/i);
+    },
+    iOS: function iOS() {
+      return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+    },
+    Opera: function Opera() {
+      return navigator.userAgent.match(/Opera Mini/i);
+    },
+    Windows: function Windows() {
+      return navigator.userAgent.match(/IEMobile/i) || navigator.userAgent.match(/WPDesktop/i);
+    },
+    any: function any() {
+      return isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows();
+    }
+  };
+
+  if (isMobile.any()) {
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()(".landing--video-link").hide();
+  } // Find all YouTube videos
+
+
+  var $allVideos = jquery__WEBPACK_IMPORTED_MODULE_0___default()("iframe[src^='https://www.youtube.com']"),
+      // The element that is fluid width
+  $fluidEl = jquery__WEBPACK_IMPORTED_MODULE_0___default()(".landing"); // Figure out and save aspect ratio for each video
+
+  $allVideos.each(function () {
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('aspectRatio', this.height / this.width) // and remove the hard coded width/height
+    .removeAttr('height').removeAttr('width');
+  }); // When the window is resized
+  // (You'll probably want to debounce this)
+
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).resize(function () {
+    var newWidth = $fluidEl.width();
+    var newHeight = $fluidEl.height();
+    var screenAspectRation = newHeight / newWidth; // Resize all videos according to their own aspect ratio
+
+    $allVideos.each(function () {
+      var $el = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
+
+      if (screenAspectRation > $el.data('aspectRatio')) {
+        $el.width(newHeight / $el.data('aspectRatio')).height(newHeight);
+      } else {
+        $el.width(newWidth).height(newWidth * $el.data('aspectRatio'));
+      }
+    }); // Kick off one resize to fix all videos on page load
+  }).resize();
+}
 
 /***/ }),
 
@@ -17856,3 +17929,4 @@ module.exports = __webpack_require__(/*! D:\Fullstacking\OctoberCMS\scaventum\th
 /***/ })
 
 /******/ });
+//# sourceMappingURL=app.js.map

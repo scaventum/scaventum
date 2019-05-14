@@ -10666,15 +10666,23 @@ a.text-dark:focus {
   height: 100vh;
   overflow: hidden;
   background-size: cover;
-  /* Style the video: 100% width and height to cover the entire window */
+  position: relative;
 }
 
-.landing--video {
+.landing--video-link {
   position: absolute;
-  right: 0;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.landing--video-upload {
+  position: absolute;
   bottom: 0;
-  min-width: 100%;
+  right: 0;
   min-height: 100%;
+  min-width: 100%;
 }
 
 .landing--mask {
@@ -10919,3 +10927,5 @@ body {
   }
 }
 
+
+/*# sourceMappingURL=app.css.map*/

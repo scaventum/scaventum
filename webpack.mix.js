@@ -19,6 +19,13 @@ mix.js(src_path+'js/app.js','js/')
     .sass(src_path+'scss/app.scss', 'css/')
     .setPublicPath(dist_path);
 
+if (!mix.inProduction()) {
+    mix.webpackConfig({
+        devtool: 'source-map'
+    })
+    .sourceMaps()
+}
+
 // Full API
 // mix.js(src, output);
 // mix.react(src, output); <-- Identical to mix.js(), but registers React Babel compilation.
