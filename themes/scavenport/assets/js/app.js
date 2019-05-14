@@ -17823,59 +17823,54 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return landing; });
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _helpers_platform__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../helpers/platform */ "./themes/scavenport/src/js/helpers/platform.js");
 
-function landing() {
-  // By Chris Coyier & tweaked by Mathias Bynens
-  var isMobile = {
-    Android: function Android() {
-      return navigator.userAgent.match(/Android/i);
-    },
-    BlackBerry: function BlackBerry() {
-      return navigator.userAgent.match(/BlackBerry/i);
-    },
-    iOS: function iOS() {
-      return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-    },
-    Opera: function Opera() {
-      return navigator.userAgent.match(/Opera Mini/i);
-    },
-    Windows: function Windows() {
-      return navigator.userAgent.match(/IEMobile/i) || navigator.userAgent.match(/WPDesktop/i);
-    },
-    any: function any() {
-      return isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows();
-    }
-  };
+ // Figure out and save aspect ratio for each video
 
-  if (isMobile.any()) {
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()(".landing--video-link").hide();
-  } // Find all YouTube videos
-
-
-  var $allVideos = jquery__WEBPACK_IMPORTED_MODULE_0___default()(".landing--video-link"),
-      // The element that is fluid width
-  $fluidEl = jquery__WEBPACK_IMPORTED_MODULE_0___default()(".landing"); // Figure out and save aspect ratio for each video
-
-  $allVideos.each(function () {
+function setVideoResolution(videos) {
+  videos.each(function () {
     jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('aspectRatio', this.height / this.width) // and remove the hard coded width/height
     .removeAttr('height').removeAttr('width');
-  }); // When the window is resized
+  });
+} // Resize all videos according to their own and disregarding container aspect ratio
+
+
+function resizeVideo(videos) {
+  var container = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : jquery__WEBPACK_IMPORTED_MODULE_0___default()(window);
+  // Resized container size
+  var newWidth = container.width(),
+      newHeight = container.height(),
+      // Container aspect ratio
+  screenAspectRatio = newHeight / newWidth;
+  videos.each(function () {
+    var $el = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this); // Keep full background video disregarding container aspect ratio
+
+    if (screenAspectRatio > $el.data('aspectRatio')) {
+      $el.width(newHeight / $el.data('aspectRatio')).height(newHeight);
+    } else {
+      $el.width(newWidth).height(newWidth * $el.data('aspectRatio'));
+    }
+  });
+}
+
+function landing() {
+  if (_helpers_platform__WEBPACK_IMPORTED_MODULE_1__["default"].isMobile()) {
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()(".landing--video-link").hide();
+  } // Find all linked videos
+
+
+  var $linkVideos = jquery__WEBPACK_IMPORTED_MODULE_0___default()(".landing--video-link"),
+      // Find all uploaded videos
+  $uploadVideos = jquery__WEBPACK_IMPORTED_MODULE_0___default()(".landing--video-upload"),
+      // The element that is fluid width
+  $container = jquery__WEBPACK_IMPORTED_MODULE_0___default()(".landing");
+  setVideoResolution($linkVideos);
+  setVideoResolution($uploadVideos); // When the window is resized
   // (You'll probably want to debounce this)
 
   jquery__WEBPACK_IMPORTED_MODULE_0___default()(window).resize(function () {
-    var newWidth = $fluidEl.width();
-    var newHeight = $fluidEl.height();
-    var screenAspectRation = newHeight / newWidth; // Resize all videos according to their own aspect ratio
-
-    $allVideos.each(function () {
-      var $el = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this);
-
-      if (screenAspectRation > $el.data('aspectRatio')) {
-        $el.width(newHeight / $el.data('aspectRatio')).height(newHeight);
-      } else {
-        $el.width(newWidth).height(newWidth * $el.data('aspectRatio'));
-      }
-    }); // Kick off one resize to fix all videos on page load
+    resizeVideo($linkVideos, $container);
+    resizeVideo($uploadVideos, $container); // Kick off one resize to fix all videos on page load
   }).resize();
 }
 
@@ -17901,6 +17896,87 @@ function navbar() {
     });
   });
 }
+
+/***/ }),
+
+/***/ "./themes/scavenport/src/js/helpers/platform.js":
+/*!******************************************************!*\
+  !*** ./themes/scavenport/src/js/helpers/platform.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var Platform =
+/*#__PURE__*/
+function () {
+  function Platform() {
+    _classCallCheck(this, Platform);
+  }
+
+  _createClass(Platform, [{
+    key: "isMobile",
+    value: function isMobile(agent) {
+      agent = agent || '';
+
+      switch (agent.toLowerCase()) {
+        case 'android':
+          return this.isAndroid();
+
+        case 'ios':
+          return this.isIOS();
+
+        case 'windows':
+          return this.isWindows();
+
+        case 'blackberry':
+          return this.isBlackBerry();
+
+        case 'opera':
+          return this.isOpera();
+
+        default:
+          return this.isAndroid() || this.isIOS() || this.isWindows() || this.isBlackBerry() || this.isOpera();
+      }
+    }
+  }, {
+    key: "isAndroid",
+    value: function isAndroid() {
+      return navigator.userAgent.match(/Android/i);
+    }
+  }, {
+    key: "isIOS",
+    value: function isIOS() {
+      return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+    }
+  }, {
+    key: "isWindows",
+    value: function isWindows() {
+      return navigator.userAgent.match(/IEMobile/i) || navigator.userAgent.match(/WPDesktop/i);
+    }
+  }, {
+    key: "isBlackBerry",
+    value: function isBlackBerry() {
+      return navigator.userAgent.match(/BlackBerry/i);
+    }
+  }, {
+    key: "isOpera",
+    value: function isOpera() {
+      return navigator.userAgent.match(/Opera Mini/i);
+    }
+  }]);
+
+  return Platform;
+}();
+
+/* harmony default export */ __webpack_exports__["default"] = (new Platform());
 
 /***/ }),
 

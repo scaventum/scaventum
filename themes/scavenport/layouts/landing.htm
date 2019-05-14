@@ -22,7 +22,7 @@ default = 0
 >
     
     {% if backgroundSource == 'video_upload' %}
-        <video autoplay muted loop class="landing--video-upload">
+        <video autoplay muted loop width="1280" height="720" class="landing--video-upload">
             <source src="{{ backgroundVideoUpload|media }}" type="video/mp4">
         </video>
     {% elseif backgroundSource == 'video_link' %}

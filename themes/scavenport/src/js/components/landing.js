@@ -1,75 +1,68 @@
 import $ from 'jquery'
+import platform from '../helpers/platform'
 
-export default function landing() {
-    // By Chris Coyier & tweaked by Mathias Bynens
-    var isMobile = {
-        Android: function() {
-            return navigator.userAgent.match(/Android/i);
-        },
-        BlackBerry: function() {
-            return navigator.userAgent.match(/BlackBerry/i);
-        },
-        iOS: function() {
-            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-        },
-        Opera: function() {
-            return navigator.userAgent.match(/Opera Mini/i);
-        },
-        Windows: function() {
-            return navigator.userAgent.match(/IEMobile/i) || navigator.userAgent.match(/WPDesktop/i);
-        },
-        any: function() {
-            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
-        }
-    };
-
-    if( isMobile.any() ){
-        $(".landing--video-link").hide();
-    }
-
-	// Find all YouTube videos
-	var $allVideos = $(".landing--video-link"),
-	// The element that is fluid width
-    $fluidEl = $(".landing")
-    
-	// Figure out and save aspect ratio for each video
-	$allVideos.each(function() {
+// Figure out and save aspect ratio for each video
+function setVideoResolution(videos){
+    videos.each(function() {
 
 		$(this)
-			.data('aspectRatio', this.height / this.width)
-			
+			.data('aspectRatio', this.height / this.width)		
 			// and remove the hard coded width/height
 			.removeAttr('height')
-            .removeAttr('width');
+            .removeAttr('width')
 
 	});
+}
 
+// Resize all videos according to their own and disregarding container aspect ratio
+function resizeVideo(videos,container = $(window)){
+    // Resized container size
+    var newWidth = container.width(),
+        newHeight = container.height(),
+        // Container aspect ratio
+        screenAspectRatio = newHeight/newWidth
+
+    videos.each(function() {
+        var $el = $(this)
+    
+        // Keep full background video disregarding container aspect ratio
+        if(screenAspectRatio > $el.data('aspectRatio')) {
+            $el
+                .width(newHeight / $el.data('aspectRatio'))
+                .height(newHeight);
+        }else{
+            $el
+                .width(newWidth)
+                .height(newWidth * $el.data('aspectRatio'))
+        }
+
+    });
+}
+
+export default function landing() {
+
+    if( platform.isMobile()){
+        $(".landing--video-link").hide()
+    }
+
+	// Find all linked videos
+    var $linkVideos = $(".landing--video-link"),   
+	    // Find all uploaded videos
+        $uploadVideos = $(".landing--video-upload"),
+	    // The element that is fluid width
+        $container = $(".landing")
+
+    setVideoResolution($linkVideos)
+    setVideoResolution($uploadVideos)
+	
 	// When the window is resized
 	// (You'll probably want to debounce this)
 	$(window).resize(function() {
-		var newWidth = $fluidEl.width();
-        var newHeight = $fluidEl.height();
-        
-        var screenAspectRation = newHeight/newWidth;
+
+        resizeVideo($linkVideos,$container)
+        resizeVideo($uploadVideos,$container)
 		
-		// Resize all videos according to their own aspect ratio
-		$allVideos.each(function() {
-            
-            var $el = $(this);
-            
-            if(screenAspectRation > $el.data('aspectRatio')) {
-                $el
-                    .width(newHeight / $el.data('aspectRatio'))
-                    .height(newHeight);
-            }else{
-                $el
-                    .width(newWidth)
-                    .height(newWidth * $el.data('aspectRatio'));
-            }
-
-		});
-
 	// Kick off one resize to fix all videos on page load
-	}).resize();
+	}).resize()
 
 }

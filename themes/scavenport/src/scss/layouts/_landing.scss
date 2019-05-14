@@ -23,10 +23,13 @@ $description_max_font: 18px;
     
     &--video-upload {
         position: absolute;
-        bottom: 0;
-        right: 0;
-        min-height: 100%;
-        min-width: 100%;
+        left: 50%;
+        top: 50%;
+        @include transform(translate(-50%,-50%));
+        // bottom: 0;
+        // right: 0;
+        // min-height: 100%;
+        // min-width: 100%;
     }
   
     &--mask{
