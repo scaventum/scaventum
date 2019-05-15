@@ -9,12 +9,14 @@ description = "Head of html page"
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- SEO Meta Tags -->
-    <meta name="description" content="{{ this.page.meta_description }}">
+    {% if this.page.meta_description %}
+        <meta name="description" content="{{ this.page.meta_description }}">
+    {% endif %}
 
     <!-- CSS Manifestation -->
     <link rel="stylesheet" href="{{ 'assets/css/app.css'|theme }}">
     
-    <title>{{ this.page.title }} | Scaventum</title>
+    <title>{{ this.page.meta_title |default(this.page.title) }} | {{ app_name }}</title>
 </head>
 
 <body>
