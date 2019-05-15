@@ -1,5 +1,7 @@
 static-pages:
     index: {  }
-    portfolios: {  }
+    portfolios:
+        portfolios-purebot: {  }
+        portfolios-gamebreaker: {  }
     blogs: {  }
     about: {  }
