@@ -1,0 +1,33 @@
+description = "List Parallax Template"
+
+[staticPage]
+useContent = 1
+default = 0
+==
+{% partial 'head' %}
+
+{% partial 'navbar' %}
+
+<div class="parallax">
+    <div class="parallax--layer parallax--layer--level-3">
+      <div class="title">This is the layer 3</div>
+      <div class="title">This is the layer 3</div>
+      <div class="title">This is the layer 3</div>
+    </div>
+    <div class="parallax--layer parallax--layer--level-2">
+      <div class="title">This is the layer 2</div>
+      <div class="title">This is the layer 2</div>
+      <div class="title">This is the layer 2</div>
+    </div>
+    <div class="parallax--layer parallax--layer--level-1">
+      <div class="title">This is the layer 1</div>
+    </div>
+    <div class="parallax--layer parallax--layer--level-1">
+      <div class="title">This is the layer 1</div>
+    </div>
+    <div class="parallax--layer parallax--layer--level-1">
+      <div class="title">This is the layer 1</div>
+    </div>
+</div>
+
+{% partial 'foot' %}

@@ -1,0 +1,43 @@
+.parallax {
+    -webkit-perspective: 1px;
+    perspective: 1px;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    margin:0;
+    &--layer{
+        width:100%;
+        box-sizing: border-box;
+        &--level-1 {
+            font-size: 3rem;
+            height: 100vh;
+            color:$red;
+            position: relative;
+            @include transform(translateZ(0));
+        }
+        &--level-2 {
+            font-size: 3.5rem;
+            color:$green;
+            height: 300vh;
+            position: absolute;
+            @include transform(translateZ(-0.5px));
+        }
+        &--level-3 {
+            font-size: 4rem;
+            color:$blue;
+            height: 300vh;
+            position: absolute;
+            @include transform(translateZ(-1px));
+        }
+    }
+}
+
+
+/* centre the content in the parallax layers */
+.title {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

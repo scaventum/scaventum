@@ -12,7 +12,6 @@ services:
       - DB_DATABASE=scaventum
       - DB_USERNAME=root
       - DB_PASSWORD=root
-
   mysql:
     volumes:
       - ./mysql:/var/lib/mysql/
