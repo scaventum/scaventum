@@ -3,7 +3,7 @@ description = "Item of parallax list"
 [viewBag]
 ==
 {% if span == "left" %}
-    <div class="col-12 col-md-6 order-2 order-md-1">
+    <div class="col-12 col-md-6 order-2 order-md-1" data-aos="fade-right">
         <h1 class="display-4 text-left">{{ item.title }}</h1>
         <h4 class="text-justify">{{ item.description }}</h4>
         {% if buttons %}
@@ -24,7 +24,7 @@ description = "Item of parallax list"
     <div class="col-12 col-md-6 order-1 order-md-1">
     </div>
     
-    <div class="col-12 col-md-6 order-2 order-md-2">
+    <div class="col-12 col-md-6 order-2 order-md-2" data-aos="fade-left">
         <h1 class="display-4 text-right">{{ item.title }}</h1>
         <h4 class="text-justify">{{ item.description }}</h4>
         {% if buttons %}
