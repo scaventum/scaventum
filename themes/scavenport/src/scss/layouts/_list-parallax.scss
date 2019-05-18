@@ -1,4 +1,5 @@
 .parallax {
+    background: $black;
     -webkit-perspective: 1px;
     perspective: 1px;
     height: 100vh;
@@ -8,36 +9,48 @@
     &--layer{
         width:100%;
         box-sizing: border-box;
+        color:$white;
         &--level-1 {
-            font-size: 3rem;
-            height: 100vh;
-            color:$red;
+            opacity: 0.2;
+            z-index: 40;
             position: relative;
+            pointer-events: none;
+            color: theme-color-level(primary);
             @include transform(translateZ(0));
         }
         &--level-2 {
-            font-size: 3.5rem;
-            color:$green;
-            height: 300vh;
+            z-index: 30;
             position: absolute;
             @include transform(translateZ(-0.5px));
         }
         &--level-3 {
-            font-size: 4rem;
-            color:$blue;
-            height: 300vh;
+            opacity: 0.2;
+            z-index: 20;
             position: absolute;
             @include transform(translateZ(-1px));
         }
+        &--level-4 {
+            z-index: 10;
+            position: absolute;
+            @include transform(translateZ(-1.5px));
+            img{
+                opacity: 0.2;
+                position:absolute;
+                left: 50%;
+                @include transform(translateX(-50%) scale(1.5));
+            }
+        }
+    }
+    
+    &--item {
+        height: auto;
+        min-height: 100vh;
+        width: 100%;
+    }
+    
+    &--main {
+        text-shadow: $white 0px 0px 10px;
     }
 }
 
 
-/* centre the content in the parallax layers */
-.title {
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}

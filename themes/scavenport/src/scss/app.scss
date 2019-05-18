@@ -1,11 +1,12 @@
-// Vendor
-@import "~bootstrap/scss/bootstrap";
-
 // Helpers
 @import "helpers/mixins";
-@import "helpers/variables";
 @import "helpers/typography";
 @import "helpers/animations";
+@import "helpers/variables";
+
+// Vendor
+@import "~bootstrap/scss/bootstrap";
+@import "~aos/dist/aos";
 
 // layouts
 @import "layouts/landing";

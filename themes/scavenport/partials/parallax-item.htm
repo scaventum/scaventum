@@ -1,0 +1,41 @@
+description = "Item of parallax list"
+
+[viewBag]
+==
+{% if span == "left" %}
+    <div class="col-12 col-md-6">
+        <h1 class="display-4 text-left">{{ item.title }}</h1>
+        <h4 class="text-justify">{{ item.description }}</h4>
+        {% if buttons %}
+            <div class="btn-group mt-3" role="group" aria-label="Basic example">
+                <a href="#">
+                    <button class="btn btn-secondary">Visit Site</button>
+                </a>
+                <a href="#">
+                    <button class="btn btn-primary">Explore</button>
+                </a>
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="col-12 col-md-6">
+    </div>
+{% else %}
+    <div class="col-12 col-md-6">
+    </div>
+    
+    <div class="col-12 col-md-6">
+        <h1 class="display-4 text-right">{{ item.title }}</h1>
+        <h4 class="text-justify">{{ item.description }}</h4>
+        {% if buttons %}
+            <div class="btn-group mt-3 float-right" role="group" aria-label="Basic example">
+                <a href="#">
+                    <button class="btn btn-primary">Explore</button>
+                </a>
+                <a href="#">
+                    <button class="btn btn-secondary">Visit Site</button>
+                </a>
+            </div>
+        {% endif %}
+    </div>
+{% endif %}

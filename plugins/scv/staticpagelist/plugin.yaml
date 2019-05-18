@@ -1,0 +1,6 @@
+plugin:
+    name: 'scv.staticpagelist::lang.plugin.name'
+    description: 'scv.staticpagelist::lang.plugin.description'
+    author: scv
+    icon: oc-icon-th-list
+    homepage: 'https://scaventum.com/'

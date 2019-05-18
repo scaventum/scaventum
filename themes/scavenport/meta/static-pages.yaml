@@ -1,7 +1,9 @@
 static-pages:
     index: {  }
-    portfolios:
-        portfolios-purebot: {  }
-        portfolios-gamebreaker: {  }
+    portfolio:
+        portfolio-purebot: {  }
+        portfolio-gamebreaker: {  }
+        portfolio-journey-digital: {  }
+        portfolio-economech: {  }
     blogs: {  }
     about: {  }

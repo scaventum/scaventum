@@ -1,10 +1,48 @@
-.navbar{
-    &-brand{
+
+
+.navbar.light-layout{
+    .navbar-brand{
         color:$gray-900;
         &:hover{
             color:$gray-900;
         }
     }
+    .navbar-nav{
+        .nav-item{
+            .nav-link{
+                color:$gray-900;
+            }
+        }
+    }
+    .animated-icon {
+        span {
+            background-color:$gray-900;
+        }
+    }
+}
+
+.navbar.dark-layout{
+    .navbar-brand{
+        color:$white;
+        &:hover{
+            color:$white;
+        }
+    }
+    .navbar-nav{
+        .nav-item{
+            .nav-link{
+                color:$white;
+            }
+        }
+    }
+    .animated-icon {
+        span {
+            background-color:$white;
+        }
+    }
+}
+
+.navbar{
     &-toggler{
         border: none;
         padding: 0;
@@ -22,14 +60,13 @@
                 width: 100px !important;
             }
             .nav-link{
-                color:$gray-900;
                 &:hover{
-                    color: $red;
+                    color: theme-color-level(primary) !important;
                 }
             }  
             &.active{
                 .nav-link{
-                    color:$red;
+                    color: theme-color-level(primary) !important;
                 }
             }
         }
@@ -53,7 +90,6 @@
         left: 0;
         @include transform(rotate(0deg));
         @include transition(.25s ease-in-out);
-        background-color: $gray-900;
         &:nth-child(1) {
             top: 0px;
         }
@@ -66,7 +102,7 @@
     }
     &.open{
         span{
-            background-color:$red;
+            background-color:theme-color-level(primary) !important;
             &:nth-child(1) {
                 top: 11px;
                 @include transform(rotate(135deg));

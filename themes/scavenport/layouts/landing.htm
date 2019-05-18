@@ -4,15 +4,27 @@ description = "Landing Template"
 useContent = 1
 default = 0
 ==
-{% partial 'head' %}
-
-{% partial 'navbar' %}
-
+{# Background Tab #}
 {variable type="dropdown" name="backgroundSource" label="Source" span="full" tab="Background" options="color:Color|image:Image|video_upload:Video Upload|video_link:Video Link"}{/variable}
 {variable type="mediafinder" mode="image" name="backgroundImage" label="Image [Override Video Link on Mobile]" span="left" tab="Background"}{/variable}
 {variable type="colorpicker" name="backgroundColor" label="Color" span="right" tab="Background"}{/variable}
 {variable type="mediafinder" mode="file" name="backgroundVideoUpload" label="Video Upload" span="right" tab="Background"}{/variable}
 {variable type="text" name="backgroundVideoLink" label="Video Link" span="right" tab="Background"}{/variable}
+
+{#  Caption Tab #}
+{variable type="text" name="heading" label="Heading" tab="Caption" span="left"}{/variable}
+{variable type="text" name="subheading" label="Subheading" tab="Caption" span="right"}{/variable}
+{variable type="textarea" name="description" label="Description" tab="Caption"}{/variable}
+
+{#  Button Tab #}
+{variable type="switch" name="enableButton" label="Enable Button" tab="Button" span="left"}{/variable}
+{variable type="switch" name="externalLink" label="External Link" tab="Button" span="right"}{/variable}
+{variable type="text" name="buttonLabel" label="Label" tab="Button" span="left"}{/variable}
+{variable type="text" name="buttonLink" label="Link" tab="Button" span="right"}{/variable}
+
+{% partial 'head' %}
+
+{% partial 'navbar' class="light-layout" %}
 
 <section class="landing" style="background-color:{{ backgroundColor }};
     {% if backgroundSource != 'color' %}
@@ -31,9 +43,8 @@ default = 0
         </iframe>
     {% endif %}
 
-    <div class="landing--mask d-flex align-items-center justify-content-center">
+    <div class="landing--mask d-flex align-items-center justify-content-center" data-aos="fade-in">
         <div class="row landing--caption p-3">
-            {variable type="text" name="heading" label="Heading" tab="Caption" span="left"}{/variable}
             {% if heading %}
                 <div class="col-12 col-md-6">
                     <h1 class="landing--caption--heading m-0">{{ heading }}</h1>
@@ -42,16 +53,9 @@ default = 0
 
             <div class="col-12 col-md-6">
 
-                {variable type="text" name="subheading" label="Subheading" tab="Caption" span="right"}{/variable}
                 {% if subheading %}<h2 class="landing--caption--subheading mt-3 mt-md-0 m-0">{{ subheading }}</h2>{% endif %}
 
-                {variable type="textarea" name="description" label="Description" tab="Caption"}{/variable}
                 {% if description %}<h3 class="landing--caption--description mt-3 m-0">{{ description }}</h3>{% endif %}
-                
-                {variable type="switch" name="enableButton" label="Enable Button" tab="Button" span="left"}{/variable}
-                {variable type="switch" name="externalLink" label="External Link" tab="Button" span="right"}{/variable}
-                {variable type="text" name="buttonLabel" label="Label" tab="Button" span="left"}{/variable}
-                {variable type="text" name="buttonLink" label="Link" tab="Button" span="right"}{/variable}
                 {% if enableButton %}
                     {% if externalLink %}
                         <a href="{{ buttonLink }}" target="_blank">

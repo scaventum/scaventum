@@ -5,7 +5,7 @@ description = "Navigation bar"
 [staticMenu mainMenu]
 code = "main-menu"
 ==
-<nav class="navbar fixed-top">
+<nav class="navbar fixed-top {{ class |default('light-layout') }}" data-aos="fade-in">
     <a class="navbar-brand" href="/">{{ app_name }}</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-list"
         aria-controls="navbar-list" aria-expanded="false" aria-label="Toggle navigation">
