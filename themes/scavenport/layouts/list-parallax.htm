@@ -21,9 +21,9 @@ code = "highlights"
      {% for item in highlightList.menuItems %}
         <div class="row parallax--item">
           {% if loop.index is odd %}
-            {% partial "parallax-item" span="left" item=item %}
+            {% partial "parallax-item" span="right" billboard="true" item=item %}
           {% else %}
-            {% partial "parallax-item" span="right" item=item %}
+            {% partial "parallax-item" span="left" billboard="true" item=item %}
           {% endif %}
         </div>
       {% endfor %}
@@ -43,9 +43,9 @@ code = "highlights"
       {% for item in highlightList.menuItems %}
         <div class="row parallax--item">
           {% if loop.index is odd %}
-            {% partial "parallax-item" span="left" item=item %}
-          {% else %}
             {% partial "parallax-item" span="right" item=item %}
+          {% else %}
+            {% partial "parallax-item" span="left" item=item %}
           {% endif %}
         </div>
       {% endfor %}

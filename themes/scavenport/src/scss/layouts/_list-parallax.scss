@@ -8,10 +8,9 @@
     margin:0;
     &--layer{
         width:100%;
-        box-sizing: border-box;
         color:$white;
         &--level-1 {
-            opacity: 0.2;
+            opacity: 0.25;
             z-index: 40;
             position: relative;
             pointer-events: none;
@@ -24,7 +23,7 @@
             @include transform(translateZ(-0.5px));
         }
         &--level-3 {
-            opacity: 0.2;
+            opacity: 0.5;
             z-index: 20;
             position: absolute;
             @include transform(translateZ(-1px));
@@ -34,7 +33,7 @@
             position: absolute;
             @include transform(translateZ(-1.5px));
             img{
-                opacity: 0.2;
+                opacity: 0.4;
                 position:absolute;
                 left: 50%;
                 @include transform(translateX(-50%) scale(1.5));
@@ -43,14 +42,47 @@
     }
     
     &--item {
-        height: auto;
-        min-height: 100vh;
+        height: 100vh;
         width: 100%;
+        .billboard{
+            box-sizing: border-box;
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            border: 3px solid $white;
+            padding: 1rem 0 0.75rem 0; 
+            letter-spacing: 0.1rem;
+            font-weight: 700;
+            border-radius: 10px;
+            @include animation(glow 0.5s ease-in-out infinite alternate);
+            text-transform: uppercase;
+        }
     }
     
     &--main {
+        height: auto;
+        min-height: 100vh;
         text-shadow: $white 0px 0px 10px;
     }
 }
 
+@-webkit-keyframes glow {
+    from {
+        text-shadow: 0 0 10px $white, 
+            0 0 20px $white, 
+            0 0 30px $red, 
+            0 0 40px $red,
+            0 0 50px $red, 
+            0 0 60px $red, 
+            0 0 70px $red, 
+    }
 
+    to {
+        text-shadow: 0 0 20px $white, 
+            0 0 30px $white, 
+            0 0 40px $white, 
+            0 0 50px $white, 
+            0 0 60px $white, 
+            0 0 70px $white, 
+            0 0 80px $white;
+    }
+}

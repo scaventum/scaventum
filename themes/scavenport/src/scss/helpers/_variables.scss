@@ -1,7 +1,9 @@
 // Override Bootstrap Variables
 $red: #FF0000;
+$grey: #666666;
 
 // Change theme color
 $theme-colors: (
-  primary: $red
+  primary: $red,
+  secondary: $grey
 );

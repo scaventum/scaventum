@@ -3,19 +3,25 @@ description = "Item of parallax list"
 [viewBag]
 ==
 {% if span == "left" %}
-    <div class="col-12 col-md-6 order-2 order-md-1">
-        <h1 class="display-4 text-left">{{ item.title }}</h1>
-        <h4 class="text-justify">{{ item.description }}</h4>
-        {% if buttons %}
-            <div class="btn-group mt-3" role="group" aria-label="Basic example">
-                <a href="#">
-                    <button class="btn btn-primary">Explore</button>
-                </a>
-                <a href="#">
-                    <button class="btn btn-secondary">Visit Site</button>
-                </a>
-            </div>
-        {% endif %}
+    <div class="col-12 col-md-6 order-2 order-md-1 d-flex align-items-center">
+        <div>
+            <h1 class="display-4 text-left">{{ item.title }}</h1>
+            <h4 class="text-justify">{{ item.description }}</h4>
+            {% if buttons %}
+                <div class="btn-group mt-3" role="group" aria-label="Basic example">
+                    <a href="#">
+                        <button class="btn btn-primary">Explore</button>
+                    </a>
+                    <a href="#">
+                        <button class="btn btn-outline-light">Visit Site</button>
+                    </a>
+                </div>
+            {% endif %}
+            
+            {% if billboard %}
+                <div class="billboard mt-5"><h3>{{ item.title }}</h3></div>
+            {% endif %}
+        </div>
     </div>
 
     <div class="col-12 col-md-6 order-1 order-md-2">
@@ -24,18 +30,24 @@ description = "Item of parallax list"
     <div class="col-12 col-md-6 order-1 order-md-1">
     </div>
     
-    <div class="col-12 col-md-6 order-2 order-md-2">
-        <h1 class="display-4 text-right">{{ item.title }}</h1>
-        <h4 class="text-justify">{{ item.description }}</h4>
-        {% if buttons %}
-            <div class="btn-group mt-3 float-right" role="group" aria-label="Basic example">
-                <a href="#">
-                    <button class="btn btn-secondary">Visit Site</button>
-                </a>
-                <a href="#">
-                    <button class="btn btn-primary">Explore</button>
-                </a>
-            </div>
-        {% endif %}
+    <div class="col-12 col-md-6 order-2 order-md-2 d-flex align-items-center">
+        <div>
+            <h1 class="display-4 text-right">{{ item.title }}</h1>
+            <h4 class="text-justify">{{ item.description }}</h4>
+            {% if buttons %}
+                <div class="btn-group mt-3 float-right" role="group" aria-label="Basic example">
+                    <a href="#">
+                        <button class="btn btn-outline-light">Visit Site</button>
+                    </a>
+                    <a href="#">
+                        <button class="btn btn-primary">Explore</button>
+                    </a>
+                </div>
+            {% endif %}
+            
+            {% if billboard %}
+                <div class="billboard float-right mt-5"><h3>{{ item.title }}</h3></div>
+            {% endif %}
+        </div>
     </div>
 {% endif %}

@@ -19,6 +19,8 @@ mix.js(src_path+'js/app.js','js/')
     .sass(src_path+'scss/app.scss', 'css/')
     .setPublicPath(dist_path);
 
+mix.copyDirectory(src_path+'/images', dist_path+'/images');
+
 if (!mix.inProduction()) {
     mix.webpackConfig({
         devtool: 'source-map'

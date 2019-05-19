@@ -64,6 +64,7 @@ class StaticPageList extends ComponentBase
         $this->page['menuItems'] = $this->menuItems();
     }
 
+    // Editted function from original to return all navigable(not hidden) page objects, suitable for list instead of menu
     public function menuItems()
     {
         if ($this->menuItems !== null) {

@@ -13,3 +13,10 @@
     -o-transform: $transform;
     transform: $transform;
 }
+
+// Animation
+@mixin animation($animation) {
+    -webkit-animation: $animation;
+    -moz-animation: $animation;
+    animation: $animation;
+}
