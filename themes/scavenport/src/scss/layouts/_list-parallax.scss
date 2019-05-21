@@ -48,7 +48,7 @@
             left: 50%;
             margin-left: -125vw; 
             width: 250vw;
-            min-width: 2500px;
+            //min-width: 2500px;
             @include transform(translateZ(-1.5px));
             &:before{
                 content:'';
