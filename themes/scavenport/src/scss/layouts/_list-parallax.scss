@@ -29,14 +29,30 @@
             @include transform(translateZ(-1px));
         }
         &--level-4 {
+            .parallax--item {
+                opacity: 0;
+            }
+            background-size: 100% auto;
+            background-repeat: no-repeat;
+            background-position: top center;
             z-index: 10;
             position: absolute;
+            top: -50vw;         
+            margin-bottom: -50vw;
+            left: 50%;
+            margin-left: -125vw; 
+            width: 250vw;
             @include transform(translateZ(-1.5px));
-            img{
-                opacity: 0.4;
-                position:absolute;
-                left: 50%;
-                @include transform(translateX(-50%) scale(1.5));
+            &:before{
+                content:'';
+                position: absolute;
+                top: 0;
+                bottom:0;
+                left:0;
+                right:0;
+                background: rgba($black,0.5);
+                background: linear-gradient(0deg, rgba($black,1) 0%, rgba($black,0) 25%, rgba($black,0) 100%);
+                //background: rgb(255,0,0);
             }
         }
     }

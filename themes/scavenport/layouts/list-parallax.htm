@@ -14,8 +14,16 @@ code = "highlights"
 {% partial 'navbar' class="dark-layout" %}
 
 <section class="parallax">
-    <div class="parallax--layer parallax--layer--level-4">
-      <img src="{{ backgroundImage |media }}">
+    <div class="parallax--layer parallax--layer--level-4" style="background-image:url('{{ backgroundImage |media }}');">
+      {% for item in highlightList.menuItems %}
+        <div class="row parallax--item">
+          {% if loop.index is odd %}
+            {% partial "parallax-item" span="right" item=item %}
+          {% else %}
+            {% partial "parallax-item" span="left"  item=item %}
+          {% endif %}
+        </div>
+      {% endfor %}
     </div>
     <div class="parallax--layer parallax--layer--level-3">
      {% for item in highlightList.menuItems %}
