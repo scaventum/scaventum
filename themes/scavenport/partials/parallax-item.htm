@@ -9,12 +9,14 @@ description = "Item of parallax list"
             <h4 class="text-justify">{{ item.description }}</h4>
             {% if buttons %}
                 <div class="btn-group mt-3" role="group" aria-label="Basic example">
-                    <a href="#">
+                    <a href="{{ item.url }}">
                         <button class="btn btn-primary">Explore</button>
                     </a>
-                    <a href="#">
-                        <button class="btn btn-outline-light">Visit Site</button>
-                    </a>
+                    {% if item.site_url %}
+                        <a href="{{ item.site_url }}" target="_blank">
+                            <button class="btn btn-outline-light">Visit Site</button>
+                        </a>
+                    {% endif %}
                 </div>
             {% endif %}
             
@@ -24,10 +26,16 @@ description = "Item of parallax list"
         </div>
     </div>
 
-    <div class="col-12 col-md-6 order-1 order-md-2">
+    <div class="col-12 col-md-6 order-1 order-md-2 d-flex align-items-center justify-content-end p-5 parallax--item--image">
+        {% if item.previewImage and image %}
+            <img class="parallax--item--image--right" width="100%" src="{{ item.previewImage |media }}">
+        {% endif %}
     </div>
 {% else %}
-    <div class="col-12 col-md-6 order-1 order-md-1">
+    <div class="col-12 col-md-6 order-1 order-md-1 d-flex align-items-center justify-content-start p-5">
+        {% if item.previewImage and image %}
+            <img class="parallax--item--image--left" width="100%" src="{{ item.previewImage |media }}">
+        {% endif %}
     </div>
     
     <div class="col-12 col-md-6 order-2 order-md-2 d-flex align-items-center">
@@ -36,10 +44,12 @@ description = "Item of parallax list"
             <h4 class="text-justify">{{ item.description }}</h4>
             {% if buttons %}
                 <div class="btn-group mt-3 float-right" role="group" aria-label="Basic example">
-                    <a href="#">
-                        <button class="btn btn-outline-light">Visit Site</button>
-                    </a>
-                    <a href="#">
+                    {% if item.site_url %}
+                        <a href="{{ item.site_url }}" target="_blank">
+                            <button class="btn btn-outline-light">Visit Site</button>
+                        </a>
+                    {% endif %}
+                    <a href="{{ item.url }}">
                         <button class="btn btn-primary">Explore</button>
                     </a>
                 </div>

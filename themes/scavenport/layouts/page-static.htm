@@ -5,8 +5,17 @@ useContent = 1
 default = 0
 ==
 {# Preview Tab #}
-{variable type="mediafinder" mode="image" name="imagePreview" label="Image" tab="Preview" span="left"}{/variable}
+{variable type="mediafinder" mode="image" name="previewImage" label="Image" tab="Preview" span="left"}{/variable}
 {variable type="textarea" size="small" name="description" label="Description" tab="Preview" span="right"}{/variable}
+{variable type="text" name="site_url" label="URL" tab="Preview" span="full"}{/variable}
+
+{# Hero Tab #}
+{variable type="text" name="heroTitle" label="Title" tab="Hero" span="left"}{/variable}
+{variable type="text" name="heroSubtitle" label="Subtitle" tab="Hero" span="right"}{/variable}
+{variable type="mediafinder" mode="image" name="heroImage" label="Image" tab="Hero" span="full"}{/variable}
+
+{# Sections Tab #}
+{variable name="sections" type="repeater" groups="themes/scavenport/meta/static-section.yaml" tab="Sections" prompt="Add New Section" }{/variable}
 
 {% partial 'head' %}
 
@@ -18,5 +27,7 @@ default = 0
         <p>{{ description }}</p>
     </div>
 </div>
+
+{% partial 'footer' %}
 
 {% partial 'foot' %}

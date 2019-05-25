@@ -16,7 +16,11 @@ description = "Head of html page"
     <!-- CSS Manifestation -->
     <link rel="stylesheet" href="{{ 'assets/css/app.css'|theme }}">
     
+    <link rel="shortcut icon" href="{{ app_favicon }}" type="image/x-icon">
+    <link rel="icon" href="{{ app_favicon }}" type="image/x-icon">
+
     <title>{{ this.page.meta_title |default(this.page.title) }} | {{ app_name }}</title>
+
 </head>
 
 <body>
