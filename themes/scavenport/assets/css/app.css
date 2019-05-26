@@ -12223,6 +12223,24 @@ body[data-aos-easing=ease-in-out-quart] [data-aos] {
   transform: rotate(-135deg);
 }
 
+.hero {
+  background-size: cover;
+  position: relative;
+}
+
+.hero--caption--dark-layout {
+  color: #fff;
+}
+
+.hero--caption--light-layout {
+  color: #212529;
+}
+
+.section--dark-layout {
+  color: #fff;
+  background-color: #212529;
+}
+
 .btn {
   border-radius: 0;
 }

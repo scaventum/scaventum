@@ -1,0 +1,12 @@
+.hero{
+    background-size: cover;
+    position: relative;
+    &--caption{
+        &--dark-layout{
+            color:$white;
+        }
+        &--light-layout{
+            color:$gray-900;
+        }
+    }
+}
