@@ -1,0 +1,20 @@
+description = "Section column with wysiwyg and image of static page"
+
+[viewBag]
+==
+<div class="container {{ section._group }} d-flex align-items-center">
+    <div class="row">
+        <div class="col-md-6 p-3 pr-0 d-flex align-items-center order-1
+            {% if section.image_position == 'right' %} order-md-2 {% endif %}
+        ">
+            <img class="img-fluid" src="{{ section.image |media }}">
+        </div>
+        <div class="col-md-6 p-3 d-flex align-items-center order-2
+            {% if section.image_position == 'right' %} order-md-1 {% endif %}
+        ">
+            <div class="column--content">
+                {{ section.text |raw }}
+            </div>
+        </div>
+    </div>
+</div>

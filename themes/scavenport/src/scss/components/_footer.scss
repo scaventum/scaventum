@@ -1,0 +1,36 @@
+.footer{
+    color: $gray-500;
+    h4{
+        color: $white;
+    }
+    li{
+        &.active{
+            a{
+                color: theme-color-level(primary) !important;
+            }
+        }
+    }
+    a{
+        color: $gray-500;
+        &:hover.footer-brand{
+            color: $white;
+            text-decoration: none;
+        }
+        &.footer-brand{
+            color: $white;
+        }
+    }
+
+    &--upper{
+        background-color: $gray-900;
+    }
+    &--lower{
+        background-color: $gray-800;
+    }
+    &--description{
+        max-width: 300px;
+        @include media-breakpoint-up(md){
+            text-align: justify;
+        }
+    }
+}

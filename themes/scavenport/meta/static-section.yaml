@@ -13,6 +13,13 @@ column_image:
       mode: image
       label: Image
       span: right
+    image_position:
+      label: Image Position
+      type: balloon-selector
+      options:
+        left: Left
+        right: Right
+      span: left
 column_single:
   name: 'Column with Selectable Proportions'
   description: 'Column with selectable occurance in a single row'

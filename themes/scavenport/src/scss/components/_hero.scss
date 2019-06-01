@@ -1,5 +1,6 @@
 .hero{
     background-size: cover;
+    background-attachment: fixed;
     position: relative;
     &--caption{
         &--dark-layout{

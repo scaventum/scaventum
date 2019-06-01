@@ -1,4 +1,57 @@
 description = "Footer"
 
 [viewBag]
+
+[staticMenu mainMenu]
+code = "main-menu"
+
+[staticPageList highlightList]
+code = "highlights"
 ==
+<footer class="footer footer--upper p-3 text-center text-md-left">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h4><a href="/" class="footer-brand">{{ app_name }}</a></h4>
+                <div class="footer--description">
+                    <p>
+                        <small>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        </small>
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-md-3">
+                <h4>Links</h4>
+                <ul class="list-unstyled">
+                    {% for item in mainMenu.menuItems %}
+                        <li class="{{ item.isActive ? 'active' : '' }}">
+                            <a href="{{ item.url }}"><small>{{ item.title }}</small></a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            
+            <div class="col-md-3">
+                <h4>Highlights</h4>
+                <ul class="list-unstyled">
+                    {% for item in highlightList.menuItems %}
+                        <li class="{{ item.isActive ? 'active' : '' }}">
+                            <a href="{{ item.url }}"><small>{{ item.title }}</small></a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+<footer class="footer footer--lower p-3 text-center text-md-left">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center text-small">
+                <small>Developed by <a href="/">scaventum</a></small>
+            </div>
+        </div>
+    </div>
+<footer>

@@ -32,20 +32,24 @@ default = 0
         style="background-color:{{ heroColor }};"
     {% endif %}
 >   
-    <div class="container p-5 text-center hero--caption--{{ navbarType }}">
+    <div class="container p-3 text-center hero--caption--{{ navbarType }}">
         <h1>{{ heroTitle }}</h1>
         <p>{{ heroSubtitle }}</p>
     </div>
 </section>
 
-<section class="p-5 section--{{ navbarType }} text-justify">
-    {% component 'staticBreadcrumbs' %}
-    {{ description }}
+<section class="p-3 static-section--{{ navbarType }} text-center">
+    <div class="container">
+        <div class="static--breadcrumbs">
+            <small>{% component 'staticBreadcrumbs' %}</small>
+        </div>
+        {{ description }}
+    </div>
 </section>
 
 {% for section in sections %}
-    <section class="section--{{ navbarType }}">
-        {{ section._group }}
+    <section class="static-section static-section--{{ navbarType }}">
+        {% partial 'sections/'~section._group section=section %}
     </section>
 {% endfor %}
 

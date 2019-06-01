@@ -1,0 +1,21 @@
+.static{
+    &--breadcrumbs{
+        ul{
+            padding-left: 0;
+            li{
+                list-style: none;
+                display: inline-block;
+                &.active{
+                    a{
+                        color: theme-color-level(primary) !important;
+                    }
+                }
+                &:not(:first-child){
+                    &::before{
+                        content: " > ";
+                    }
+                }
+            }
+        }
+    }
+}

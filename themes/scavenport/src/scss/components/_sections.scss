@@ -1,6 +1,24 @@
-.section{
+.static-section{
     &--dark-layout{
         color: $white;
-        background-color: $gray-900
+        background-color: $gray-900;
+        a{
+            color: $white;
+        }
+    }
+    &--light-layout{
+        color: $gray-900;
+        background-color: $white;
+        a{
+            color: $gray-900;
+        }
+    }
+
+    .column_single{
+        min-height: 100vh;
+    }
+
+    .column_image{
+        min-height: 100vh;
     }
 }
