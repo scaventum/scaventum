@@ -1,0 +1,24 @@
+plugin:
+    name: "scv.facelessapi::lang.plugin.name"
+    description: "scv.facelessapi::lang.plugin.description"
+    author: scv
+    icon: oc-icon-cogs
+    homepage: "https://scaventum.com"
+permissions:
+    scv.facelessapi.clients:
+        tab: "Faceless API"
+        label: "Manage Faceless API Clients"
+navigation:
+    faceless-api:
+        label: "scv.facelessapi::lang.plugin.name"
+        url: scv/facelessapi/clients
+        icon: icon-cogs
+        permissions:
+            - "scv.facelessapi.*"
+        sideMenu:
+            clients:
+                label: "scv.facelessapi::lang.plugin.clients.clients"
+                url: scv/facelessapi/clients
+                icon: icon-user-secret
+                permissions:
+                    - scv.facelessapi.clients

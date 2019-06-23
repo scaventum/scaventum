@@ -1,0 +1,20 @@
+columns:
+    id:
+        label: "#"
+        type: number
+        searchable: true
+        sortable: true
+    name:
+        label: "scv.facelessapi::lang.plugin.clients.name"
+        type: text
+        searchable: true
+        sortable: true
+    domain:
+        label: "scv.facelessapi::lang.plugin.clients.domain"
+        type: text
+        searchable: true
+        sortable: true
+    active:
+        label: "scv.facelessapi::lang.plugin.clients.active"
+        type: partial
+        path: $/scv/facelessapi/partials/_columns_active.htm

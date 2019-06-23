@@ -1,0 +1,5 @@
+users:
+    label: scv.facelessapi::lang.plugin.clients.users_list
+    view:
+        list: modules/backend/models/user/columns.yaml
+        toolbarButtons: add|remove

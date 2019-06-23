@@ -1,0 +1,14 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table scv_facelessapi_clients'
+    - builder_table_create_scv_facelessapi_clients.php
+1.0.3:
+    - 'Updated table scv_facelessapi_clients'
+    - builder_table_update_scv_facelessapi_clients.php
+1.0.4:
+    - 'Updated table scv_facelessapi_clients'
+    - builder_table_update_scv_facelessapi_clients_2.php
+1.0.5:
+    - 'Created table scv_facelessapi_client_users'
+    - builder_table_create_scv_facelessapi_client_users.php

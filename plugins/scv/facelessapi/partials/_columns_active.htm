@@ -1,0 +1,13 @@
+<?php if($value){?>
+    <label class="custom-switch" onclick="return false">
+        <input type="checkbox" id="Form-field-Clients-active" name="Clients[active]" value="1" readonly="readonly" checked="checked">
+        <span><span><?= Lang::get("scv.facelessapi::lang.plugin.clients.active_on")?></span><span><?= Lang::get("scv.facelessapi::lang.plugin.clients.active_off")?></span></span>
+        <a class="slide-button"></a>
+    </label>
+<?php }else{ ?>
+    <label class="custom-switch" onclick="return false">
+        <input type="checkbox" id="Form-field-Clients-active" name="Clients[active]" value="1" readonly="readonly">
+        <span><span><?= Lang::get("scv.facelessapi::lang.plugin.clients.active_on")?></span><span><?= Lang::get("scv.facelessapi::lang.plugin.clients.active_off")?></span></span>
+        <a class="slide-button"></a>
+    </label>
+<?php }?>

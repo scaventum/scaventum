@@ -1,0 +1,10 @@
+name: "scv.facelessapi::lang.plugin.clients.clients"
+form: $/scv/facelessapi/models/client/fields.yaml
+modelClass: scv\FacelessApi\Models\Client
+defaultRedirect: scv/facelessapi/clients
+create:
+    redirect: "scv/facelessapi/clients/update/:id"
+    redirectClose: scv/facelessapi/clients
+update:
+    redirect: scv/facelessapi/clients
+    redirectClose: scv/facelessapi/clients

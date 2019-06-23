@@ -1,0 +1,31 @@
+fields:
+    active:
+        label: "scv.facelessapi::lang.plugin.clients.active"
+        span: full
+        type: switch
+        comment: "scv.facelessapi::lang.plugin.clients.active_description"
+        "on": "scv.facelessapi::lang.plugin.clients.active_on"
+        "off": "scv.facelessapi::lang.plugin.clients.active_off"
+    name:
+        label: "scv.facelessapi::lang.plugin.clients.name"
+        span: left
+        placeholder: "scv.facelessapi::lang.plugin.clients.name"
+        required: true
+        type: text
+        comment: "scv.facelessapi::lang.plugin.clients.name_description"
+    domain:
+        label: "scv.facelessapi::lang.plugin.clients.domain"
+        span: right
+        placeholder: "scv.facelessapi::lang.plugin.clients.domain"
+        required: true
+        type: text
+        comment: "scv.facelessapi::lang.plugin.clients.domain_description"
+    key:
+        label: "scv.facelessapi::lang.plugin.clients.key"
+        comment: "scv.facelessapi::lang.plugin.clients.key_description"
+        span: full
+        path: $/scv/facelessapi/partials/_fields_key.htm
+        context:
+            - create
+            - update
+        type: partial
