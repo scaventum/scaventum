@@ -3,6 +3,8 @@
 use Backend\Classes\Controller;
 use BackendMenu;
 
+use scv\FacelessApi\Classes\ApiHelpers;
+
 class Clients extends Controller
 {
     public $implement = [
@@ -24,6 +26,9 @@ class Clients extends Controller
         parent::__construct();
         BackendMenu::setContext('scv.FacelessApi', 'faceless-api', 'clients');
         $this->addJs("/plugins/scv/facelessapi/assets/js/clients.js", "1.0.0");
-        $this->addCss("/plugins/scv/facelessapi/assets/css/style.css", "1.0.0");
+    }
+
+    public function onGenerateKey(){
+        return ApiHelpers::generateClientKey(20);
     }
 }

@@ -9,12 +9,14 @@ columns:
         type: text
         searchable: true
         sortable: true
-    domain:
+    config[site_address]:
         label: "scv.facelessapi::lang.plugin.clients.domain"
-        type: text
-        searchable: true
-        sortable: true
+        type: partial
+        path: $/scv/facelessapi/partials/_columns_domain.htm
+        clickable: false
     active:
         label: "scv.facelessapi::lang.plugin.clients.active"
         type: partial
         path: $/scv/facelessapi/partials/_columns_active.htm
+        searchable: true
+        sortable: true

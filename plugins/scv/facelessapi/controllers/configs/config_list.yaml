@@ -1,0 +1,12 @@
+list: $/scv/facelessapi/models/config/columns.yaml
+modelClass: scv\FacelessApi\Models\Config
+title: "scv.facelessapi::lang.plugin.configs.configs"
+noRecordsMessage: "backend::lang.list.no_records"
+showSetup: true
+showCheckboxes: false
+recordsPerPage: 20
+toolbar:
+    #buttons: list_toolbar
+    search:
+        prompt: "backend::lang.list.search_prompt"
+recordUrl: "scv/facelessapi/configs/update/:id"

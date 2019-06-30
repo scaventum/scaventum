@@ -1,0 +1,28 @@
+columns:
+    id:
+        label: '#'
+        type: number
+        searchable: true
+        sortable: true
+    site_name:
+        label: 'scv.facelessapi::lang.plugin.configs.site_name'
+        type: text
+        searchable: true
+        sortable: true
+    site_address:
+        label: 'scv.facelessapi::lang.plugin.configs.site_address'
+        path: $/scv/facelessapi/partials/_columns_domain.htm
+        type: partial
+        clickable: false
+        searchable: true
+        sortable: true
+    client[name]:
+        label: 'scv.facelessapi::lang.plugin.clients.name'
+        searchable: true
+        sortable: true
+    online:
+        label: 'scv.facelessapi::lang.plugin.configs.online'
+        path: $/scv/facelessapi/partials/_columns_active.htm
+        type: partial
+        searchable: true
+        sortable: true

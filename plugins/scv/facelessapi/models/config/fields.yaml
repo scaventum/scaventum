@@ -1,0 +1,60 @@
+fields:
+    online:
+        label: 'scv.facelessapi::lang.plugin.configs.online'
+        span: left
+        placeholder: 'scv.facelessapi::lang.plugin.configs.online'
+        type: switch
+        comment: 'scv.facelessapi::lang.plugin.configs.online_description'
+        "on": "scv.facelessapi::lang.plugin.clients.active_on"
+        "off": "scv.facelessapi::lang.plugin.clients.active_off"
+    client[name]:
+        label: 'scv.facelessapi::lang.plugin.clients.name'
+        span: right
+        type: partial
+        path: $/scv/facelessapi/partials/_fields_client_name.htm
+    site_name:
+        label: 'scv.facelessapi::lang.plugin.configs.site_name'
+        span: left
+        placeholder: 'scv.facelessapi::lang.plugin.configs.site_name'
+        required: true
+        type: text
+        comment: 'scv.facelessapi::lang.plugin.configs.site_name_description'
+    site_address:
+        label: 'scv.facelessapi::lang.plugin.configs.site_address'
+        span: right
+        placeholder: 'scv.facelessapi::lang.plugin.configs.site_address'
+        required: true
+        type: text
+        comment: 'scv.facelessapi::lang.plugin.configs.site_address_description'
+    site_description:
+        label: 'scv.facelessapi::lang.plugin.configs.site_description'
+        size: small
+        span: full
+        placeholder: 'scv.facelessapi::lang.plugin.configs.site_description'
+        type: textarea
+        comment: 'scv.facelessapi::lang.plugin.configs.site_description_description'
+    site_locale@update:
+        label: 'scv.facelessapi::lang.plugin.configs.site_locale'
+        showSearch: true
+        span: left
+        placeholder: 'scv.facelessapi::lang.plugin.configs.site_locale'
+        required: true
+        type: dropdown
+        comment: 'scv.facelessapi::lang.plugin.configs.site_locale_description'
+    site_timezone@update:
+        label: 'scv.facelessapi::lang.plugin.configs.site_timezone'
+        showSearch: true
+        span: right
+        placeholder: 'scv.facelessapi::lang.plugin.configs.site_timezone'
+        required: true
+        type: dropdown
+        comment: 'scv.facelessapi::lang.plugin.configs.site_timezone_description'
+    client[key]:
+        label: "scv.facelessapi::lang.plugin.clients.key"
+        comment: "scv.facelessapi::lang.plugin.clients.key_description"
+        span: full
+        path: $/scv/facelessapi/partials/_config_fields_key.htm
+        type: partial
+        context:
+            - create
+            - update

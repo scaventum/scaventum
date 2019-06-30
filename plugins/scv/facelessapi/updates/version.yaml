@@ -12,3 +12,21 @@
 1.0.5:
     - 'Created table scv_facelessapi_client_users'
     - builder_table_create_scv_facelessapi_client_users.php
+1.0.6:
+    - 'Created table scv_facelessapi_configs'
+    - builder_table_create_scv_facelessapi_configs.php
+1.0.7:
+    - 'Updated table scv_facelessapi_clients'
+    - builder_table_update_scv_facelessapi_clients_3.php
+1.0.8:
+    - 'Created table scv_facelessapi_themes'
+    - builder_table_create_scv_facelessapi_themes.php
+1.0.9:
+    - 'Created table scv_facelessapi_theme_categories'
+    - builder_table_create_scv_facelessapi_theme_categories.php
+1.0.10:
+    - 'Updated table scv_facelessapi_themes'
+    - builder_table_update_scv_facelessapi_themes.php
+1.0.11:
+    - 'Created table scv_facelessapi_theme_values'
+    - builder_table_create_scv_facelessapi_theme_values.php

@@ -1,0 +1,10 @@
+name: scv.facelessapi::lang.plugin.configs.configs
+modelClass: scv\FacelessApi\Models\Config
+form: $/scv/facelessapi/models/config/fields.yaml
+defaultRedirect: scv/facelessapi/configs
+create:
+    redirect: 'scv/facelessapi/configs/update/:id'
+    redirectClose: scv/facelessapi/configs
+update:
+    redirect: scv/facelessapi/configs
+    redirectClose: scv/facelessapi/configs

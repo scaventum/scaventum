@@ -13,19 +13,26 @@ fields:
         required: true
         type: text
         comment: "scv.facelessapi::lang.plugin.clients.name_description"
-    domain:
+    _domain:
         label: "scv.facelessapi::lang.plugin.clients.domain"
         span: right
         placeholder: "scv.facelessapi::lang.plugin.clients.domain"
-        required: true
+        readOnly: true
         type: text
         comment: "scv.facelessapi::lang.plugin.clients.domain_description"
+    description:
+        label: "scv.facelessapi::lang.plugin.clients.description"
+        span: full
+        placeholder: "scv.facelessapi::lang.plugin.clients.description"
+        type: textarea
+        size: tiny
+        comment: "scv.facelessapi::lang.plugin.clients.description_description"
     key:
         label: "scv.facelessapi::lang.plugin.clients.key"
         comment: "scv.facelessapi::lang.plugin.clients.key_description"
         span: full
-        path: $/scv/facelessapi/partials/_fields_key.htm
+        path: $/scv/facelessapi/partials/_client_fields_key.htm
+        type: partial
         context:
             - create
             - update
-        type: partial

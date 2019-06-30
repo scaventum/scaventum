@@ -1,0 +1,13 @@
+<div class="row">
+    <div class="col-md-6">
+        <input type="text" name="Client[key]" id="Form-field-Client-key" value="<?= $value ?>" readonly placeholder="<?= Lang::get('scv.facelessapi::lang.plugin.clients.name') ?>" class="form-control input-key" maxlength="20">
+    </div>
+    <div class="col-md-6">
+        <button type="button" id="btn-key-copy" class="btn btn-default">
+            <?= Lang::get('scv.facelessapi::lang.plugin.clients.key_copy') ?>&emsp;<i class="icon-clipboard"></i>
+        </button>
+        <button type="button" id="btn-key-generate" class="btn btn-primary">
+            <?= Lang::get('scv.facelessapi::lang.plugin.clients.key_generate') ?>&emsp;<i class="icon-plus"></i>
+        </button>
+    </div>
+</div>

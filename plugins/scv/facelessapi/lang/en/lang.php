@@ -1,21 +1,56 @@
 <?php return [
     'plugin' => [
         'name' => 'Faceless API',
-        'description' => 'Faceless API is an OctoberCMS plugin which enable publisher to edit the content for remote front-end.',
+        'description' => 'Faceless API is an OctoberCMS plugin which enable publisher to edit the content for remote front-end',
+        'settings' => [
+            'label' => [
+                'manage_clients' => 'Manage Faceless API Clients',
+                'manage_configs' => 'Manage Faceless API Configs',
+                'manage_themes' => 'Manage Faceless API Themes',
+            ]
+        ],
         'clients' => [
             'clients' => 'Clients',
             'active' => 'Active',
-            'active_description' => 'Activity status of the client front end website.',
+            'active_description' => 'Activity status of the client front end website',
             'active_on' => 'Yes',
             'active_off' => 'No',
             'name' => 'Client Name',
-            'name_description' => 'A friendly client name.',
+            'name_description' => 'A friendly client name',
             'domain' => 'Client Domain',
-            'domain_description' => 'Domain of client front end website.',
+            'domain_description' => 'Domain of client front end website',
+            'description' => 'Client Description',
+            'description_description' => 'Brief information about client website',
             'key' => 'Client Key',
-            'key_description' => 'API key to authorize client front end website HTTP requests.',
+            'key_description' => 'API key to authorize client front end website HTTP requests',
             'key_copy' => 'Copy Client Key',
             'key_generate' => 'Generate New Client Key',
+        ],
+        'configs' => [
+            'configs' => 'Configuration',
+            'site_name' => 'Site Name',
+            'site_name_description' => 'Name of the website',
+            'site_address' => 'Site Address',
+            'site_address_description' => 'Address of the website',
+            'site_description' => 'Site Desription',
+            'site_description_description' => 'Brief information of the website',
+            'online' => 'Online',
+            'online_description' => 'Website online status',
+            'site_locale' => 'Site Locale',
+            'site_locale_description' => 'Main language og the website',
+            'site_timezone' => 'Site Timezone',
+            'site_timezone_description' => 'Local timezone for the website',
+        ],
+        'themes' => [
+            'themes' => 'Themes',
+            'name' => 'Theme Name',
+            'name_description' => 'Theme name',
+            'description' => 'Theme Descrption',
+            'description_description' => 'Brief theme information',
+            'client_id' => 'Client',
+            'client_id_description' => 'Related client',
+            'active' => 'Active',
+            'active_description' => 'Activating this theme will deactivate other themes',
         ]
     ]
 ];

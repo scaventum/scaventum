@@ -1,24 +1,43 @@
 plugin:
-    name: "scv.facelessapi::lang.plugin.name"
-    description: "scv.facelessapi::lang.plugin.description"
+    name: 'scv.facelessapi::lang.plugin.name'
+    description: 'scv.facelessapi::lang.plugin.description'
     author: scv
     icon: oc-icon-cogs
-    homepage: "https://scaventum.com"
+    homepage: 'https://scaventum.com'
 permissions:
     scv.facelessapi.clients:
-        tab: "Faceless API"
-        label: "Manage Faceless API Clients"
+        tab: 'scv.facelessapi::lang.plugin.name'
+        label: 'scv.facelessapi::lang.plugin.settings.label.manage_clients'
+    scv.facelessapi.configs:
+        tab: 'scv.facelessapi::lang.plugin.name'
+        label: 'scv.facelessapi::lang.plugin.settings.label.manage_configs'
+    scv.facelessapi.themes:
+        tab: 'scv.facelessapi::lang.plugin.name'
+        label: 'scv.facelessapi::lang.plugin.settings.label.manage_themes'
 navigation:
     faceless-api:
-        label: "scv.facelessapi::lang.plugin.name"
-        url: scv/facelessapi/clients
+        label: 'scv.facelessapi::lang.plugin.name'
+        url: scv/facelessapi/configs
         icon: icon-cogs
+        iconSvg: plugins/scv/facelessapi/assets/images/gears.svg
         permissions:
-            - "scv.facelessapi.*"
+            - 'scv.facelessapi.*'
         sideMenu:
             clients:
-                label: "scv.facelessapi::lang.plugin.clients.clients"
+                label: 'scv.facelessapi::lang.plugin.clients.clients'
                 url: scv/facelessapi/clients
                 icon: icon-user-secret
                 permissions:
                     - scv.facelessapi.clients
+            configs:
+                label: 'scv.facelessapi::lang.plugin.configs.configs'
+                url: scv/facelessapi/configs
+                icon: icon-globe
+                permissions:
+                    - scv.facelessapi.configs
+            themes:
+                label: 'scv.facelessapi::lang.plugin.themes.themes'
+                url: scv/facelessapi/themes
+                icon: icon-th-large
+                permissions:
+                    - scv.facelessapi.themes

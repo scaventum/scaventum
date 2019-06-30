@@ -1,0 +1,30 @@
+fields:
+    active:
+        label: 'scv.facelessapi::lang.plugin.themes.active'
+        span: full
+        placeholder: 'scv.facelessapi::lang.plugin.themes.active'
+        type: switch
+        comment: 'scv.facelessapi::lang.plugin.themes.active_description'
+    name:
+        label: 'scv.facelessapi::lang.plugin.themes.name'
+        span: auto
+        placeholder: 'scv.facelessapi::lang.plugin.themes.name'
+        hidden: 0
+        required: true
+        type: text
+        comment: 'scv.facelessapi::lang.plugin.themes.name_description'
+    client_id:
+        label: 'scv.facelessapi::lang.plugin.themes.client_id'
+        showSearch: true
+        span: auto
+        placeholder: 'scv.facelessapi::lang.plugin.themes.client_id'
+        required: true
+        type: dropdown
+        comment: 'scv.facelessapi::lang.plugin.themes.client_id_description'
+    description:
+        label: 'scv.facelessapi::lang.plugin.themes.description'
+        size: tiny
+        span: full
+        type: textarea
+        placeholder: 'scv.facelessapi::lang.plugin.themes.description'
+        comment: 'scv.facelessapi::lang.plugin.themes.description_description'
