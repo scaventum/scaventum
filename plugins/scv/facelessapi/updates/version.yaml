@@ -30,3 +30,15 @@
 1.0.11:
     - 'Created table scv_facelessapi_theme_values'
     - builder_table_create_scv_facelessapi_theme_values.php
+1.0.12:
+    - 'Updated table scv_facelessapi_theme_categories'
+    - builder_table_update_scv_facelessapi_theme_categories.php
+1.0.13:
+    - 'Updated table scv_facelessapi_theme_values'
+    - builder_table_update_scv_facelessapi_theme_values.php
+1.0.14:
+    - 'Updated table scv_facelessapi_theme_values'
+    - builder_table_update_scv_facelessapi_theme_values_2.php
+1.0.15:
+    - 'Updated table scv_facelessapi_theme_values'
+    - builder_table_update_scv_facelessapi_theme_values_3.php

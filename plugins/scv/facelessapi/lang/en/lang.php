@@ -2,11 +2,15 @@
     'plugin' => [
         'name' => 'Faceless API',
         'description' => 'Faceless API is an OctoberCMS plugin which enable publisher to edit the content for remote front-end',
+        'custom_actions' => [
+            'add_new_item' => 'Add New Item',
+        ],
         'settings' => [
             'label' => [
                 'manage_clients' => 'Manage Faceless API Clients',
                 'manage_configs' => 'Manage Faceless API Configs',
                 'manage_themes' => 'Manage Faceless API Themes',
+                'manage_theme_categories' => 'Manage Faceless API Theme Categories',
             ]
         ],
         'clients' => [
@@ -51,6 +55,29 @@
             'client_id_description' => 'Related client',
             'active' => 'Active',
             'active_description' => 'Activating this theme will deactivate other themes',
+        ],
+        'theme_categories' => [
+            'theme_categories' => 'Theme Categories',
+            'name' => 'Category Name',
+            'name_description' => 'Category name of theme',
+            'validation' => [
+                'duplicate' => 'Category name has been used by client'
+            ],
+        ],
+        'theme_values' => [
+            'theme_values' => 'Theme Values',
+            'name' => 'Value Name',
+            'name_description' => 'Name of theme value',
+            'type' => 'Type',
+            'type_description' => 'Type of theme value',
+            'value_text' => 'Text',
+            'value_text_description' => 'Free text',
+            'value_number' => 'Number',
+            'value_number_description' => 'Numeric value',
+            'value_color' => 'Color',
+            'value_color_description' => 'Hexadecimal color value',
+            'value_media' => 'Media',
+            'value_media_description' => 'Media finder',
         ]
     ]
 ];

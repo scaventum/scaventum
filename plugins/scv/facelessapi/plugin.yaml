@@ -14,6 +14,9 @@ permissions:
     scv.facelessapi.themes:
         tab: 'scv.facelessapi::lang.plugin.name'
         label: 'scv.facelessapi::lang.plugin.settings.label.manage_themes'
+    scv.facelessapi.theme_categories:
+        tab: 'scv.facelessapi::lang.plugin.name'
+        label: 'scv.facelessapi::lang.plugin.settings.label.manage_theme_categories'
 navigation:
     faceless-api:
         label: 'scv.facelessapi::lang.plugin.name'
@@ -41,3 +44,9 @@ navigation:
                 icon: icon-th-large
                 permissions:
                     - scv.facelessapi.themes
+            theme-categories:
+                label: 'scv.facelessapi::lang.plugin.theme_categories.theme_categories'
+                url: scv/facelessapi/themecategories
+                icon: icon-tags
+                permissions:
+                    - scv.facelessapi.theme_categories

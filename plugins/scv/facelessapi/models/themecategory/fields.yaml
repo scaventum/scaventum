@@ -1,0 +1,16 @@
+fields:
+    name:
+        label: "scv.facelessapi::lang.plugin.themecategories.name"
+        span: left
+        placeholder: "scv.facelessapi::lang.plugin.themecategories.name"
+        required: true
+        type: text
+        comment: "scv.facelessapi::lang.plugin.themecategories.name_description"
+    client_id:
+        label: "scv.facelessapi::lang.plugin.themes.client_id"
+        showSearch: true
+        span: right
+        placeholder: "scv.facelessapi::lang.plugin.themes.client_id"
+        required: true
+        type: dropdown
+        comment: "scv.facelessapi::lang.plugin.themes.client_id_description"

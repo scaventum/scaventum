@@ -2,11 +2,15 @@
     'plugin' => [
         'name' => 'Faceless API',
         'description' => 'Faceless API adalah plugin OctoberCMS untuk mengatur konten situs external',
+        'custom_actions' => [
+            'add_new_item' => 'Tambah rekor baru',
+        ],
         'settings' => [
             'label' => [
                 'manage_clients' => 'Atur Klien Faceless API',
                 'manage_configs' => 'Atur Konfigurasi Faceless API',
                 'manage_themes' => 'Atur Tema Faceless API',
+                'manage_theme_categories' => 'Atur Kategori Tema Faceless API',
             ]
         ],
         'clients' => [
@@ -55,6 +59,29 @@
             'client_id_description' => 'Klien yang bersangkutan',
             'active' => 'Aktif',
             'active_description' => 'Status aktif tema',
+        ],
+        'theme_categories' => [
+            'theme_categories' => 'Kategori Tema',
+            'name' => 'Nama Kategori',
+            'name_description' => 'Nama kategori dari tema',
+            'validation' => [
+                'duplicate' => 'Nama kategori sudah dipakai oleh klien'
+            ],
+        ],
+        'theme_values' => [
+            'theme_values' => 'Pengaturan Tema',
+            'name' => 'Nama Pengaturan',
+            'name_description' => 'Nama pengaturan dari tema',
+            'type' => 'Tipe',
+            'type_description' => 'Tipe pengaturan dari tema',
+            'value_text' => 'Teks',
+            'value_text_description' => 'Teks bebas',
+            'value_number' => 'Nilai',
+            'value_number_description' => 'Nilai angka',
+            'value_color' => 'Warna',
+            'value_color_description' => 'Pilihan warna heksadesimal',
+            'value_media' => 'Media',
+            'value_media_description' => 'Pilihan media',
         ]
     ]
 ];

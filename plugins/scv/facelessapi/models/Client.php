@@ -42,7 +42,8 @@ class Client extends FacelessAPIModel
      * @var array List of has many relationships.
      */
     public $hasMany = [
-        'themes' => ['scv\FacelessApi\Models\Theme', 'table' => 'scv_facelessapi_themes']
+        'themes' => ['scv\FacelessApi\Models\Theme', 'table' => 'scv_facelessapi_themes'],
+        'themecategories' => ['scv\FacelessApi\Models\ThemeCategory', 'table' => 'scv_facelessapi_theme_categories']
     ];
 
     public function afterCreate(){
@@ -98,6 +99,14 @@ class Client extends FacelessAPIModel
      */
     public static function getClientIdOptions(){
         $clients = Client::clientsByUser(BackendAuth::getUser()->id)->pluck('name','id');
+        return $clients;
+    }
+
+    /**
+     * @var array clients related to login user.
+     */
+    public static function clientByUserArray(){
+        $clients = Client::getClientIdOptions()->toArray();
         return $clients;
     }
 
