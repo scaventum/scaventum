@@ -60,6 +60,8 @@
             'theme_categories' => 'Theme Categories',
             'name' => 'Category Name',
             'name_description' => 'Category name of theme',
+            'code' => 'Category Code',
+            'code_description' => 'Category code for readability purpose',
             'validation' => [
                 'duplicate' => 'Category name has been used by client'
             ],
@@ -78,6 +80,11 @@
             'value_color_description' => 'Hexadecimal color value',
             'value_media' => 'Media',
             'value_media_description' => 'Media finder',
+            'validation' => [
+                'name_required' => 'Value name is required',
+                'name_alpha_dash' => 'Name must contain either alphabetic, numeric, _ or - without space',
+                'type_required' => 'Value type is required'
+            ],
         ]
     ]
 ];

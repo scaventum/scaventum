@@ -11,8 +11,8 @@ class ApiConfigs extends ApiController
 
     public function index(){
         
-        if($this->key){
-            $client = Client::where('key',$this->key)->where('active',1)->first();
+        if($this->client_id){
+            $client = Client::find($this->client_id)->where('active',1)->first();
             return $client->config;
         }
     }

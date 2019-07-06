@@ -40,7 +40,7 @@ class Themes extends FacelessAPIController
 
         foreach($themeCategories as $themeCategory){
             $form->addTabFields([
-                "theme_values_".$themeCategory->id => [
+                "custom_theme_values[".$themeCategory->id."]" => [
                     "type" => "repeater",
                     "label" => "scv.facelessapi::lang.plugin.theme_values.theme_values",
                     "tab" => $themeCategory->name,

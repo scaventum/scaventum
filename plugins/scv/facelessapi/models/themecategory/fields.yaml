@@ -1,16 +1,28 @@
 fields:
     name:
-        label: "scv.facelessapi::lang.plugin.themecategories.name"
+        label: 'scv.facelessapi::lang.plugin.theme_categories.name'
         span: left
-        placeholder: "scv.facelessapi::lang.plugin.themecategories.name"
+        placeholder: 'scv.facelessapi::lang.plugin.theme_categories.name'
         required: true
         type: text
-        comment: "scv.facelessapi::lang.plugin.themecategories.name_description"
+        comment: 'scv.facelessapi::lang.plugin.theme_categories.name_description'
     client_id:
-        label: "scv.facelessapi::lang.plugin.themes.client_id"
+        label: 'scv.facelessapi::lang.plugin.themes.client_id'
         showSearch: true
         span: right
-        placeholder: "scv.facelessapi::lang.plugin.themes.client_id"
+        placeholder: 'scv.facelessapi::lang.plugin.themes.client_id'
         required: true
         type: dropdown
-        comment: "scv.facelessapi::lang.plugin.themes.client_id_description"
+        comment: 'scv.facelessapi::lang.plugin.themes.client_id_description'
+    code:
+        label: 'scv.facelessapi::lang.plugin.theme_categories.code'
+        span: left
+        readOnly: true
+        required: true
+        placeholder: 'scv.facelessapi::lang.plugin.theme_categories.code'
+        required: 1
+        preset:
+            field: name
+            type: slug
+        type: text
+        comment: 'scv.facelessapi::lang.plugin.theme_categories.code_description'

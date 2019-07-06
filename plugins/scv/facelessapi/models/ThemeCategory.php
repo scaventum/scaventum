@@ -22,7 +22,10 @@ class ThemeCategory extends FacelessAPIModel
     /**
      * @var array Validation rules
      */
-    public $rules = [];
+    public $rules = [
+        "name" => "required",
+        "code" => "required"
+    ];
 
     /**
      * @var array List of belongs to relationships.

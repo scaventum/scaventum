@@ -5,7 +5,12 @@ columns:
         searchable: true
         sortable: true
     name:
-        label: "scv.facelessapi::lang.plugin.themecategories.name"
+        label: "scv.facelessapi::lang.plugin.theme_categories.name"
+        type: text
+        searchable: true
+        sortable: true
+    code:
+        label: "scv.facelessapi::lang.plugin.theme_categories.code"
         type: text
         searchable: true
         sortable: true

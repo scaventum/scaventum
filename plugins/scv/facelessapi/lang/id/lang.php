@@ -64,6 +64,8 @@
             'theme_categories' => 'Kategori Tema',
             'name' => 'Nama Kategori',
             'name_description' => 'Nama kategori dari tema',
+            'code' => 'Kode Kategori',
+            'code_description' => 'kode kategori yang mudah dibaca',
             'validation' => [
                 'duplicate' => 'Nama kategori sudah dipakai oleh klien'
             ],
@@ -82,6 +84,11 @@
             'value_color_description' => 'Pilihan warna heksadesimal',
             'value_media' => 'Media',
             'value_media_description' => 'Pilihan media',
+            'validation' => [
+                'name_required' => 'Nama pengaturan harus diisi',
+                'name_alpha_dash' => 'Nama pengaturan harus berupa huruf, angka, _ atau - tanpa spasi',
+                'type_required' => 'Tipe pengaturan harus diisi'
+            ],
         ]
     ]
 ];

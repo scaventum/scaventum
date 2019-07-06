@@ -1,16 +1,19 @@
 <?php namespace scv\FacelessApi\Models;
 
 use Model;
+use BackendAuth;
 
 use scv\FacelessApi\Models\FacelessAPIModel;
 use scv\FacelessApi\Models\Client;
-
+use scv\FacelessApi\Models\ThemeValue;
+use scv\FacelessApi\Models\ThemeCategory;
 /**
  * Model
  */
 class Theme extends FacelessAPIModel
 {
     use \October\Rain\Database\Traits\Validation;
+    use \October\Rain\Database\Traits\Purgeable;
 
     /**
      * @var string The database table used by the model.
@@ -22,7 +25,18 @@ class Theme extends FacelessAPIModel
      */
     public $rules = [
         'name' => 'required',
-        'client_id' => 'required'
+        'client_id' => 'required',
+        'custom_theme_values.*.*.name' => 'required|alpha_dash',
+        'custom_theme_values.*.*.type' => 'required'
+    ];
+
+    /**
+     * @var array Validation rules
+     */
+    public $customMessages = [
+        'custom_theme_values.*.*.name.required' => 'scv.facelessapi::lang.plugin.theme_values.validation.name_required',
+        'custom_theme_values.*.*.name.alpha_dash' => 'scv.facelessapi::lang.plugin.theme_values.validation.name_alpha_dash',
+        'custom_theme_values.*.*.type.required' => 'scv.facelessapi::lang.plugin.theme_values.validation.type_required'
     ];
 
     /**
@@ -38,6 +52,40 @@ class Theme extends FacelessAPIModel
     public $hasMany = [
         'theme_values' => ['scv\FacelessApi\Models\ThemeValue', 'table' => 'scv_facelessapi_theme_values']
     ];
+
+    
+    /**
+     * @var array List of purgeable fields.
+     */
+    public $purgeable = [
+        "custom_theme_values"
+    ];
+
+    public function afterSave(){
+        $this->theme_values()->delete();
+
+        $newThemeValues = [];
+        foreach(post("Theme[custom_theme_values]") as $themeCategoryKey=>$themeCategory){
+            foreach($themeCategory as $themeValue){ 
+                $newThemeValues[] = [
+                    "name" => $themeValue["name"],
+                    "theme_id" => $this->id,
+                    "theme_category_id" => $themeCategoryKey,
+                    "type" => $themeValue["type"],
+                    "value_text" => $themeValue["value_text"],
+                    "value_number" => is_numeric($themeValue["value_number"])?$themeValue["value_number"]:0,
+                    "value_color" => $themeValue["value_color"],
+                    "value_media" => $themeValue["value_media"],
+                    "created_at" => date("Y-m-d H:i:s"),
+                    "updated_at" => date("Y-m-d H:i:s"),
+                    "created_by" => BackendAuth::getUser()->id,
+                    "updated_by" => BackendAuth::getUser()->id,
+                ];
+            }
+        }
+        
+        ThemeValue::insert($newThemeValues);
+    }
 
     /**
      * @var integer id of client if only has one user on create.
@@ -59,5 +107,31 @@ class Theme extends FacelessAPIModel
     public function getClientIdOptions(){
         $clients = Client::getClientIdOptions();
         return $clients;
+    }
+
+    /**
+     * @var array values related to theme.
+     */
+    public function getCustomThemeValuesAttribute(){
+        $currentThemeValues = [];
+
+        $themeCategories = ThemeCategory::where('client_id',$this->client_id)->get();
+        foreach($themeCategories as $themeCategory){
+            $themeValues = ThemeValue::where('theme_id',$this->id)
+                ->where('theme_category_id',$themeCategory->id)
+                ->get();
+            foreach($themeValues as $themeValue){
+                $currentThemeValues[$themeCategory->id][] = [
+                    "name" => $themeValue->name,
+                    "type" => $themeValue->type,
+                    "value_text" => $themeValue->value_text,
+                    "value_number" => $themeValue->value_number,
+                    "value_color" => $themeValue->value_color,
+                    "value_media" => $themeValue->value_media,
+                ];
+            }
+        }
+
+        return $currentThemeValues;
     }
 }
