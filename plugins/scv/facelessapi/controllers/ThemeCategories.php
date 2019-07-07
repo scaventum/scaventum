@@ -20,7 +20,11 @@ class ThemeCategories extends FacelessAPIController
     public function __construct()
     {
         parent::__construct();
-        BackendMenu::setContext('scv.FacelessApi', 'faceless-api', 'theme-categories');
+        BackendMenu::setContext('scv.FacelessApi', 'faceless-api-global', 'theme-categories');
+    }
+
+    public function preview($recordId = NULL, $context = NULL, $model = NULL){
+        parent::preview($recordId, $context, ThemeCategory::class);
     }
 
     public function update($recordId = NULL, $context = NULL, $model = NULL){

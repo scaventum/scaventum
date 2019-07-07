@@ -21,7 +21,12 @@ class Themes extends FacelessAPIController
     public function __construct()
     {
         parent::__construct();
-        BackendMenu::setContext('scv.FacelessApi', 'faceless-api', 'themes');
+        BackendMenu::setContext('scv.FacelessApi', 'faceless-api-global', 'themes');
+        $this->addJs("/plugins/scv/facelessapi/assets/js/theme.js", "1.0.0");
+    }
+
+    public function preview($recordId = NULL, $context = NULL, $model = NULL){
+        parent::preview($recordId, $context, Theme::class);
     }
 
     public function update($recordId = NULL, $context = NULL, $model = NULL){
@@ -42,6 +47,7 @@ class Themes extends FacelessAPIController
             $form->addTabFields([
                 "custom_theme_values[".$themeCategory->id."]" => [
                     "type" => "repeater",
+                    "context" => ["update"],
                     "label" => "scv.facelessapi::lang.plugin.theme_values.theme_values",
                     "tab" => $themeCategory->name,
                     "prompt" => "scv.facelessapi::lang.plugin.custom_actions.add_new_item",
@@ -127,5 +133,14 @@ class Themes extends FacelessAPIController
                 ]
             ]);
         }
+    }
+
+    public function onToggleActive(){
+        $id = intval(post('id'));
+        $active = intval(post('active'));
+
+        Theme::toggleActive($id, $active);
+
+        return $this->listRefresh();
     }
 }

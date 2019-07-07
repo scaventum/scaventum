@@ -17,6 +17,7 @@ columns:
     active:
         label: 'scv.facelessapi::lang.plugin.themes.active'
         type: partial
-        path: $/scv/facelessapi/partials/_columns_active.htm
+        path: $/scv/facelessapi/partials/_theme_columns_active.htm
+        clickable: false
         searchable: true
         sortable: true

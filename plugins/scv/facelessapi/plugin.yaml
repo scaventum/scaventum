@@ -18,13 +18,13 @@ permissions:
         tab: 'scv.facelessapi::lang.plugin.name'
         label: 'scv.facelessapi::lang.plugin.settings.label.manage_theme_categories'
 navigation:
-    faceless-api:
-        label: 'scv.facelessapi::lang.plugin.name'
-        url: scv/facelessapi/configs
+    faceless-api-admin:
+        label: 'scv.facelessapi::lang.plugin.name_admin'
+        url: scv/facelessapi/clients
         icon: icon-cogs
-        iconSvg: plugins/scv/facelessapi/assets/images/gears.svg
+        iconSvg: plugins/scv/facelessapi/assets/images/settings-cyan.svg
         permissions:
-            - 'scv.facelessapi.*'
+            - 'scv.facelessapi.clients'
         sideMenu:
             clients:
                 label: 'scv.facelessapi::lang.plugin.clients.clients'
@@ -32,6 +32,16 @@ navigation:
                 icon: icon-user-secret
                 permissions:
                     - scv.facelessapi.clients
+    faceless-api-global:
+        label: 'scv.facelessapi::lang.plugin.name_global'
+        url: scv/facelessapi/configs
+        icon: icon-cogs
+        iconSvg: plugins/scv/facelessapi/assets/images/settings-red.svg
+        permissions:
+            - scv.facelessapi.configs
+            - scv.facelessapi.themes
+            - scv.facelessapi.theme_categories
+        sideMenu:
             configs:
                 label: 'scv.facelessapi::lang.plugin.configs.configs'
                 url: scv/facelessapi/configs

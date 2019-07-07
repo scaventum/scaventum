@@ -14,7 +14,7 @@ class ApiMiddleware
             $client = Client::where('key',$request['client_key'])->where('active',1)->first();
 
             if (!$client) {
-                return Response::make( 'Error: Unauthorized or Inactive Client Key' , 401 );
+                return Response::make( 'Unauthorized or Inactive Client Key' , 401 );
             }
         }
 

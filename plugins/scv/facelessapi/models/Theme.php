@@ -21,7 +21,7 @@ class Theme extends FacelessAPIModel
     public $table = 'scv_facelessapi_themes';
 
     /**
-     * @var array Validation rules
+     * @var array Validation rules.
      */
     public $rules = [
         'name' => 'required',
@@ -31,13 +31,18 @@ class Theme extends FacelessAPIModel
     ];
 
     /**
-     * @var array Validation rules
+     * @var array Validation messages.
      */
     public $customMessages = [
         'custom_theme_values.*.*.name.required' => 'scv.facelessapi::lang.plugin.theme_values.validation.name_required',
         'custom_theme_values.*.*.name.alpha_dash' => 'scv.facelessapi::lang.plugin.theme_values.validation.name_alpha_dash',
         'custom_theme_values.*.*.type.required' => 'scv.facelessapi::lang.plugin.theme_values.validation.type_required'
     ];
+    
+    /**
+     * @var array List of fillable fields.
+     */
+    public $fillable  = ['active'];
 
     /**
      * @var array List of belongs to relationships.
@@ -61,30 +66,37 @@ class Theme extends FacelessAPIModel
         "custom_theme_values"
     ];
 
-    public function afterSave(){
-        $this->theme_values()->delete();
+    public function beforeCreate(){
+        parent::beforeCreate();
+        $this->active = 0;
+    }
 
-        $newThemeValues = [];
-        foreach(post("Theme[custom_theme_values]") as $themeCategoryKey=>$themeCategory){
-            foreach($themeCategory as $themeValue){ 
-                $newThemeValues[] = [
-                    "name" => $themeValue["name"],
-                    "theme_id" => $this->id,
-                    "theme_category_id" => $themeCategoryKey,
-                    "type" => $themeValue["type"],
-                    "value_text" => $themeValue["value_text"],
-                    "value_number" => is_numeric($themeValue["value_number"])?$themeValue["value_number"]:0,
-                    "value_color" => $themeValue["value_color"],
-                    "value_media" => $themeValue["value_media"],
-                    "created_at" => date("Y-m-d H:i:s"),
-                    "updated_at" => date("Y-m-d H:i:s"),
-                    "created_by" => BackendAuth::getUser()->id,
-                    "updated_by" => BackendAuth::getUser()->id,
-                ];
+    public function afterSave(){
+        if(post("Theme[custom_theme_values]")){
+            $this->theme_values()->delete();
+    
+            $newThemeValues = [];
+            foreach(post("Theme[custom_theme_values]") as $themeCategoryKey=>$themeCategory){
+                foreach($themeCategory as $themeValue){ 
+                    $newThemeValues[] = [
+                        "name" => $themeValue["name"],
+                        "theme_id" => $this->id,
+                        "theme_category_id" => $themeCategoryKey,
+                        "type" => $themeValue["type"],
+                        "value_text" => $themeValue["value_text"],
+                        "value_number" => is_numeric($themeValue["value_number"])?$themeValue["value_number"]:0,
+                        "value_color" => $themeValue["value_color"],
+                        "value_media" => $themeValue["value_media"],
+                        "created_at" => date("Y-m-d H:i:s"),
+                        "updated_at" => date("Y-m-d H:i:s"),
+                        "created_by" => BackendAuth::getUser()->id,
+                        "updated_by" => BackendAuth::getUser()->id,
+                    ];
+                }
             }
+            
+            ThemeValue::insert($newThemeValues);
         }
-        
-        ThemeValue::insert($newThemeValues);
     }
 
     /**
@@ -133,5 +145,19 @@ class Theme extends FacelessAPIModel
         }
 
         return $currentThemeValues;
+    }
+    
+    public static function toggleActive($id, $active){
+        $client_id = Theme::find($id)->client_id;
+
+        if($client_id!=NULL){
+            if($active){
+                Theme::where('client_id',$client_id)->update([
+                    "active" => 0,
+                ]);
+            }
+
+            Theme::find($id)->update(["active" => $active]);
+        }
     }
 }

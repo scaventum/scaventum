@@ -5,6 +5,7 @@ fields:
         placeholder: 'scv.facelessapi::lang.plugin.themes.active'
         type: switch
         comment: 'scv.facelessapi::lang.plugin.themes.active_description'
+        readOnly: true
     name:
         label: 'scv.facelessapi::lang.plugin.themes.name'
         span: auto

@@ -24,7 +24,7 @@ class Clients extends Controller
     public function __construct()
     {
         parent::__construct();
-        BackendMenu::setContext('scv.FacelessApi', 'faceless-api', 'clients');
+        BackendMenu::setContext('scv.FacelessApi', 'faceless-api-admin', 'clients');
         $this->addJs("/plugins/scv/facelessapi/assets/js/clients.js", "1.0.0");
     }
 

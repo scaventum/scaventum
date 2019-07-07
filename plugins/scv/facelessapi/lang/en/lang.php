@@ -1,6 +1,8 @@
 <?php return [
     'plugin' => [
         'name' => 'Faceless API',
+        'name_admin' => 'API Admin',
+        'name_global' => 'API Global',
         'description' => 'Faceless API is an OctoberCMS plugin which enable publisher to edit the content for remote front-end',
         'custom_actions' => [
             'add_new_item' => 'Add New Item',

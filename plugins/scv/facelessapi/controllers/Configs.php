@@ -25,7 +25,7 @@ class Configs extends FacelessAPIController
     public function __construct()
     {
         parent::__construct();
-        BackendMenu::setContext('scv.FacelessApi', 'faceless-api', 'configs');
+        BackendMenu::setContext('scv.FacelessApi', 'faceless-api-global', 'configs');
         $this->addJs("/plugins/scv/facelessapi/assets/js/clients.js", "1.0.0");
     }
 
@@ -40,6 +40,10 @@ class Configs extends FacelessAPIController
 
     public function create(){
         return Backend::redirect("scv/facelessapi/configs");
+    }
+
+    public function preview($recordId = NULL, $context = NULL, $model = NULL){
+        parent::preview($recordId, $context, Config::class);
     }
 
     public function update($recordId = NULL, $context = NULL, $model = NULL){
