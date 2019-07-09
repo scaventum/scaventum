@@ -2,6 +2,7 @@
 
 use Config as BackendConfig;
 use BackendAuth;
+use Session;
 
 use scv\FacelessApi\Models\FacelessAPIModel;
 use scv\FacelessApi\Models\Config;
@@ -60,6 +61,14 @@ class Client extends FacelessAPIModel
         $config->save();
     }
 
+    public static function toggleSessionActive($id, $active){
+        if($active == 1){
+            Session::put('activeClient', $id);
+        }else{
+            Session::forget('activeClient');
+        }
+    }
+
     /**
      * @var string site address from config.
      */
@@ -71,10 +80,18 @@ class Client extends FacelessAPIModel
         return "";
     }
 
+    /**
+     * @var array client objects related to login user.
+     */
     public static function clientsByUser($user_id) {
-        $clients = Client::whereHas('users', function($query) use ($user_id) {
-            $query->where('user_id', $user_id);
-        })->get();
+        
+        if(Session::has('activeClient')){
+            $clients = Client::where('id',Session::get('activeClient'))->get();
+        }else{
+            $clients = Client::whereHas('users', function($query) use ($user_id) {
+                $query->where('user_id', $user_id);
+            })->get();
+        }
 
         return $clients;
     }
@@ -95,7 +112,7 @@ class Client extends FacelessAPIModel
     }
 
     /**
-     * @var array clients related to login user.
+     * @var array id and name clients related to login user.
      */
     public static function getClientIdOptions(){
         $clients = Client::clientsByUser(BackendAuth::getUser()->id)->pluck('name','id');
@@ -110,7 +127,7 @@ class Client extends FacelessAPIModel
         return $clients;
     }
 
-     /**
+    /**
      * @var integer id of client if only has one user on create.
      */
     public function getKeyAttribute($values){
@@ -120,5 +137,16 @@ class Client extends FacelessAPIModel
         }else{
             return $values;
         }
+    }
+
+    /**
+     * @var boolean if client is selected in session.
+     */
+    public function getSessionActiveAttribute(){
+        $activeClient = Session::get('activeClient');
+
+        if($activeClient == $this->id) return true;
+
+        return false;
     }
 }

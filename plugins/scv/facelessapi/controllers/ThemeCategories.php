@@ -14,13 +14,14 @@ class ThemeCategories extends FacelessAPIController
     public $formConfig = 'config_form.yaml';
 
     public $requiredPermissions = [
-        'scv.facelessapi.themecategories' 
+        'scv.facelessapi.theme_categories' 
     ];
+    
 
     public function __construct()
     {
         parent::__construct();
-        BackendMenu::setContext('scv.FacelessApi', 'faceless-api-global', 'theme-categories');
+        BackendMenu::setContext('scv.FacelessApi', 'faceless-api-global', 'themes');
     }
 
     public function preview($recordId = NULL, $context = NULL, $model = NULL){

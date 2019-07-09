@@ -1,0 +1,23 @@
+columns:
+    id:
+        label: "#"
+        type: number
+        searchable: true
+        sortable: true
+    name:
+        label: "scv.facelessapi::lang.plugin.clients.name"
+        type: text
+        searchable: true
+        sortable: true
+    config[site_address]:
+        label: "scv.facelessapi::lang.plugin.clients.domain"
+        type: partial
+        path: $/scv/facelessapi/partials/_columns_domain.htm
+        clickable: false
+    session_active:
+        label: "scv.facelessapi::lang.plugin.clients.active"
+        type: partial
+        path: $/scv/facelessapi/partials/_client_selector_columns_active.htm
+        searchable: true
+        sortable: true
+        clickable: false

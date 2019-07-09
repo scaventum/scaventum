@@ -1,6 +1,8 @@
 <?php return [
     'plugin' => [
         'name' => 'Faceless API',
+        'name_admin' => 'API Admin',
+        'name_global' => 'API Global',
         'description' => 'Faceless API adalah plugin OctoberCMS untuk mengatur konten situs external',
         'custom_actions' => [
             'add_new_item' => 'Tambah rekor baru',
@@ -8,6 +10,7 @@
         'settings' => [
             'label' => [
                 'manage_clients' => 'Atur Klien Faceless API',
+                'manage_client_selector' => 'Pilih Sesi Klien Faceless API',
                 'manage_configs' => 'Atur Konfigurasi Faceless API',
                 'manage_themes' => 'Atur Tema Faceless API',
                 'manage_theme_categories' => 'Atur Kategori Tema Faceless API',
@@ -33,6 +36,8 @@
             'user_first_name' => 'Nama Depan',
             'user_last_name' => 'Nama Belakang',
             'user_email' => 'Surel',
+            'client_selector' => 'Pilih Klien',
+            'client_selector_description' => 'Aktifkan satu klien untuk memudahkan pengoperasian konten tanpa menyaring rekor berdasarkan klien di setiap halaman',
         ],
         'configs' => [
             'configs' => 'Konfigurasi',
@@ -58,7 +63,7 @@
             'client_id' => 'Klien',
             'client_id_description' => 'Klien yang bersangkutan',
             'active' => 'Aktif',
-            'active_description' => 'Status aktif tema',
+            'active_description' => 'Hanya satu tema aktif setiap saat',
         ],
         'theme_categories' => [
             'theme_categories' => 'Kategori Tema',

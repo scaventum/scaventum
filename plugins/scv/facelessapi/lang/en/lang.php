@@ -10,6 +10,7 @@
         'settings' => [
             'label' => [
                 'manage_clients' => 'Manage Faceless API Clients',
+                'manage_client_selector' => 'Select Faceless API Clients Session',
                 'manage_configs' => 'Manage Faceless API Configs',
                 'manage_themes' => 'Manage Faceless API Themes',
                 'manage_theme_categories' => 'Manage Faceless API Theme Categories',
@@ -31,6 +32,8 @@
             'key_description' => 'API key to authorize client front end website HTTP requests',
             'key_copy' => 'Copy Client Key',
             'key_generate' => 'Generate New Client Key',
+            'client_selector' => 'Client Selector',
+            'client_selector_description' => 'Activate one client to manage API easily without the filtering the content by client on every page',
         ],
         'configs' => [
             'configs' => 'Configuration',
@@ -50,13 +53,13 @@
         'themes' => [
             'themes' => 'Themes',
             'name' => 'Theme Name',
-            'name_description' => 'Theme name',
+            'name_description' => 'Name of the theme',
             'description' => 'Theme Descrption',
             'description_description' => 'Brief theme information',
             'client_id' => 'Client',
             'client_id_description' => 'Related client',
             'active' => 'Active',
-            'active_description' => 'Activating this theme will deactivate other themes',
+            'active_description' => 'Only one theme can be activated at any time',
         ],
         'theme_categories' => [
             'theme_categories' => 'Theme Categories',

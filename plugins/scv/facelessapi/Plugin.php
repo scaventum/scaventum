@@ -13,8 +13,13 @@ class Plugin extends PluginBase
     {
     }
 
-    public function boot(){
-
+    /**
+     * Boot method, called right before the request route.
+     *
+     * @return array
+     */
+    public function boot()
+    {
         User::extend(function($model) 
         {
             $model->belongsToMany['clients'] = ['scv\FacelessApi\Models\Client', 'table' => 'scv_facelessapi_client_users'];

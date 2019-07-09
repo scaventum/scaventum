@@ -1,11 +1,9 @@
-<label class="custom-switch" onclick="return false">
-    <?php if($value){?>
-        <input type="checkbox" id="Form-field-Clients-active" name="Clients[active]" value="1" readonly="readonly" checked="checked">
-        <span><span><?= Lang::get("scv.facelessapi::lang.plugin.clients.active_on")?></span><span><?= Lang::get("scv.facelessapi::lang.plugin.clients.active_off")?></span></span>
-        <a class="slide-button"></a>
-    <?php }else{ ?>
-        <input type="checkbox" id="Form-field-Clients-active" name="Clients[active]" value="1" readonly="readonly">
-        <span><span><?= Lang::get("scv.facelessapi::lang.plugin.clients.active_on")?></span><span><?= Lang::get("scv.facelessapi::lang.plugin.clients.active_off")?></span></span>
-        <a class="slide-button"></a>
-    <?php }?>
-</label>
+<?php if($value){?>
+    <span class="oc-icon-circle text-success">
+        <?= Lang::get("scv.facelessapi::lang.plugin.clients.active_on")?>
+    </span>
+<?php }else{ ?>
+    <span class="oc-icon-circle text-danger">
+        <?= Lang::get("scv.facelessapi::lang.plugin.clients.active_off")?>
+    </span>
+<?php }?>

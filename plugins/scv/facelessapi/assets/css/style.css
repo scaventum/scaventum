@@ -1,0 +1,22 @@
+#layout-facelessapi-client-selector {
+    width: 100%;
+    padding: 10px 20px 10px 20px;
+    color: #fff;
+    background: #76a544;
+    animation-name: slideDown;
+}
+#layout-facelessapi-client-selector-site-address {
+    cursor: pointer;
+    color: #fff;
+}
+
+@keyframes slideDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
