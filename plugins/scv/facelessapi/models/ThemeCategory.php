@@ -6,6 +6,7 @@ use Lang;
 
 use scv\FacelessApi\Models\FacelessAPIModel;
 use scv\FacelessApi\Models\Client;
+use scv\FacelessApi\Models\ThemeValue;
 
 /**
  * Model
@@ -31,9 +32,22 @@ class ThemeCategory extends FacelessAPIModel
      * @var array List of belongs to relationships.
      */
     public $belongsTo = [
-        'client' => ['scv\FacelessApi\Models\Client', 'table' => 'scv_facelessapi_clients'],
-        'theme' => ['scv\FacelessApi\Models\Theme', 'table' => 'scv_facelessapi_themes']
+        'client' => ['scv\FacelessApi\Models\Client'],
     ];
+
+    /**
+     * @var array List of has many relationships.
+     */
+    public $hasMany = [
+        'theme_values' => ['scv\FacelessApi\Models\ThemeValue']
+    ];
+
+    public function filterFields($fields, $context = null)
+    {
+        if ($context == 'update') {
+            $fields->client_id->readOnly = true;
+        }
+    }
 
     public function beforeSave(){
         $themecategory = self::where('name',$this->name)->where('client_id',$this->client_id);
@@ -48,6 +62,18 @@ class ThemeCategory extends FacelessAPIModel
             throw new ValidationException(['name' => Lang::get("scv.facelessapi::lang.plugin.themecategories.validation.duplicate")]);
         }else{
             parent::beforeSave();
+        }
+    }
+
+    public function beforeDelete(){
+        $delete = true;
+
+        if($this->theme_values()->exists()){
+            $delete = false;
+        }
+
+        if(!$delete){
+            throw new ValidationException(['id' => Lang::get("scv.facelessapi::lang.plugin.validations.delete_error_record_exists")]);
         }
     }
 

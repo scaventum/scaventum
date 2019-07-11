@@ -3,9 +3,13 @@
 use Config as BackendConfig;
 use BackendAuth;
 use Session;
+use ValidationException;
+use Lang;
 
 use scv\FacelessApi\Models\FacelessAPIModel;
 use scv\FacelessApi\Models\Config;
+use scv\FacelessApi\Models\Theme;
+use scv\FacelessApi\Models\ThemeCategory;
 use scv\FacelessApi\Classes\ApiHelpers;
 /**
  * Model
@@ -36,15 +40,15 @@ class Client extends FacelessAPIModel
      * @var array List of has one relationships.
      */
     public $hasOne = [
-        'config' => ['scv\FacelessApi\Models\Config', 'table' => 'scv_facelessapi_configs', 'delete' => true]
+        'config' => ['scv\FacelessApi\Models\Config', 'delete' => true]
     ];
 
     /**
      * @var array List of has many relationships.
      */
     public $hasMany = [
-        'themes' => ['scv\FacelessApi\Models\Theme', 'table' => 'scv_facelessapi_themes'],
-        'themecategories' => ['scv\FacelessApi\Models\ThemeCategory', 'table' => 'scv_facelessapi_theme_categories']
+        'themes' => ['scv\FacelessApi\Models\Theme'],
+        'theme_categories' => ['scv\FacelessApi\Models\ThemeCategory']
     ];
 
     public function afterCreate(){
@@ -59,6 +63,21 @@ class Client extends FacelessAPIModel
         $config->updated_by = BackendAuth::getUser()->id;
         $config->created_by = BackendAuth::getUser()->id;
         $config->save();
+    }
+
+    public function beforeDelete(){
+        $delete = true;
+
+        if($this->themes()->exists()){
+            $delete = false;
+        }
+        if($this->theme_categories()->exists()){
+            $delete = false;
+        }
+
+        if(!$delete){
+            throw new ValidationException(['id' => Lang::get("scv.facelessapi::lang.plugin.validations.delete_error_record_exists")]);
+        }
     }
 
     public static function toggleSessionActive($id, $active){
@@ -85,12 +104,22 @@ class Client extends FacelessAPIModel
      */
     public static function clientsByUser($user_id) {
         
+        $clients = Client::whereHas('users', function($query) use ($user_id) {
+            $query->where('user_id', $user_id);
+        })->get();
+
+        return $clients;
+    }
+
+    /**
+     * @var array client objects related to login user and selected client session.
+     */
+    public static function clientBySession($user_id) {
+        
         if(Session::has('activeClient')){
             $clients = Client::where('id',Session::get('activeClient'))->get();
         }else{
-            $clients = Client::whereHas('users', function($query) use ($user_id) {
-                $query->where('user_id', $user_id);
-            })->get();
+            $clients = Client::clientsByUser($user_id);
         }
 
         return $clients;
@@ -101,7 +130,7 @@ class Client extends FacelessAPIModel
      */
     public static function getClientIdAttribute($values){
         if($values==NULL){
-            $clients = Client::clientsByUser(BackendAuth::getUser()->id);
+            $clients = Client::clientBySession(BackendAuth::getUser()->id);
     
             if(count($clients) === 1){
                 return $clients[0]->id;
@@ -115,7 +144,7 @@ class Client extends FacelessAPIModel
      * @var array id and name clients related to login user.
      */
     public static function getClientIdOptions(){
-        $clients = Client::clientsByUser(BackendAuth::getUser()->id)->pluck('name','id');
+        $clients = Client::clientBySession(BackendAuth::getUser()->id)->pluck('name','id');
         return $clients;
     }
 

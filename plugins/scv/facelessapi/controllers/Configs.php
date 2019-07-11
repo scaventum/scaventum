@@ -42,18 +42,6 @@ class Configs extends FacelessAPIController
         return Backend::redirect("scv/facelessapi/configs");
     }
 
-    public function preview($recordId = NULL, $context = NULL, $model = NULL){
-        parent::preview($recordId, $context, Config::class);
-    }
-
-    public function update($recordId = NULL, $context = NULL, $model = NULL){
-        parent::update($recordId, $context, Config::class);
-    }
-
-    public function listExtendQuery($query, $definition = null) {
-        parent::listExtendQuery($query, $definition);
-    }
-
     public function onGenerateKey(){
         return ApiHelpers::generateClientKey(20);
     }

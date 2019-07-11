@@ -5,6 +5,11 @@ use Backend\Models\User;
 
 class Plugin extends PluginBase
 {
+    /**
+     * @var array Plugin dependencies
+     */
+    public $require = ['Offline.Cors'];
+
     public function registerComponents()
     {
     }

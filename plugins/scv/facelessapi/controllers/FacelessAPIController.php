@@ -16,35 +16,17 @@ class FacelessAPIController extends Controller
         $this->addJs("/plugins/scv/facelessapi/assets/js/script.js", "1.0.0");
     }
 
-    // Hide page if login user has no authorization over the record
-    public function preview($recordId = NULL, $context = NULL, $model){
-        if($this->hasRelatedRecord($recordId, $model)){
-            parent::preview($recordId, $context);
-        }else{
-            parent::preview();
-        }
-    }
-
-    // Hide page if login user has no authorization over the record
-    public function update($recordId = NULL, $context = NULL, $model){
-        if($this->hasRelatedRecord($recordId, $model)){
-            parent::update($recordId, $context);
-        }else{
-            parent::update();
-        }
-    }
-
-    // Check if login user has authorizationn over the record
-    private function hasRelatedRecord($recordId, $model){
-        $clients = array_keys(Client::getClientIdOptions()->toArray());
-        $record = $model::whereIn('client_id',$clients)->find($recordId);
-        return $record;
-    }
-
-    // Authorize login user to related records
+    // Authorize login user to related list
     public function listExtendQuery($query, $definition = null) {
         $clients = array_keys(Client::getClientIdOptions()->toArray());
         $query->whereIn('client_id', $clients);
+    }
+    
+    // Authorize login user to related form
+    public function formExtendQuery($query)
+    {
+        $clients = array_keys(Client::getClientIdOptions()->toArray());
+        $query->whereIn('client_id',$clients);
     }
 
     public function onCheckClientSelector(){

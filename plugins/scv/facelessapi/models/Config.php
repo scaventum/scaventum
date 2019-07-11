@@ -29,7 +29,7 @@ class Config extends FacelessAPIModel
      * @var array List of belongs to relationships.
      */
     public $belongsTo = [
-        'client' => ['scv\FacelessApi\Models\Client', 'table' => 'scv_facelessapi_clients']
+        'client' => ['scv\FacelessApi\Models\Client']
     ];
 
     // public function afterUpdate(){

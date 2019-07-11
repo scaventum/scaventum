@@ -2,6 +2,8 @@
 
 use Model;
 use BackendAuth;
+use ValidationException;
+use Lang;
 
 use scv\FacelessApi\Models\FacelessAPIModel;
 use scv\FacelessApi\Models\Client;
@@ -48,14 +50,14 @@ class Theme extends FacelessAPIModel
      * @var array List of belongs to relationships.
      */
     public $belongsTo = [
-        'client' => ['scv\FacelessApi\Models\Client', 'table' => 'scv_facelessapi_clients']
+        'client' => ['scv\FacelessApi\Models\Client']
     ];
 
     /**
      * @var array List of has many relationships.
      */
     public $hasMany = [
-        'theme_values' => ['scv\FacelessApi\Models\ThemeValue', 'table' => 'scv_facelessapi_theme_values']
+        'theme_values' => ['scv\FacelessApi\Models\ThemeValue']
     ];
 
     
@@ -65,6 +67,13 @@ class Theme extends FacelessAPIModel
     public $purgeable = [
         "custom_theme_values"
     ];
+
+    public function filterFields($fields, $context = null)
+    {
+        if ($context == 'update') {
+            $fields->client_id->readOnly = true;
+        }
+    }
 
     public function beforeCreate(){
         parent::beforeCreate();
@@ -96,6 +105,18 @@ class Theme extends FacelessAPIModel
             }
             
             ThemeValue::insert($newThemeValues);
+        }
+    }
+
+    public function beforeDelete(){
+        $delete = true;
+
+        if($this->theme_values()->exists()){
+            $delete = false;
+        }
+
+        if(!$delete){
+            throw new ValidationException(['id' => Lang::get("scv.facelessapi::lang.plugin.validations.delete_error_record_exists")]);
         }
     }
 

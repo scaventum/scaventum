@@ -7,6 +7,9 @@
         'custom_actions' => [
             'add_new_item' => 'Tambah rekor baru',
         ],
+        'validations' => [
+            'delete_error_record_exists' => 'Gagal menghapus, data ini berelasi dengan data lain',
+        ],
         'settings' => [
             'label' => [
                 'manage_clients' => 'Atur Klien Faceless API',
@@ -64,6 +67,8 @@
             'client_id_description' => 'Klien yang bersangkutan',
             'active' => 'Aktif',
             'active_description' => 'Hanya satu tema aktif setiap saat',
+            'no_theme_categories' => 'Tambah kategori tema sebelum mengatur tema',
+            'add_theme_categories' => 'Gunakan pranala berikut untuk menambah kategori tema:',
         ],
         'theme_categories' => [
             'theme_categories' => 'Kategori Tema',

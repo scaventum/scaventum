@@ -1,6 +1,7 @@
 <?php namespace Scv\FacelessApi\Controllers;
 
 use BackendMenu;
+use BackendAuth;
 use Backend\Classes\Controller;
 
 use scv\FacelessApi\Models\Client;
@@ -25,7 +26,8 @@ class ClientSelector extends Controller
     }
 
     public function listExtendQuery($query, $definition = null) {
-        $clients = array_keys(Client::getClientIdOptions()->toArray());
+        $clients = array_keys(Client::clientsByUser(BackendAuth::getUser()->id)->pluck('name','id')->toArray());
+        
         $query->whereIn('id', $clients);
     }
 

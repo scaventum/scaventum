@@ -17,22 +17,9 @@ class ThemeCategories extends FacelessAPIController
         'scv.facelessapi.theme_categories' 
     ];
     
-
     public function __construct()
     {
         parent::__construct();
         BackendMenu::setContext('scv.FacelessApi', 'faceless-api-global', 'themes');
-    }
-
-    public function preview($recordId = NULL, $context = NULL, $model = NULL){
-        parent::preview($recordId, $context, ThemeCategory::class);
-    }
-
-    public function update($recordId = NULL, $context = NULL, $model = NULL){
-        parent::update($recordId, $context, ThemeCategory::class);
-    }
-
-    public function listExtendQuery($query, $definition = null) {
-        parent::listExtendQuery($query, $definition);
     }
 }

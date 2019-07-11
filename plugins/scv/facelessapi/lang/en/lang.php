@@ -7,6 +7,9 @@
         'custom_actions' => [
             'add_new_item' => 'Add New Item',
         ],
+        'validations' => [
+            'delete_error_record_exists' => 'Unable to delete, related record exists',
+        ],
         'settings' => [
             'label' => [
                 'manage_clients' => 'Manage Faceless API Clients',
@@ -32,6 +35,9 @@
             'key_description' => 'API key to authorize client front end website HTTP requests',
             'key_copy' => 'Copy Client Key',
             'key_generate' => 'Generate New Client Key',
+            'users_list' => 'Users List',
+            'user_first_name' => 'First Name',
+            'user_last_name' => 'Last Name',
             'client_selector' => 'Client Selector',
             'client_selector_description' => 'Activate one client to manage API easily without the filtering the content by client on every page',
         ],
@@ -60,6 +66,8 @@
             'client_id_description' => 'Related client',
             'active' => 'Active',
             'active_description' => 'Only one theme can be activated at any time',
+            'no_theme_categories' => 'Theme Category Not Found',
+            'add_theme_categories' => 'Please use the following link to add a new theme category:',
         ],
         'theme_categories' => [
             'theme_categories' => 'Theme Categories',
