@@ -172,10 +172,6 @@ class Client extends FacelessAPIModel
      * @var boolean if client is selected in session.
      */
     public function getSessionActiveAttribute(){
-        $activeClient = Session::get('activeClient');
-
-        if($activeClient == $this->id) return true;
-
-        return false;
+        return Session::get('activeClient') == $this->id;
     }
 }
