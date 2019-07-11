@@ -26,7 +26,7 @@ class ClientSelector extends Controller
     }
 
     public function listExtendQuery($query, $definition = null) {
-        $clients = array_keys(Client::clientsByUser(BackendAuth::getUser()->id)->pluck('name','id')->toArray());
+        $clients = array_keys(Client::clientsByUser($this->user->id)->pluck('name','id')->toArray());
         
         $query->whereIn('id', $clients);
     }
