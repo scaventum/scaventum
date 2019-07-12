@@ -48,3 +48,6 @@
 1.0.17:
     - 'Updated table scv_facelessapi_theme_categories'
     - builder_table_update_scv_facelessapi_theme_categories_2.php
+1.0.18:
+    - 'Created table scv_facelessapi_blocks'
+    - builder_table_create_scv_facelessapi_blocks.php

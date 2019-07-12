@@ -2,14 +2,15 @@
 
 use Closure;
 use Response;
+use Request;
 
 use Scv\FacelessApi\Models\Client;
 
 class ApiMiddleware
 {
     public function handle($request, Closure $next)
-    {   
-        if($request->getMethod() == 'POST'){
+    {  
+        if(Request::is('api/*') && $request->getMethod() == 'POST'){
             
             $client = Client::where('key',$request['client_key'])->where('active',1)->first();
 

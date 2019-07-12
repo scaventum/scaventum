@@ -2,6 +2,7 @@
 
 use Event;
 use Backend;
+use BackendAuth;
 use Session;
 use System\Classes\PluginBase;
 
@@ -34,9 +35,19 @@ class Plugin extends PluginBase
      */
     public function boot()
     {
+        $this->app['Illuminate\Contracts\Http\Kernel']
+            ->pushMiddleware('Scv\FacelessApi\Classes\ApiMiddleware');
+
         // Redirect to config page after login
         Event::listen('backend.user.login', function($model) {
-            Session::put('redirectAfterLogin', '/scv/facelessapi/configs');
+
+            if (BackendAuth::getUser()->role) {
+                if (BackendAuth::getUser()->role->code === 'developer') {  
+                    Session::put('redirectAfterLogin', 'scv/facelessapi/clients'); // Redirect to configs if user is admin
+                }else{
+                    Session::put('redirectAfterLogin', 'scv/facelessapi/configs'); // Redirect to configs by default
+                }
+            }
         });
 
         Event::listen('backend.page.beforeDisplay', function($controller, $action, $params) {

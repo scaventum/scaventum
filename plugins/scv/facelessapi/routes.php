@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['prefix' => 'api/v1', 'middleware' => 'Scv\FacelessApi\Classes\ApiMiddleware'], function () {
+Route::group(['prefix' => 'api/v1'], function () {
 
     // Route::post('clients', 'Scv\FacelessApi\Classes\ApiClients@index');
     Route::post('configs', 'Scv\FacelessApi\Classes\ApiConfigs@index');

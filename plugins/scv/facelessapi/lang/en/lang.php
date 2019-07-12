@@ -38,6 +38,7 @@
             'users_list' => 'Users List',
             'user_first_name' => 'First Name',
             'user_last_name' => 'Last Name',
+            'user_email' => 'E-mail',
             'client_selector' => 'Client Selector',
             'client_selector_description' => 'Activate one client to manage API easily without the filtering the content by client on every page',
         ],
