@@ -1,0 +1,27 @@
+fields:
+    name:
+        label: "scv.facelessapi::lang.plugin.blocks.name"
+        span: left
+        placeholder: "scv.facelessapi::lang.plugin.blocks.name"
+        required: 1
+        type: text
+        comment: "scv.facelessapi::lang.plugin.blocks.name_description"
+    code:
+        label: "scv.facelessapi::lang.plugin.blocks.code"
+        span: right
+        placeholder: "scv.facelessapi::lang.plugin.blocks.code"
+        readOnly: true
+        required: true
+        preset:
+            field: name
+            type: slug
+        type: text
+        comment: "scv.facelessapi::lang.plugin.blocks.code_description"
+    fields:
+        label: "scv.facelessapi::lang.plugin.blocks.fields"
+        span: full
+        type: repeater
+        cssClass: auto-collapse
+        comment: "scv.facelessapi::lang.plugin.blocks.fields_description"
+        prompt: "scv.facelessapi::lang.plugin.custom_actions.add_new_item"
+        form: $/scv/facelessapi/models/block/repeater_fields.yaml

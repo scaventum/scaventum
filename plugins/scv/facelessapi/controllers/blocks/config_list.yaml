@@ -1,0 +1,12 @@
+list: $/scv/facelessapi/models/block/columns.yaml
+modelClass: scv\FacelessApi\Models\Block
+title: scv.facelessapi::lang.plugin.blocks.blocks
+noRecordsMessage: "backend::lang.list.no_records"
+showSetup: true
+showCheckboxes: true
+recordsPerPage: 20
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: "backend::lang.list.search_prompt"
+recordUrl: "scv/facelessapi/blocks/update/:id"

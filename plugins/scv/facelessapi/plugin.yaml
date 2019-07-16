@@ -20,14 +20,18 @@ permissions:
     scv.facelessapi.theme_categories:
         tab: "scv.facelessapi::lang.plugin.name"
         label: "scv.facelessapi::lang.plugin.settings.label.manage_theme_categories"
+    scv.facelessapi.blocks:
+        tab: "scv.facelessapi::lang.plugin.name"
+        label: "scv.facelessapi::lang.plugin.settings.label.manage_blocks"
 navigation:
     faceless-api-admin:
         label: "scv.facelessapi::lang.plugin.name_admin"
         url: scv/facelessapi/clientselector
         icon: icon-cogs
-        iconSvg: plugins/scv/facelessapi/assets/images/settings-cyan.svg
+        iconSvg: plugins/scv/facelessapi/assets/images/settings-red.svg
         permissions:
             - scv.facelessapi.client_selector
+        order: "100"
         sideMenu:
             clients:
                 label: "scv.facelessapi::lang.plugin.clients.clients"
@@ -45,11 +49,12 @@ navigation:
         label: "scv.facelessapi::lang.plugin.name_global"
         url: scv/facelessapi/configs
         icon: icon-cogs
-        iconSvg: plugins/scv/facelessapi/assets/images/settings-red.svg
+        iconSvg: plugins/scv/facelessapi/assets/images/settings-cyan.svg
         permissions:
             - scv.facelessapi.configs
             - scv.facelessapi.themes
             - scv.facelessapi.theme_categories
+        order: "100"
         sideMenu:
             configs:
                 label: "scv.facelessapi::lang.plugin.configs.configs"
@@ -60,12 +65,21 @@ navigation:
             themes:
                 label: "scv.facelessapi::lang.plugin.themes.themes"
                 url: scv/facelessapi/themes
-                icon: icon-th-large
+                icon: icon-delicious
                 permissions:
                     - scv.facelessapi.themes
-            # theme-categories:
-            #     label: 'scv.facelessapi::lang.plugin.theme_categories.theme_categories'
-            #     url: scv/facelessapi/themecategories
-            #     icon: icon-tags
-            #     permissions:
-            #         - scv.facelessapi.theme_categories
+    faceless-api-pages:
+        label: "scv.facelessapi::lang.plugin.name_pages"
+        url: scv/facelessapi/blocks
+        icon: icon-cogs
+        iconSvg: plugins/scv/facelessapi/assets/images/settings-orange.svg
+        permissions:
+            - scv.facelessapi.blocks
+        order: "100"
+        sideMenu:
+            blocks:
+                label: "scv.facelessapi::lang.plugin.blocks.blocks"
+                url: scv/facelessapi/blocks
+                icon: icon-th-large
+                permissions:
+                    - scv.facelessapi.blocks

@@ -1,0 +1,228 @@
+fields:
+    field:
+        type: nestedform
+        usePanelStyles: false
+        form:
+            secondaryTabs:
+                fields:
+                    # Main settings
+                    field_label:
+                        label: "scv.facelessapi::lang.plugin.blocks.field_label"
+                        placeholder: "scv.facelessapi::lang.plugin.blocks.field_label"
+                        comment: "scv.facelessapi::lang.plugin.blocks.field_label_description"
+                        span: storm
+                        required: true
+                        tab: scv.facelessapi::lang.plugin.blocks.fields_tab_main_settings
+                        cssClass: col-md-4
+                    field_code:
+                        label: "scv.facelessapi::lang.plugin.blocks.field_code"
+                        placeholder: "scv.facelessapi::lang.plugin.blocks.field_code"
+                        comment: "scv.facelessapi::lang.plugin.blocks.field_code_description"
+                        span: storm
+                        required: true
+                        tab: scv.facelessapi::lang.plugin.blocks.fields_tab_main_settings
+                        cssClass: col-md-4
+                        preset:
+                            field: field_label
+                            type: slug
+                    field_type:
+                        label: "scv.facelessapi::lang.plugin.blocks.field_type"
+                        placeholder: "scv.facelessapi::lang.plugin.blocks.field_type"
+                        comment: "scv.facelessapi::lang.plugin.blocks.field_type_description"
+                        default: text
+                        span: storm
+                        required: true
+                        type: dropdown
+                        tab: scv.facelessapi::lang.plugin.blocks.fields_tab_main_settings
+                        cssClass: col-md-4
+
+                    # Other settings
+                    field_required:
+                        label: "scv.facelessapi::lang.plugin.blocks.field_required"
+                        comment: "scv.facelessapi::lang.plugin.blocks.field_required_description"
+                        span: left
+                        type: switch
+                        tab: scv.facelessapi::lang.plugin.blocks.fields_tab_other_settings
+                        "on": "scv.facelessapi::lang.plugin.clients.active_on"
+                        "off": "scv.facelessapi::lang.plugin.clients.active_off"
+                    field_readonly:
+                        label: "scv.facelessapi::lang.plugin.blocks.field_readonly"
+                        comment: "scv.facelessapi::lang.plugin.blocks.field_readonly_description"
+                        span: right
+                        type: switch
+                        tab: scv.facelessapi::lang.plugin.blocks.fields_tab_other_settings
+                        "on": "scv.facelessapi::lang.plugin.clients.active_on"
+                        "off": "scv.facelessapi::lang.plugin.clients.active_off"
+                    field_tab:
+                        label: "scv.facelessapi::lang.plugin.blocks.field_tab"
+                        placeholder: "scv.facelessapi::lang.plugin.blocks.field_tab"
+                        comment: "scv.facelessapi::lang.plugin.blocks.field_tab_description"
+                        span: left
+                        type: balloon-selector
+                        tab: scv.facelessapi::lang.plugin.blocks.fields_tab_other_settings
+                        options:
+                            content: scv.facelessapi::lang.plugin.blocks.field_tab_content
+                            settings: scv.facelessapi::lang.plugin.blocks.field_tab_settings
+                    field_span:
+                        label: "scv.facelessapi::lang.plugin.blocks.field_span"
+                        placeholder: "scv.facelessapi::lang.plugin.blocks.field_span"
+                        comment: "scv.facelessapi::lang.plugin.blocks.field_span_description"
+                        span: right
+                        type: dropdown
+                        tab: scv.facelessapi::lang.plugin.blocks.fields_tab_other_settings
+                        options:
+                            auto: scv.facelessapi::lang.plugin.blocks.field_span_auto
+                            left: scv.facelessapi::lang.plugin.blocks.field_span_left
+                            right: scv.facelessapi::lang.plugin.blocks.field_span_right
+                            full: scv.facelessapi::lang.plugin.blocks.field_span_full
+                            storm: scv.facelessapi::lang.plugin.blocks.field_span_storm
+                    field_css_class:
+                        label: "scv.facelessapi::lang.plugin.blocks.field_css_class"
+                        placeholder: "scv.facelessapi::lang.plugin.blocks.field_css_class"
+                        comment: "scv.facelessapi::lang.plugin.blocks.field_css_class_description"
+                        span: full
+                        tab: scv.facelessapi::lang.plugin.blocks.fields_tab_other_settings
+                    field_comment:
+                        label: "scv.facelessapi::lang.plugin.blocks.field_comment"
+                        placeholder: "scv.facelessapi::lang.plugin.blocks.field_comment"
+                        comment: "scv.facelessapi::lang.plugin.blocks.field_comment_description"
+                        span: full
+                        tab: scv.facelessapi::lang.plugin.blocks.fields_tab_other_settings
+
+                    # Advanced settings
+                    # dropdown, balloon-selector, radio, checkboxlist, taglist
+                    field_options:
+                        label: "scv.facelessapi::lang.plugin.blocks.field_options"
+                        comment: "scv.facelessapi::lang.plugin.blocks.field_options_description"
+                        span: full
+                        type: repeater
+                        tab: scv.facelessapi::lang.plugin.blocks.fields_tab_advanced_settings
+                        trigger:
+                            action: show
+                            field: field_type
+                            condition: value[dropdown] || value[balloon-selector] || value[radio] || value[checkboxlist] || value[taglist]
+                        form:
+                            fields:
+                                label:
+                                    label: scv.facelessapi::lang.plugin.blocks.field_options_label
+                                    placeholder: scv.facelessapi::lang.plugin.blocks.field_options_label
+                                    comment: scv.facelessapi::lang.plugin.blocks.field_options_label_description
+                                    required: true
+                                    span: left
+                                value:
+                                    label: scv.facelessapi::lang.plugin.blocks.field_options_value
+                                    placeholder: scv.facelessapi::lang.plugin.blocks.field_options_value
+                                    comment: scv.facelessapi::lang.plugin.blocks.field_options_value_description
+                                    required: true
+                                    span: right
+                                    preset:
+                                        type: slug
+                                        field: label
+
+                    # textarea, richeditor
+                    field_size:
+                        label: "rainlab.builder::lang.form.property_attributes_size"
+                        comment: "rainlab.builder::lang.form.property_attributes_size"
+                        span: full
+                        type: balloon-selector
+                        tab: scv.facelessapi::lang.plugin.blocks.fields_tab_advanced_settings
+                        trigger:
+                            action: show
+                            field: field_type
+                            condition: value[textarea] || value[richeditor]
+                        options:
+                            tiny: rainlab.builder::lang.form.property_attributes_size_tiny
+                            small: rainlab.builder::lang.form.property_attributes_size_small
+                            large: rainlab.builder::lang.form.property_attributes_size_large
+                            huge: rainlab.builder::lang.form.property_attributes_size_huge
+                            giant: rainlab.builder::lang.form.property_attributes_size_giant
+
+                    # number
+                    field_number_min:
+                        label: "scv.facelessapi::lang.plugin.blocks.field_number_min"
+                        comment: "scv.facelessapi::lang.plugin.blocks.field_number_min_description"
+                        span: storm
+                        type: number
+                        cssClass: col-md-4
+                        tab: scv.facelessapi::lang.plugin.blocks.fields_tab_advanced_settings
+                        trigger:
+                            action: show
+                            field: field_type
+                            condition: value[number]
+                    field_number_max:
+                        label: "scv.facelessapi::lang.plugin.blocks.field_number_max"
+                        comment: "scv.facelessapi::lang.plugin.blocks.field_number_max_description"
+                        span: storm
+                        type: number
+                        cssClass: col-md-4
+                        tab: scv.facelessapi::lang.plugin.blocks.fields_tab_advanced_settings
+                        trigger:
+                            action: show
+                            field: field_type
+                            condition: value[number]
+                    field_number_step:
+                        label: "scv.facelessapi::lang.plugin.blocks.field_number_step"
+                        comment: "scv.facelessapi::lang.plugin.blocks.field_number_step_description"
+                        span: storm
+                        type: number
+                        cssClass: col-md-4
+                        min: 0
+                        tab: scv.facelessapi::lang.plugin.blocks.fields_tab_advanced_settings
+                        trigger:
+                            action: show
+                            field: field_type
+                            condition: value[number]
+
+                    # repeater
+                    field_repeater:
+                        label: "rainlab.builder::lang.form.control_repeater"
+                        comment: "rainlab.builder::lang.form.control_repeater_description"
+                        span: full
+                        type: repeater
+                        tab: scv.facelessapi::lang.plugin.blocks.fields_tab_advanced_settings
+                        prompt: "scv.facelessapi::lang.plugin.custom_actions.add_new_item"
+                        trigger:
+                            action: show
+                            field: field_type
+                            condition: value[repeater]
+                        form: $/scv/facelessapi/models/block/repeater_fields.yaml
+
+                    # mediafinder
+                    field_mediafinder_mode:
+                        label: "rainlab.builder::lang.form.property_mediafinder_mode"
+                        comment: "rainlab.builder::lang.form.property_mediafinder_mode"
+                        span: storm
+                        type: dropdown
+                        cssClass: col-md-4
+                        options:
+                            file: rainlab.builder::lang.form.property_mediafinder_mode_file
+                            image: rainlab.builder::lang.form.property_mediafinder_mode_image
+                        tab: scv.facelessapi::lang.plugin.blocks.fields_tab_advanced_settings
+                        trigger:
+                            action: show
+                            field: field_type
+                            condition: value[mediafinder]
+                    field_mediafinder_image_width:
+                        label: "rainlab.builder::lang.form.property_fileupload_image_width"
+                        placeholder: "rainlab.builder::lang.form.property_fileupload_image_width"
+                        comment: "rainlab.builder::lang.form.property_mediafinder_image_width_description"
+                        span: storm
+                        type: number
+                        cssClass: col-md-4
+                        tab: scv.facelessapi::lang.plugin.blocks.fields_tab_advanced_settings
+                        trigger:
+                            action: show
+                            field: field_type
+                            condition: value[mediafinder]
+                    field_mediafinder_image_height:
+                        label: "rainlab.builder::lang.form.property_fileupload_image_height"
+                        placeholder: "rainlab.builder::lang.form.property_fileupload_image_width"
+                        comment: "rainlab.builder::lang.form.property_mediafinder_image_height_description"
+                        span: storm
+                        type: number
+                        cssClass: col-md-4
+                        tab: scv.facelessapi::lang.plugin.blocks.fields_tab_advanced_settings
+                        trigger:
+                            action: show
+                            field: field_type
+                            condition: value[mediafinder]

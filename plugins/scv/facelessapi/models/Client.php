@@ -5,6 +5,7 @@ use BackendAuth;
 use Session;
 use ValidationException;
 use Lang;
+use Flash;
 
 use scv\FacelessApi\Models\FacelessAPIModel;
 use scv\FacelessApi\Models\Config;
@@ -76,15 +77,17 @@ class Client extends FacelessAPIModel
         }
 
         if(!$delete){
-            throw new ValidationException(['id' => Lang::get("scv.facelessapi::lang.plugin.validations.delete_error_record_exists")]);
+            throw new ValidationException(['id' => e(trans("scv.facelessapi::lang.plugin.validations.delete_error_record_exists"))]);
         }
     }
 
     public static function toggleSessionActive($id, $active){
         if($active == 1){
             Session::put('activeClient', $id);
+            Flash::success(e(trans('scv.facelessapi::lang.plugin.clients.client_selector_toggle_on')));
         }else{
             Session::forget('activeClient');
+            Flash::success(e(trans('scv.facelessapi::lang.plugin.clients.client_selector_toggle_off')));
         }
     }
 

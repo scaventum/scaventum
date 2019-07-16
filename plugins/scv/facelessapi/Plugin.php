@@ -13,7 +13,7 @@ class Plugin extends PluginBase
     /**
      * @var array Plugin dependencies
      */
-    public $require = ['Offline.Cors'];
+    public $require = ['OFFLINE.CORS','RainLab.Builder'];
     
     /**
      * @var bool Plugin requires elevated permissions.

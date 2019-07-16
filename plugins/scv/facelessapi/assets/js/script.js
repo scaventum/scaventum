@@ -10,14 +10,16 @@ $(document).ready(function() {
                         " id='layout-facelessapi-client-selector-site-address'>" +
                         response.name +
                         "</a></div>"
-                ).hide()
+                ).hide();
 
                 $("#layout-mainmenu")
                     .parent()
-                    .append(clientSelector)
+                    .append(clientSelector);
 
-                clientSelector.slideDown()
+                clientSelector.slideDown();
             }
         }
     })
+
+    $(".auto-collapse > .field-repeater > .field-repeater-items > .field-repeater-item > .repeater-item-collapse > .repeater-item-collapse-one").click();
 })
