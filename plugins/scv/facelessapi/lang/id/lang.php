@@ -152,6 +152,14 @@
             'field_number_max_description' => 'Angka terbesar untuk input',
             'field_number_step' => 'Kelipatan Angka',
             'field_number_step_description' => 'Kelipatan yang diperbolehkan',
+            'validation' => [
+                'duplicate' => 'Kode blok sudah dipakai',
+                'duplicate_field_code' => 'Kode setiap input di satu blok harus unik',
+                'field_code_required' => 'Kode input harus diisi',
+                'field_code_alpha_dash' => 'Kode input harus berupa huruf, angka, _ atau - tanpa spasi',
+                'field_label_required' => 'Label input harus diisi',
+                'field_type_required' => 'Tipe input harus diisi'
+            ]
         ]
     ]
 ];

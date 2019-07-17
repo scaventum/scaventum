@@ -20,6 +20,7 @@ fields:
                         comment: "scv.facelessapi::lang.plugin.blocks.field_code_description"
                         span: storm
                         required: true
+                        readOnly: true
                         tab: scv.facelessapi::lang.plugin.blocks.fields_tab_main_settings
                         cssClass: col-md-4
                         preset:
@@ -60,6 +61,7 @@ fields:
                         span: left
                         type: balloon-selector
                         tab: scv.facelessapi::lang.plugin.blocks.fields_tab_other_settings
+                        default: content
                         options:
                             content: scv.facelessapi::lang.plugin.blocks.field_tab_content
                             settings: scv.facelessapi::lang.plugin.blocks.field_tab_settings
@@ -69,6 +71,7 @@ fields:
                         comment: "scv.facelessapi::lang.plugin.blocks.field_span_description"
                         span: right
                         type: dropdown
+                        default: auto
                         tab: scv.facelessapi::lang.plugin.blocks.fields_tab_other_settings
                         options:
                             auto: scv.facelessapi::lang.plugin.blocks.field_span_auto
@@ -126,6 +129,7 @@ fields:
                         span: full
                         type: balloon-selector
                         tab: scv.facelessapi::lang.plugin.blocks.fields_tab_advanced_settings
+                        default: small
                         trigger:
                             action: show
                             field: field_type
@@ -194,6 +198,7 @@ fields:
                         span: storm
                         type: dropdown
                         cssClass: col-md-4
+                        default: file
                         options:
                             file: rainlab.builder::lang.form.property_mediafinder_mode_file
                             image: rainlab.builder::lang.form.property_mediafinder_mode_image

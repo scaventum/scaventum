@@ -152,6 +152,14 @@
             'field_number_max_description' => 'Largest number allowed',
             'field_number_step' => 'Number Step',
             'field_number_step_description' => 'Interval of allowed number',
+            'validation' => [
+                'duplicate' => 'Block code has been used',
+                'duplicate_field_code' => 'Each field code in a block must be unique',
+                'field_code_required' => 'Field code is required',
+                'field_code_alpha_dash' => 'Field code must contain either alphabetic, numeric, _ or - without space',
+                'field_label_required' => 'Field label is required',
+                'field_type_required' => 'Field Type is required'
+            ]
         ]
     ]
 ];

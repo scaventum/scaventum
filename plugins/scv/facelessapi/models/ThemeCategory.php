@@ -25,7 +25,7 @@ class ThemeCategory extends FacelessAPIModel
      */
     public $rules = [
         "name" => "required",
-        "code" => "required"
+        "code" => "required",
     ];
 
     /**
@@ -50,15 +50,15 @@ class ThemeCategory extends FacelessAPIModel
     }
 
     public function beforeSave(){
-        $themecategory = self::where('name',$this->name)->where('client_id',$this->client_id);
+        $themeCategory = self::where('name',$this->name)->where('client_id',$this->client_id);
 
         if($this->id!==NULL){
-            $themecategory = $themecategory->where('id','!=',$this->id);
+            $themeCategory = $themeCategory->where('id','!=',$this->id);
         }
 
-        $themecategory = $themecategory->first();
+        $themeCategory = $themeCategory->first();
 
-        if($themecategory){
+        if($themeCategory){
             throw new ValidationException(['name' => Lang::get("scv.facelessapi::lang.plugin.themecategories.validation.duplicate")]);
         }else{
             parent::beforeSave();
