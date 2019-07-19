@@ -19,6 +19,7 @@
                 'manage_themes' => 'Kelola Tema Faceless API',
                 'manage_theme_categories' => 'Kelola Kategori Tema Faceless API',
                 'manage_blocks' => 'Kelola Konten Blok Faceless API',
+                'manage_client_blocks' => 'Kelola Konten Blok Klien Faceless API',
             ]
         ],
         'clients' => [
@@ -73,6 +74,7 @@
             'active_description' => 'Hanya satu tema aktif setiap saat',
             'no_theme_categories' => 'Tambah kategori tema sebelum mengatur tema',
             'add_theme_categories' => 'Gunakan pranala berikut untuk menambah kategori tema:',
+            'theme_toggle_on' => 'Tema diaktifkan',
         ],
         'theme_categories' => [
             'theme_categories' => 'Kategori Tema',
@@ -145,7 +147,7 @@
             'field_span_full' => 'Penuh',
             'field_span_storm' => 'Storm CSS',
             'field_css_class' => 'Kelas CSS Input',
-            'field_css_class_description' => 'Kelas CSS input blok kontent',
+            'field_css_class_description' => 'Pisahkan setiap kelas CSS dengan spasi',
             'field_number_min' => 'Angka Minimal',
             'field_number_min_description' => 'Angka terkecil untuk input',
             'field_number_max' => 'Angka Maksimal',
@@ -159,7 +161,12 @@
                 'field_code_alpha_dash' => 'Kode input harus berupa huruf, angka, _ atau - tanpa spasi',
                 'field_label_required' => 'Label input harus diisi',
                 'field_type_required' => 'Tipe input harus diisi'
-            ]
+            ],
+            'field_type_link' => 'Pranala',
+            'field_type_form' => 'Formulir'
+        ],
+        'client_blocks' => [
+            'client_blocks' => 'Blok Konten Klien'
         ]
     ]
 ];

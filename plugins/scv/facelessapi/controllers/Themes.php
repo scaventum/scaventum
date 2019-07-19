@@ -1,6 +1,7 @@
 <?php namespace scv\FacelessApi\Controllers;
 
 use BackendMenu;
+use Session;
 
 use scv\FacelessApi\Models\Client;
 use scv\FacelessApi\Models\Theme;
@@ -30,13 +31,19 @@ class Themes extends FacelessAPIController
         $theme = $form->model;
 
         $themeCategories = ThemeCategory::where("client_id",$theme->client_id)->get();
+        $context[] = "update";
+
+        if(Session::has('activeClient')){
+            $themeCategories = ThemeCategory::where("client_id",Session::get('activeClient'))->get();
+            $context[] = "create";
+        }
 
         if(count($themeCategories)>0){
             foreach($themeCategories as $themeCategory){
                 $form->addTabFields([
                     "custom_theme_values[".$themeCategory->id."]" => [
                         "type" => "repeater",
-                        "context" => ["update"],
+                        "context" => $context,
                         "label" => "scv.facelessapi::lang.plugin.theme_values.theme_values",
                         "tab" => $themeCategory->name,
                         "prompt" => "scv.facelessapi::lang.plugin.custom_actions.add_new_item",

@@ -49,7 +49,8 @@ class Client extends FacelessAPIModel
      */
     public $hasMany = [
         'themes' => ['scv\FacelessApi\Models\Theme'],
-        'theme_categories' => ['scv\FacelessApi\Models\ThemeCategory']
+        'theme_categories' => ['scv\FacelessApi\Models\ThemeCategory'],
+        'blocks' => ['scv\FacelessApi\Models\Block']
     ];
 
     public function afterCreate(){
@@ -82,12 +83,16 @@ class Client extends FacelessAPIModel
     }
 
     public static function toggleSessionActive($id, $active){
-        if($active == 1){
-            Session::put('activeClient', $id);
-            Flash::success(e(trans('scv.facelessapi::lang.plugin.clients.client_selector_toggle_on')));
-        }else{
-            Session::forget('activeClient');
-            Flash::success(e(trans('scv.facelessapi::lang.plugin.clients.client_selector_toggle_off')));
+        $isClientUser = self::find($id)->users()->where('user_id',BackendAuth::getUser()->id)->first();
+
+        if($isClientUser){
+            if($active == 1){
+                Session::put('activeClient', $id);
+                Flash::success(e(trans('scv.facelessapi::lang.plugin.clients.client_selector_toggle_on')));
+            }else{
+                Session::forget('activeClient');
+                Flash::success(e(trans('scv.facelessapi::lang.plugin.clients.client_selector_toggle_off')));
+            }
         }
     }
 

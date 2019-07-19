@@ -1,0 +1,10 @@
+name: scv.facelessapi::lang.plugin.client_blocks.client_blocks
+form: $/scv/facelessapi/models/block/fields.yaml
+modelClass: scv\FacelessApi\Models\Block
+defaultRedirect: scv/facelessapi/clientblocks
+create:
+    redirect: "scv/facelessapi/clientblocks/update/:id"
+    redirectClose: scv/facelessapi/clientblocks
+update:
+    redirect: scv/facelessapi/clientblocks
+    redirectClose: scv/facelessapi/clientblocks

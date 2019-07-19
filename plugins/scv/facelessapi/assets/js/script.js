@@ -3,13 +3,15 @@ $(document).ready(function() {
         success: function(response) {
             if (response.name) {
                 var clientSelector = $(
-                    "<div id='layout-facelessapi-client-selector'><i class='icon-user'></i>" +
-                        "&emsp;<a target='_blank' href='" +
+                    "<div id='layout-facelessapi-client-selector'> " +
+                        "<i class='icon-user'></i>" +
+                        "&emsp; " +
+                        "<a target='_blank' href='" +
                         response.config.site_address +
-                        "'" +
-                        " id='layout-facelessapi-client-selector-site-address'>" +
+                        "' id='layout-facelessapi-client-selector-site-address'>" +
                         response.name +
-                        "</a></div>"
+                        "</a> " +
+                        "</div>"
                 ).hide();
 
                 $("#layout-mainmenu")
@@ -19,7 +21,9 @@ $(document).ready(function() {
                 clientSelector.slideDown();
             }
         }
-    })
+    });
 
-    $(".auto-collapse > .field-repeater > .field-repeater-items > .field-repeater-item > .repeater-item-collapse > .repeater-item-collapse-one").click();
-})
+    $(
+        ".auto-collapse > .field-repeater > .field-repeater-items > .field-repeater-item > .repeater-item-collapse > .repeater-item-collapse-one"
+    ).click();
+});

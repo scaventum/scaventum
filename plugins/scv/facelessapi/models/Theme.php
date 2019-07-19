@@ -4,6 +4,7 @@ use Model;
 use BackendAuth;
 use ValidationException;
 use Lang;
+use Flash;
 
 use scv\FacelessApi\Models\FacelessAPIModel;
 use scv\FacelessApi\Models\Client;
@@ -179,6 +180,7 @@ class Theme extends FacelessAPIModel
             }
 
             Theme::find($id)->update(["active" => $active]);
+            Flash::success(e(trans('scv.facelessapi::lang.plugin.themes.theme_toggle_on')));
         }
     }
 }

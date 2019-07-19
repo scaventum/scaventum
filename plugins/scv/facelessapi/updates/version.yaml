@@ -51,3 +51,15 @@
 1.0.18:
     - 'Created table scv_facelessapi_blocks'
     - builder_table_create_scv_facelessapi_blocks.php
+1.0.19:
+    - 'Created table scv_facelessapi_client_blocks'
+    - builder_table_create_scv_facelessapi_client_blocks.php
+1.0.20:
+    - 'Updated table scv_facelessapi_client_blocks'
+    - builder_table_update_scv_facelessapi_client_blocks.php
+1.0.21:
+    - 'Drop table scv_facelessapi_client_blocks'
+    - builder_table_delete_scv_facelessapi_client_blocks.php
+1.0.22:
+    - 'Updated table scv_facelessapi_blocks'
+    - builder_table_update_scv_facelessapi_blocks.php

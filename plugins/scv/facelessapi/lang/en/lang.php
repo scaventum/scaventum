@@ -19,6 +19,7 @@
                 'manage_themes' => 'Manage Faceless API Themes',
                 'manage_theme_categories' => 'Manage Faceless API Theme Categories',
                 'manage_blocks' => 'Manage Faceless API Content Blocks',
+                'manage_client_blocks' => 'Manage Faceless API Client Content Blocks',
             ]
         ],
         'clients' => [
@@ -73,6 +74,7 @@
             'active_description' => 'Only one theme can be activated at any time',
             'no_theme_categories' => 'Theme Category Not Found',
             'add_theme_categories' => 'Please use the following link to add a new theme category:',
+            'theme_toggle_on' => 'Theme is activated',
         ],
         'theme_categories' => [
             'theme_categories' => 'Theme Categories',
@@ -145,7 +147,7 @@
             'field_span_full' => 'Full',
             'field_span_storm' => 'Storm CSS',
             'field_css_class' => 'Custom CSS Class',
-            'field_css_class_description' => 'Custom CSS class for field',
+            'field_css_class_description' => 'Seperate each CSS class with space',
             'field_number_min' => 'Minimum Number',
             'field_number_min_description' => 'Smallest number allowed',
             'field_number_max' => 'Maximum Number',
@@ -159,7 +161,12 @@
                 'field_code_alpha_dash' => 'Field code must contain either alphabetic, numeric, _ or - without space',
                 'field_label_required' => 'Field label is required',
                 'field_type_required' => 'Field Type is required'
-            ]
+            ],
+            'field_type_link' => 'Link',
+            'field_type_form' => 'Form'
+        ],
+        'client_blocks' => [
+            'client_blocks' => 'Client Content Blocks'
         ]
     ]
 ];

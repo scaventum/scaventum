@@ -23,6 +23,9 @@ permissions:
     scv.facelessapi.blocks:
         tab: "scv.facelessapi::lang.plugin.name"
         label: "scv.facelessapi::lang.plugin.settings.label.manage_blocks"
+    scv.facelessapi.client_blocks:
+        tab: "scv.facelessapi::lang.plugin.name"
+        label: "scv.facelessapi::lang.plugin.settings.label.manage_client_blocks"
 navigation:
     faceless-api-admin:
         label: "scv.facelessapi::lang.plugin.name_admin"
@@ -83,3 +86,9 @@ navigation:
                 icon: icon-th-large
                 permissions:
                     - scv.facelessapi.blocks
+            client-blocks:
+                label: "scv.facelessapi::lang.plugin.client_blocks.client_blocks"
+                url: scv/facelessapi/clientblocks
+                icon: icon-th-large
+                permissions:
+                    - scv.facelessapi.client_blocks

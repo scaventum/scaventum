@@ -2,7 +2,9 @@
 
 use Backend\Classes\Controller;
 use BackendMenu;
+
 use scv\FacelessApi\Controllers\FacelessAPIController;
+use scv\FacelessApi\Models\Block;
 
 class Blocks extends FacelessAPIController
 {
@@ -24,8 +26,10 @@ class Blocks extends FacelessAPIController
     }
 
     public function listExtendQuery($query, $definition = null) {
+        $query->doesnthave('client');
     }
     
     public function formExtendQuery($query){
+        $query->doesnthave('client');
     }
 }

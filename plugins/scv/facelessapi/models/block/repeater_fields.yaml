@@ -84,6 +84,9 @@ fields:
                         placeholder: "scv.facelessapi::lang.plugin.blocks.field_css_class"
                         comment: "scv.facelessapi::lang.plugin.blocks.field_css_class_description"
                         span: full
+                        type: taglist
+                        separator: space
+                        mode: array
                         tab: scv.facelessapi::lang.plugin.blocks.fields_tab_other_settings
                     field_comment:
                         label: "scv.facelessapi::lang.plugin.blocks.field_comment"
@@ -183,6 +186,7 @@ fields:
                         comment: "rainlab.builder::lang.form.control_repeater_description"
                         span: full
                         type: repeater
+                        cssClass: auto-collapse
                         tab: scv.facelessapi::lang.plugin.blocks.fields_tab_advanced_settings
                         prompt: "scv.facelessapi::lang.plugin.custom_actions.add_new_item"
                         trigger:
