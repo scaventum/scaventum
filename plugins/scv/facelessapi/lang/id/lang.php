@@ -20,6 +20,7 @@
                 'manage_theme_categories' => 'Kelola Kategori Tema Faceless API',
                 'manage_blocks' => 'Kelola Konten Blok Faceless API',
                 'manage_client_blocks' => 'Kelola Konten Blok Klien Faceless API',
+                'manage_templates' => 'Kelola Pola Halaman Klien Faceless API',
             ]
         ],
         'clients' => [
@@ -107,7 +108,7 @@
             ],
         ],
         'blocks' => [
-            'blocks' => 'Blok Konten',
+            'blocks' => 'Blok Konten Contoh',
             'name' => 'Nama Blok',
             'name_description' => 'Nama untuk blok konten',
             'code' => 'Kode Blok',
@@ -166,7 +167,16 @@
             'field_type_form' => 'Formulir'
         ],
         'client_blocks' => [
-            'client_blocks' => 'Blok Konten Klien'
+            'client_blocks' => 'Blok Konten'
+        ],
+        'templates' => [
+            'templates' => 'Pola Halaman',
+            'name' => 'Nama Pola',
+            'name_description' => 'Nama pola halaman',
+            'code' => 'Kode Pola',
+            'code_description' => 'Kode pola yang mudah dibaca',
+            'blocks' => 'Konten Blok',
+            'blocks_description' => 'Daftar konten blok untuk pola halaman',
         ]
     ]
 ];

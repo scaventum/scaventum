@@ -20,6 +20,7 @@
                 'manage_theme_categories' => 'Manage Faceless API Theme Categories',
                 'manage_blocks' => 'Manage Faceless API Content Blocks',
                 'manage_client_blocks' => 'Manage Faceless API Client Content Blocks',
+                'manage_templates' => 'Manage Faceless API Client Page Templates',
             ]
         ],
         'clients' => [
@@ -107,7 +108,7 @@
             ],
         ],
         'blocks' => [
-            'blocks' => 'Content Blocks',
+            'blocks' => 'Preset Content Blocks',
             'name' => 'Block Name',
             'name_description' => 'Content block name',
             'code' => 'Block Code',
@@ -166,7 +167,16 @@
             'field_type_form' => 'Form'
         ],
         'client_blocks' => [
-            'client_blocks' => 'Client Content Blocks'
+            'client_blocks' => 'Content Blocks'
+        ],
+        'templates' => [
+            'templates' => 'Page Templates',
+            'name' => 'Template Name',
+            'name_description' => 'Page template name',
+            'code' => 'Template Code',
+            'code_description' => 'readable template code',
+            'blocks' => 'Template blocks',
+            'blocks_description' => 'List of blocks in page template',
         ]
     ]
 ];

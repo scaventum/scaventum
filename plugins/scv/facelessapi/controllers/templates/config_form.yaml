@@ -1,0 +1,10 @@
+name: scv.facelessapi::lang.plugin.templates.templates
+form: $/scv/facelessapi/models/template/fields.yaml
+modelClass: scv\FacelessApi\Models\Template
+defaultRedirect: scv/facelessapi/templates
+create:
+    redirect: "scv/facelessapi/templates/update/:id"
+    redirectClose: scv/facelessapi/templates
+update:
+    redirect: scv/facelessapi/templates
+    redirectClose: scv/facelessapi/templates

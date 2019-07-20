@@ -180,6 +180,22 @@ fields:
                             field: field_type
                             condition: value[number]
 
+                    # datepicker
+                    field_datepicker_mode:
+                        label: "rainlab.builder::lang.form.property_datepicker_mode"
+                        comment: "rainlab.builder::lang.form.property_datepicker_mode"
+                        span: full
+                        type: balloon-selector
+                        tab: scv.facelessapi::lang.plugin.blocks.fields_tab_advanced_settings
+                        default: datetime
+                        trigger:
+                            action: show
+                            field: field_type
+                            condition: value[datepicker]
+                        options:
+                            date: rainlab.builder::lang.form.property_datepicker_mode_date
+                            time: rainlab.builder::lang.form.property_datepicker_mode_time
+                            datetime: rainlab.builder::lang.form.property_datepicker_mode_datetime
                     # repeater
                     field_repeater:
                         label: "rainlab.builder::lang.form.control_repeater"
