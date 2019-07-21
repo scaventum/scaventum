@@ -1,14 +1,16 @@
 fields:
     name:
         label: "scv.facelessapi::lang.plugin.templates.name"
-        span: left
+        span: storm
+        cssClass: col-md-4
         placeholder: "scv.facelessapi::lang.plugin.templates.name"
         required: true
         type: text
         comment: "scv.facelessapi::lang.plugin.templates.name_description"
     code:
         label: "scv.facelessapi::lang.plugin.templates.code"
-        span: right
+        span: storm
+        cssClass: col-md-4
         placeholder: "scv.facelessapi::lang.plugin.templates.code"
         readOnly: true
         required: true
@@ -17,11 +19,12 @@ fields:
             type: slug
         type: text
         comment: "scv.facelessapi::lang.plugin.templates.code_description"
-    blocks:
-        label: "scv.facelessapi::lang.plugin.templates.blocks"
-        span: full
-        type: repeater
-        cssClass: auto-collapse
-        comment: "scv.facelessapi::lang.plugin.templates.blocks_description"
-        prompt: "scv.facelessapi::lang.plugin.custom_actions.add_new_item"
-        # form: $/scv/facelessapi/models/block/repeater_fields.yaml
+    client_id:
+        label: "scv.facelessapi::lang.plugin.themes.client_id"
+        showSearch: true
+        span: storm
+        cssClass: col-md-4
+        placeholder: "scv.facelessapi::lang.plugin.themes.client_id"
+        required: true
+        type: dropdown
+        comment: "scv.facelessapi::lang.plugin.themes.client_id_description"

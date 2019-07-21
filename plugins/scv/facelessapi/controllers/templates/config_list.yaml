@@ -10,3 +10,4 @@ toolbar:
     search:
         prompt: "backend::lang.list.search_prompt"
 recordUrl: "scv/facelessapi/templates/update/:id"
+filter: config_filter.yaml

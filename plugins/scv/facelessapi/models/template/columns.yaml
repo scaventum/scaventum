@@ -14,3 +14,8 @@ columns:
         type: text
         searchable: true
         sortable: true
+    client[name]:
+        label: "scv.facelessapi::lang.plugin.clients.name"
+        type: text
+        searchable: true
+        sortable: true

@@ -44,6 +44,10 @@ class ThemeCategory extends FacelessAPIModel
 
     public function filterFields($fields, $context = null)
     {
+        if(count($this->getClientIdOptions()) <= 1){
+            $fields->client_id->readOnly = true;
+        }
+
         if ($context == 'update') {
             $fields->client_id->readOnly = true;
         }
