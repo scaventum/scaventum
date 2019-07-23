@@ -112,7 +112,9 @@
             'name' => 'Block Name',
             'name_description' => 'Content block name',
             'code' => 'Block Code',
-            'code_description' => 'readable block code',
+            'code_description' => 'Readable block code',
+            'icon' => 'Block icon',
+            'icon_description' => 'Icon for the content block',
             'fields' => 'Block Fields',
             'fields_description' => 'List of field in content block',
             'fields_tab_main_settings' => 'Settings: Main',
@@ -174,9 +176,21 @@
             'name' => 'Template Name',
             'name_description' => 'Page template name',
             'code' => 'Template Code',
-            'code_description' => 'readable template code',
+            'code_description' => 'Readable template code',
             'blocks' => 'Template blocks',
             'blocks_description' => 'List of blocks in page template',
+            'block_purpose' => 'Block Purpose',
+            'block_purpose_description' => 'Purpose of the block',
+            'block_purpose_code' => 'Block Purpose Code',
+            'block_purpose_code_description' => 'Readable code of block purpose',
+            'validation' => [
+                'duplicate' => 'Template code has been used',
+                'duplicate_block_purpose' => 'Each block purpose in a template must be unique',
+                'block_purpose_code_required' => 'Block purpose code is required',
+                'block_purpose_code_alpha_dash' => 'Block purpose code must contain either alphabetic, numeric, _ or - without space',
+                'block_purpose_required' => 'Block purpose is required',
+                'block_code_required' => 'Block code is required'
+            ]
         ]
     ]
 ];

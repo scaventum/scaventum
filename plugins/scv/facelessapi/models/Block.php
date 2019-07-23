@@ -2,11 +2,14 @@
 
 use Model;
 use ValidationException;
+use Lang;
 
 use RainLab\Builder\Classes\ControlLibrary;
+use RainLab\Builder\Classes\IconList;
 
 use scv\FacelessApi\Models\FacelessAPIModel;
 use scv\FacelessApi\Models\Client;
+use scv\FacelessApi\Models\Template;
 
 /**
  * Model
@@ -67,23 +70,27 @@ class Block extends FacelessAPIModel
                 $fields->client_id->readOnly = true;
             }
             $fields->name->span = 'storm';
-            $fields->name->cssClass = 'col-md-4';
+            $fields->name->cssClass = 'col-md-6';
             $fields->code->span = 'storm';
-            $fields->code->cssClass = 'col-md-4';
+            $fields->code->cssClass = 'col-md-6';
+            $fields->icon->span = 'storm';
+            $fields->icon->cssClass = 'col-md-6';
             $fields->fields->span = 'storm';
             $fields->fields->cssClass = 'col-md-12 auto-collapse';
         }
     }
 
     public function beforeSave(){
-
         // Cannot save if block code exists
-        $block = self::where('code',$this->code);
+        $block = Block::where('code',$this->code);
         if($this->id!==NULL){
             $block = $block->where('id','!=',$this->id);
         }
         if(post('Block[client_id]')){
-            $block = $block->where('client_id',$this->client_id);
+            $block->where(function($query){
+                $query->where('client_id', $this->client_id)
+                    ->orWhere('client_id', NULL);
+            });
         }else{
             $block = $block->where('client_id',NULL);
         }
@@ -112,6 +119,24 @@ class Block extends FacelessAPIModel
         parent::beforeSave();
     }
 
+    public function beforeDelete(){
+        $delete = true;
+
+        $templates = Template::lists('blocks');
+
+        foreach($templates as $template){
+            foreach(json_decode($template) as $block){
+                if($block->block_code == $this->code){
+                    $delete = false;
+                    break;
+                }
+            }
+        }
+
+        if(!$delete){
+            throw new ValidationException(['id' => Lang::get("scv.facelessapi::lang.plugin.validations.delete_error_record_exists")]);
+        }
+    }
     
     public function getFieldTypeList($group = NULL){
         $library = ControlLibrary::instance();
@@ -160,5 +185,13 @@ class Block extends FacelessAPIModel
     public function getClientIdOptions(){
         $clients = Client::getClientIdOptions();
         return $clients;
+    }
+
+    /**
+     * @var array clients related to login user.
+     */
+    public function getIconOptions(){
+        $icons = IconList::getList();
+        return $icons;
     }
 }

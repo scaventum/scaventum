@@ -66,3 +66,6 @@
 1.0.23:
     - 'Created table scv_facelessapi_templates'
     - builder_table_create_scv_facelessapi_templates.php
+1.0.24:
+    - 'Updated table scv_facelessapi_blocks'
+    - builder_table_update_scv_facelessapi_blocks_2.php

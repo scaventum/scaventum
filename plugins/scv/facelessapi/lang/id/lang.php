@@ -113,6 +113,8 @@
             'name_description' => 'Nama untuk blok konten',
             'code' => 'Kode Blok',
             'code_description' => 'Kode blok yang mudah dibaca',
+            'icon' => 'Ikon Blok',
+            'icon_description' => 'Ikon untuk blok konten',
             'fields' => 'Daftar input',
             'fields_description' => 'Daftar input dalam blok konten',
             'fields_tab_main_settings' => 'Pengaturan Utama',
@@ -177,6 +179,18 @@
             'code_description' => 'Kode pola yang mudah dibaca',
             'blocks' => 'Konten Blok',
             'blocks_description' => 'Daftar konten blok untuk pola halaman',
+            'block_purpose' => 'Fungsi Blok',
+            'block_purpose_description' => 'Fungsi blok di pola halaman',
+            'block_purpose_code' => 'Kode fungsi blok',
+            'block_purpose_code_description' => 'Kode fungsi blok yang mudah dibaca',
+            'validation' => [
+                'duplicate' => 'Kode pola halaman sudah dipakai',
+                'duplicate_block_purpose' => 'Fungsi setiap blok haru unik',
+                'block_purpose_code_required' => 'Kode fungsi blok harus diisi',
+                'block_purpose_code_alpha_dash' => 'Kode fungsi blok harus berupa huruf, angka, _ atau - tanpa spasi',
+                'block_purpose_required' => 'Fungsi blok harus diisi',
+                'block_code_required' => 'Kode blok harus diisi'
+            ]
         ]
     ]
 ];

@@ -34,7 +34,7 @@ class ClientBlocks extends FacelessAPIController
                 "label" => 'scv.facelessapi::lang.plugin.themes.client_id',
                 "showSearch" => true,
                 "span" => 'storm',
-                "cssClass" => 'col-md-4',
+                "cssClass" => 'col-md-6',
                 "placeholder" => 'scv.facelessapi::lang.plugin.themes.client_id',
                 "required" => true,
                 "type" => 'dropdown',

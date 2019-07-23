@@ -30,10 +30,10 @@ class Templates extends FacelessAPIController
 
         $blocks = [];
 
-        if(Session::has('activeClient')){
+        if($template->client_id){
+            $blocks = Block::where("client_id",$template->client_id)->orWhere("client_id",NULL)->orderBy('name', 'Asc')->get();
+        }else if(Session::has('activeClient')){
             $blocks = Block::where("client_id",Session::get('activeClient'))->orWhere("client_id",NULL)->orderBy('name', 'Asc')->get();
-        }else if($template->client_id){
-            $blocks = Block::where("client_id",$template->client_id)->orWhere("client_id",NULL)->orderBy('name', 'ASc')->get();
         }
 
         if(!empty($blocks)){
@@ -42,15 +42,20 @@ class Templates extends FacelessAPIController
             foreach($blocks as $block){
                 $groups[$block->code] = [
                     "name" => $block->name,
+                    "icon" => !empty($block->icon) ? $block->icon : "icon-align-justify",
                     "fields" => [
                         "block_purpose" => [
-                            "label" => "Block Purpose",
+                            "label" => "scv.facelessapi::lang.plugin.templates.block_purpose",
+                            "placeholder" => "scv.facelessapi::lang.plugin.templates.block_purpose",
+                            "comment" => "scv.facelessapi::lang.plugin.templates.block_purpose_description",
                             "span" => "storm",
                             "cssClass" => "col-md-4",
                             "required" => true
                         ],
                         "block_purpose_code" => [
-                            "label" => "Block Purpose Code",
+                            "label" => "scv.facelessapi::lang.plugin.templates.block_purpose_code",
+                            "placeholder" => "scv.facelessapi::lang.plugin.templates.block_purpose_code",
+                            "comment" => "scv.facelessapi::lang.plugin.templates.block_purpose_code_description",
                             "span" => "storm",
                             "cssClass" => "col-md-4",
                             "readOnly" => true,
@@ -61,7 +66,9 @@ class Templates extends FacelessAPIController
                             "required" => true
                         ],
                         "block_code" => [
-                            "label" => "Block Code",
+                            "label" => "scv.facelessapi::lang.plugin.blocks.code",
+                            "placeholder" => "scv.facelessapi::lang.plugin.blocks.code",
+                            "comment" => "scv.facelessapi::lang.plugin.blocks.code_description",
                             "span" => "storm",
                             "cssClass" => "col-md-4",
                             "readOnly" => true,

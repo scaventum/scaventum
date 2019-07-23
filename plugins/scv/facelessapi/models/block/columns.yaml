@@ -1,16 +1,20 @@
 columns:
     id:
-        label: '#'
+        label: "#"
         type: number
         searchable: true
         sortable: true
-    name:
-        label: 'scv.facelessapi::lang.plugin.blocks.name'
-        type: text
-        searchable: true
-        sortable: true
+    icon:
+        label: "scv.facelessapi::lang.plugin.blocks.name"
+        type: partial
+        path: $/scv/facelessapi/partials/_columns_icon.htm
+    # name:
+    #     label: "scv.facelessapi::lang.plugin.blocks.name"
+    #     type: text
+    #     searchable: true
+    #     sortable: true
     code:
-        label: 'scv.facelessapi::lang.plugin.blocks.code'
+        label: "scv.facelessapi::lang.plugin.blocks.code"
         type: text
         searchable: true
         sortable: true
