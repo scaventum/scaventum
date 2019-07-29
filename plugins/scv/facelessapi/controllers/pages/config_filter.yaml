@@ -1,0 +1,11 @@
+# ===================================
+# Filter Scope Definitions
+# ===================================
+
+scopes:
+    client_id:
+        label: scv.facelessapi::lang.plugin.clients.clients
+        modelClass: scv\FacelessApi\Models\Client
+        type: group
+        conditions: client_id in (:filtered)
+        options: clientByUserArray

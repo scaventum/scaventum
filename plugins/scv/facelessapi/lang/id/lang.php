@@ -21,6 +21,7 @@
                 'manage_blocks' => 'Kelola Konten Blok Faceless API',
                 'manage_client_blocks' => 'Kelola Konten Blok Klien Faceless API',
                 'manage_templates' => 'Kelola Pola Halaman Klien Faceless API',
+                'manage_pages' => 'Kelola Halaman Klien Faceless API',
             ]
         ],
         'clients' => [
@@ -191,6 +192,41 @@
                 'block_purpose_required' => 'Fungsi blok harus diisi',
                 'block_code_required' => 'Kode blok harus diisi'
             ]
+        ],
+        'pages' => [
+            'pages' => 'Halaman',
+            'title' => 'Judul Halaman',
+            'title_description' => 'Judul untuk halaman',
+            'slug' => 'Alamat Halaman',
+            'slug_description' => 'Alamat untuk halaman',
+            'tab_content' => 'Konten',
+            'tab_preview' => 'Pendahuluan',
+            'tab_seo' => 'SEO',
+            'tab_activity' => 'Aktivitas',
+            'preview_title' => 'Judul Pendahuluan',
+            'preview_title_description' => 'Judul pendahuluan untuk halaman',
+            'preview_subtitle' => 'Subjudul Pendahuluan',
+            'preview_subtitle_description' => 'Subjudul pendahuluan untuk halaman',
+            'preview_description' => 'Keterangan Pendahuluan',
+            'preview_description_description' => 'Keterangan pendahuluan untuk halaman',
+            'preview_image' => 'Gambar Pendahuluan',
+            'preview_image_description' => 'gambar pendahuluan untuk halaman',
+            'seo_keywords' => 'Kata Kunci',
+            'seo_keywords_description' => 'Kata kunci untuk SEO',
+            'seo_author' => 'Penulis',
+            'seo_author_description' => 'Penulis halaman',
+            'seo_description' => 'Keterangan',
+            'seo_description_description' => 'Keterangan untuk SEO',
+            'active' => 'Aktivitas Halaman',
+            'active_description' => 'Aktivitas halaman di tampak depan',
+            'active_begin' => 'Waktu Mulai Aktif',
+            'active_begin_description' => 'Waktu mulai halaman aktif',
+            'active_end' => 'Waktu Selesai Aktif',
+            'active_end_description' => 'Waktu selesai halaman aktif',
+            'blocks' => 'Blok halaman',
+            'blocks_description' => 'Daftar blok halaman',
+            'template_id' => 'Pola Halaman',
+            'template_id_description' => 'Pola halaman untuk konten',
         ]
     ]
 ];

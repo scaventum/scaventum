@@ -69,3 +69,12 @@
 1.0.24:
     - 'Updated table scv_facelessapi_blocks'
     - builder_table_update_scv_facelessapi_blocks_2.php
+1.0.25:
+    - 'Created table scv_facelessapi_pages'
+    - builder_table_create_scv_facelessapi_pages.php
+1.0.26:
+    - 'Updated table scv_facelessapi_pages'
+    - builder_table_update_scv_facelessapi_pages.php
+1.0.27:
+    - 'Updated table scv_facelessapi_pages'
+    - builder_table_update_scv_facelessapi_pages_2.php

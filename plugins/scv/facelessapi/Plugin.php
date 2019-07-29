@@ -45,7 +45,7 @@ class Plugin extends PluginBase
                 if (BackendAuth::getUser()->role->code === 'developer') {  
                     Session::put('redirectAfterLogin', 'scv/facelessapi/clientselector'); // Redirect to configs if user is admin
                 }else{
-                    Session::put('redirectAfterLogin', 'scv/facelessapi/configs'); // Redirect to configs by default
+                    Session::put('redirectAfterLogin', 'scv/facelessapi/pages'); // Redirect to configs by default
                 }
             }
         });

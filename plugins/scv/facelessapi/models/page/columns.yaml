@@ -1,0 +1,21 @@
+columns:
+    id:
+        label: '#'
+        type: number
+        searchable: true
+        sortable: true
+    title:
+        label: 'Page Title'
+        type: text
+        searchable: true
+        sortable: true
+    client_id:
+        label: 'scv.facelessapi::lang.plugin.themes.client_id'
+        type: text
+        searchable: true
+        sortable: true
+    active:
+        label: Active
+        type: text
+        searchable: true
+        sortable: true

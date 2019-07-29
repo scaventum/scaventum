@@ -29,6 +29,9 @@ permissions:
     scv.facelessapi.templates:
         tab: "scv.facelessapi::lang.plugin.name"
         label: "scv.facelessapi::lang.plugin.settings.label.manage_templates"
+    scv.facelessapi.pages:
+        tab: "scv.facelessapi::lang.plugin.name"
+        label: "scv.facelessapi::lang.plugin.settings.label.manage_pages"
 navigation:
     faceless-api-admin:
         label: "scv.facelessapi::lang.plugin.name_admin"
@@ -76,13 +79,19 @@ navigation:
                     - scv.facelessapi.themes
     faceless-api-pages:
         label: "scv.facelessapi::lang.plugin.name_pages"
-        url: scv/facelessapi/blocks
+        url: scv/facelessapi/pages
         icon: icon-cogs
         iconSvg: plugins/scv/facelessapi/assets/images/settings-orange.svg
         permissions:
-            - scv.facelessapi.blocks
+            - scv.facelessapi.pages
         order: "100"
         sideMenu:
+            pages:
+                label: "scv.facelessapi::lang.plugin.pages.pages"
+                url: scv/facelessapi/pages
+                icon: icon-window-maximize
+                permissions:
+                    - scv.facelessapi.pages
             templates:
                 label: "scv.facelessapi::lang.plugin.templates.templates"
                 url: scv/facelessapi/templates

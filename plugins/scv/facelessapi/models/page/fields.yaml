@@ -1,0 +1,133 @@
+fields:
+    title:
+        label: 'scv.facelessapi::lang.plugin.pages.title'
+        span: storm
+        cssClass: col-md-4
+        placeholder: 'scv.facelessapi::lang.plugin.pages.title'
+        required: 1
+        type: text
+        comment: 'scv.facelessapi::lang.plugin.pages.title_description'
+    slug:
+        label: 'scv.facelessapi::lang.plugin.pages.slug'
+        span: storm
+        cssClass: col-md-4
+        placeholder: 'scv.facelessapi::lang.plugin.pages.slug'
+        readOnly: 1
+        required: 1
+        preset:
+            field: title
+            type: slug
+        type: text
+        comment: 'scv.facelessapi::lang.plugin.pages.slug_description'
+    client_id:
+        label: "scv.facelessapi::lang.plugin.themes.client_id"
+        showSearch: true
+        span: storm
+        cssClass: col-md-4
+        placeholder: "scv.facelessapi::lang.plugin.themes.client_id"
+        required: true
+        type: dropdown
+        comment: "scv.facelessapi::lang.plugin.themes.client_id_description"
+tabs:
+    fields:
+        template_id:
+            label: 'scv.facelessapi::lang.plugin.pages.template_id'
+            span: full
+            placeholder: 'scv.facelessapi::lang.plugin.pages.template_id'
+            type: dropdown
+            required: true
+            comment: 'scv.facelessapi::lang.plugin.pages.template_id_description'
+            tab: 'scv.facelessapi::lang.plugin.pages.tab_content'
+        blocks:
+            label: 'scv.facelessapi::lang.plugin.pages.blocks'
+            span: full
+            placeholder: 'scv.facelessapi::lang.plugin.pages.blocks'
+            type: richeditor
+            comment: 'scv.facelessapi::lang.plugin.pages.blocks_description'
+            tab: 'scv.facelessapi::lang.plugin.pages.tab_content'
+        preview_title:
+            label: 'scv.facelessapi::lang.plugin.pages.preview_title'
+            span: left
+            placeholder: 'scv.facelessapi::lang.plugin.pages.preview_title'
+            preset:
+                field: title
+                type: exact
+            type: text
+            comment: 'scv.facelessapi::lang.plugin.pages.preview_title_description'
+            tab: 'scv.facelessapi::lang.plugin.pages.tab_preview'
+        preview_subtitle:
+            label: 'scv.facelessapi::lang.plugin.pages.preview_subtitle'
+            span: right
+            placeholder: 'scv.facelessapi::lang.plugin.pages.preview_subtitle'
+            type: text
+            comment: 'scv.facelessapi::lang.plugin.pages.preview_subtitle_description'
+            tab: scv.facelessapi::lang.plugin.pages.tab_preview
+        preview_description:
+            label: 'scv.facelessapi::lang.plugin.pages.preview_description'
+            size: small
+            span: left
+            placeholder: 'scv.facelessapi::lang.plugin.pages.preview_description'
+            type: textarea
+            comment: 'scv.facelessapi::lang.plugin.pages.preview_description_description'
+            tab: scv.facelessapi::lang.plugin.pages.tab_preview
+        preview_image:
+            label: 'scv.facelessapi::lang.plugin.pages.preview_image'
+            mode: file
+            useCaption: true
+            thumbOptions:
+                mode: crop
+                extension: auto
+            span: right
+            type: fileupload
+            comment: 'scv.facelessapi::lang.plugin.pages.preview_image_description'
+            tab: scv.facelessapi::lang.plugin.pages.tab_preview
+        seo_author:
+            label: scv.facelessapi::lang.plugin.pages.seo_author
+            span: left
+            placeholder: scv.facelessapi::lang.plugin.pages.seo_author
+            type: text
+            comment: 'scv.facelessapi::lang.plugin.pages.seo_author_description'
+            tab: scv.facelessapi::lang.plugin.pages.tab_seo
+        seo_keywords:
+            label: scv.facelessapi::lang.plugin.pages.seo_keywords
+            mode: string
+            separator: comma
+            customTags: true
+            useKey: false
+            span: right
+            placeholder: scv.facelessapi::lang.plugin.pages.seo_keywords
+            type: taglist
+            comment: 'scv.facelessapi::lang.plugin.pages.seo_keywords_description'
+            tab: scv.facelessapi::lang.plugin.pages.tab_seo
+        seo_description:
+            label: 'scv.facelessapi::lang.plugin.pages.seo_description'
+            size: small
+            span: full
+            placeholder: 'scv.facelessapi::lang.plugin.pages.seo_description'
+            preset:
+                field: preview_description
+                type: exact
+            type: textarea
+            comment: 'scv.facelessapi::lang.plugin.pages.seo_description_description'
+            tab: scv.facelessapi::lang.plugin.pages.tab_seo
+        active:
+            label: scv.facelessapi::lang.plugin.pages.active
+            span: left
+            placeholder: scv.facelessapi::lang.plugin.pages.active
+            type: switch
+            comment: 'scv.facelessapi::lang.plugin.pages.active_description'
+            tab: scv.facelessapi::lang.plugin.pages.tab_activity
+        active_begin:
+            label: 'scv.facelessapi::lang.plugin.pages.active_begin'
+            mode: datetime
+            span: auto
+            type: datepicker
+            comment: 'scv.facelessapi::lang.plugin.pages.active_begin_description'
+            tab: scv.facelessapi::lang.plugin.pages.tab_activity
+        active_end:
+            label: 'scv.facelessapi::lang.plugin.pages.active_end'
+            span: right
+            mode: datetime
+            type: datepicker
+            comment: 'scv.facelessapi::lang.plugin.pages.active_end_description'
+            tab: scv.facelessapi::lang.plugin.pages.tab_activity

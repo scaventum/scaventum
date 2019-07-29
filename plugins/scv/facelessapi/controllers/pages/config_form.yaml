@@ -1,0 +1,10 @@
+name: Pages
+form: $/scv/facelessapi/models/page/fields.yaml
+modelClass: scv\FacelessApi\Models\Page
+defaultRedirect: scv/facelessapi/pages
+create:
+    redirect: 'scv/facelessapi/pages/update/:id'
+    redirectClose: scv/facelessapi/pages
+update:
+    redirect: scv/facelessapi/pages
+    redirectClose: scv/facelessapi/pages

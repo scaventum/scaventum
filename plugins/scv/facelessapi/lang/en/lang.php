@@ -21,6 +21,7 @@
                 'manage_blocks' => 'Manage Faceless API Content Blocks',
                 'manage_client_blocks' => 'Manage Faceless API Client Content Blocks',
                 'manage_templates' => 'Manage Faceless API Client Page Templates',
+                'manage_pages' => 'Manage Faceless API Client Pages',
             ]
         ],
         'clients' => [
@@ -177,7 +178,7 @@
             'name_description' => 'Page template name',
             'code' => 'Template Code',
             'code_description' => 'Readable template code',
-            'blocks' => 'Template blocks',
+            'blocks' => 'Template Blocks',
             'blocks_description' => 'List of blocks in page template',
             'block_purpose' => 'Block Purpose',
             'block_purpose_description' => 'Purpose of the block',
@@ -191,6 +192,41 @@
                 'block_purpose_required' => 'Block purpose is required',
                 'block_code_required' => 'Block code is required'
             ]
+        ],
+        'pages' => [
+            'pages' => 'Pages',
+            'title' => 'Page Title',
+            'title_description' => 'Title of the page',
+            'slug' => 'Page Slug',
+            'slug_description' => 'Slug of the page',
+            'tab_content' => 'Content',
+            'tab_preview' => 'Preview',
+            'tab_seo' => 'SEO',
+            'tab_activity' => 'Activity',
+            'preview_title' => 'Preview Title',
+            'preview_title_description' => 'Preview title of the page',
+            'preview_subtitle' => 'Preview Subtitle',
+            'preview_subtitle_description' => 'Preview subtitle of the page',
+            'preview_description' => 'Preview Description',
+            'preview_description_description' => 'Preview description of the page',
+            'preview_image' => 'Preview Image',
+            'preview_image_description' => 'Preview image of the page',
+            'seo_keywords' => 'Meta Keywords',
+            'seo_keywords_description' => 'Meta keywords for SEO',
+            'seo_author' => 'Author',
+            'seo_author_description' => 'Author of the page',
+            'seo_description' => 'Meta description',
+            'seo_description_description' => 'Meta description for SEO',
+            'active' => 'Page Activity',
+            'active_description' => 'Page visibility from front end',
+            'active_begin' => 'Active Begin Time',
+            'active_begin_description' => 'Begin date and time of page visibility',
+            'active_end' => 'Active End Time',
+            'active_end_description' => 'End date and time of page visibility',
+            'blocks' => 'Page Blocks',
+            'blocks_description' => 'List of blocks in page',
+            'template_id' => 'Template',
+            'template_id_description' => 'Template for the content',
         ]
     ]
 ];
