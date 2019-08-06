@@ -36,15 +36,17 @@ tabs:
             placeholder: 'scv.facelessapi::lang.plugin.pages.template_id'
             type: dropdown
             required: true
+            cssClass: 'page-fields-template_id'
             comment: 'scv.facelessapi::lang.plugin.pages.template_id_description'
             tab: 'scv.facelessapi::lang.plugin.pages.tab_content'
-        blocks:
-            label: 'scv.facelessapi::lang.plugin.pages.blocks'
-            span: full
-            placeholder: 'scv.facelessapi::lang.plugin.pages.blocks'
-            type: richeditor
-            comment: 'scv.facelessapi::lang.plugin.pages.blocks_description'
-            tab: 'scv.facelessapi::lang.plugin.pages.tab_content'
+            dependsOn: client_id
+        # blocks:
+        #     label: 'scv.facelessapi::lang.plugin.pages.blocks'
+        #     span: full
+        #     placeholder: 'scv.facelessapi::lang.plugin.pages.blocks'
+        #     type: richeditor
+        #     comment: 'scv.facelessapi::lang.plugin.pages.blocks_description'
+        #     tab: 'scv.facelessapi::lang.plugin.pages.tab_content'
         preview_title:
             label: 'scv.facelessapi::lang.plugin.pages.preview_title'
             span: left

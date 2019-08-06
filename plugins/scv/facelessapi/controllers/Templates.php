@@ -6,7 +6,6 @@ use Session;
 use scv\FacelessApi\Controllers\FacelessAPIController;
 use scv\FacelessApi\Models\Block;
 
-
 class Templates extends FacelessAPIController
 {
     public $implement = [        'Backend\Behaviors\ListController',        'Backend\Behaviors\FormController'    ];
