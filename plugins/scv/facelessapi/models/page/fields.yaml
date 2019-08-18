@@ -45,6 +45,7 @@ tabs:
         #     span: full
         #     placeholder: 'scv.facelessapi::lang.plugin.pages.blocks'
         #     type: richeditor
+        #     cssClass: 'page-fields-blocks'
         #     comment: 'scv.facelessapi::lang.plugin.pages.blocks_description'
         #     tab: 'scv.facelessapi::lang.plugin.pages.tab_content'
         preview_title:
@@ -119,6 +120,8 @@ tabs:
             type: switch
             comment: 'scv.facelessapi::lang.plugin.pages.active_description'
             tab: scv.facelessapi::lang.plugin.pages.tab_activity
+            "on": "scv.facelessapi::lang.plugin.clients.active_on"
+            "off": "scv.facelessapi::lang.plugin.clients.active_off"
         active_begin:
             label: 'scv.facelessapi::lang.plugin.pages.active_begin'
             mode: datetime

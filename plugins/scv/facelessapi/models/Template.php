@@ -19,6 +19,13 @@ class Template extends FacelessAPIModel
     public $table = 'scv_facelessapi_templates';
 
     /**
+     * @var array List of has many relationships.
+     */
+    public $hasMany = [
+        'pages' => ['scv\FacelessApi\Models\Page']
+    ];
+
+    /**
      * @var array List of belongs to relationships.
      */
     public $belongsTo = [

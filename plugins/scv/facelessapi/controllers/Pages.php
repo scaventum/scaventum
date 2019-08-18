@@ -21,7 +21,6 @@ class Pages extends FacelessAPIController
     {
         parent::__construct();
         BackendMenu::setContext('scv.FacelessApi', 'faceless-api-pages', 'pages');
-        $this->addJs("/plugins/scv/facelessapi/assets/js/pages.js", "1.0.0");
     }
 
     public function formExtendFields($form)
@@ -40,40 +39,97 @@ class Pages extends FacelessAPIController
             
             $groups = [];
             foreach($blocks as $block){
+                $blockFields = $block->fields;
+                $fields = [];
+
+                usort($blockFields, function($a, $b) {
+                    return $a['field']["field_tab"] <=> $b['field']["field_tab"];
+                });
+
+                foreach($blockFields as $blockField){
+
+                    $field = $blockField["field"];
+
+                    $field_type = $field["field_type"];
+                    if(in_array($field["field_type"],["link","form"])){
+                        $field_type = "dropdown";
+                    }
+
+                    $main = [
+                        "label" => $field["field_label"],
+                        "placeholder" => $field["field_label"],
+                        "comment" => $field["field_comment"],
+                        "type" => $field_type,
+                        "span" => (!empty($field["field_span"])?$field["field_span"]:"auto"),
+                        "cssClass" => (!empty($field["field_css_class"])?$field["field_css_class"]:""),
+                        "tab" => ucfirst(!empty($field["field_tab"])?$field["field_tab"]:"content"),
+                    ];
+
+                    $advanced = [];
+                    if(isset($field["field_options"])){
+                        $advanced["options"] = array_column($field["field_options"], 'value');
+                    }
+
+                    if($field["field_type"] == "link"){
+                        $advanced["options"] = "getLinkOptions";
+                    }
+
+                    if($field["field_type"] == "colorpicker"){
+                        $advanced["availableColors"] = [""];
+                    }
+
+                    $fields[$field["field_code"]] = array_merge($main,$advanced);
+
+                    // var_dump($fields);
+                    // echo("<br>");
+                }
+                // die();
                 $groups[$block->code] = [
                     "name" => $block->name,
                     "icon" => !empty($block->icon) ? $block->icon : "icon-align-justify",
                     "fields" => [
-                        "block_purpose" => [
-                            "label" => "scv.facelessapi::lang.plugin.templates.block_purpose",
-                            "placeholder" => "scv.facelessapi::lang.plugin.templates.block_purpose",
-                            "comment" => "scv.facelessapi::lang.plugin.templates.block_purpose_description",
-                            "span" => "storm",
-                            "cssClass" => "col-md-4",
-                            "required" => true
-                        ],
-                        "block_purpose_code" => [
-                            "label" => "scv.facelessapi::lang.plugin.templates.block_purpose_code",
-                            "placeholder" => "scv.facelessapi::lang.plugin.templates.block_purpose_code",
-                            "comment" => "scv.facelessapi::lang.plugin.templates.block_purpose_code_description",
-                            "span" => "storm",
-                            "cssClass" => "col-md-4",
-                            "readOnly" => true,
-                            "preset" =>[
-                                "type" => "slug",
-                                "field" => "block_purpose"
-                            ],
-                            "required" => true
-                        ],
-                        "block_code" => [
-                            "label" => "scv.facelessapi::lang.plugin.blocks.code",
-                            "placeholder" => "scv.facelessapi::lang.plugin.blocks.code",
-                            "comment" => "scv.facelessapi::lang.plugin.blocks.code_description",
-                            "span" => "storm",
-                            "cssClass" => "col-md-4",
-                            "readOnly" => true,
-                            "default" => $block->code
-                        ],
+                        "blocks" => [
+                            "type" => "nestedform",
+                            "usePanelStyles" => false,
+                            "form" => [
+                                "secondaryTabs" => [
+                                    "fields" => $fields
+                                    // [
+                                    //     "block_purpose" => [
+                                    //         "label" => "scv.facelessapi::lang.plugin.templates.block_purpose",
+                                    //         "placeholder" => "scv.facelessapi::lang.plugin.templates.block_purpose",
+                                    //         "comment" => "scv.facelessapi::lang.plugin.templates.block_purpose_description",
+                                    //         "span" => "storm",
+                                    //         "cssClass" => "col-md-4",
+                                    //         "readOnly" => true,
+                                    //     ],
+                                    //     "block_purpose_code" => [
+                                    //         "label" => "scv.facelessapi::lang.plugin.templates.block_purpose_code",
+                                    //         "placeholder" => "scv.facelessapi::lang.plugin.templates.block_purpose_code",
+                                    //         "comment" => "scv.facelessapi::lang.plugin.templates.block_purpose_code_description",
+                                    //         "span" => "storm",
+                                    //         "cssClass" => "col-md-4",
+                                    //         "readOnly" => true,
+                                    //         "preset" =>[
+                                    //             "type" => "slug",
+                                    //             "field" => "block_purpose"
+                                    //         ],
+                                    //         "required" => true
+                                    //     ],
+                                    //     "block_code" => [
+                                    //         "label" => "scv.facelessapi::lang.plugin.blocks.code",
+                                    //         "placeholder" => "scv.facelessapi::lang.plugin.blocks.code",
+                                    //         "comment" => "scv.facelessapi::lang.plugin.blocks.code_description",
+                                    //         "span" => "storm",
+                                    //         "cssClass" => "col-md-4",
+                                    //         "readOnly" => true,
+                                    //         "default" => $block->code
+                                    //     ]
+                                    // ]
+                                ]
+                            ]
+                        ]
+                        
                     ]
                 ];
             }
@@ -83,22 +139,14 @@ class Pages extends FacelessAPIController
                     "label" => 'scv.facelessapi::lang.plugin.pages.blocks',
                     "tab" => 'scv.facelessapi::lang.plugin.pages.tab_content',
                     "span" => 'full',
-                    "cssClass" => 'auto-collapse',
+                    "cssClass" => 'auto-collapse page-fields-blocks',
                     "type" => 'repeater',
                     "prompt" => 'scv.facelessapi::lang.plugin.custom_actions.add_new_item',
                     "comment" => 'scv.facelessapi::lang.plugin.pages.blocks_description',
                     "groups" => $groups,
-                    "dependsOn" => 'client_id'
+                    "context" => ['update'],
                 ]
             ]);
         }
-    }
-
-    public function onRefreshBlocks(){
-        $template_id = intval(post('template_id'));
- 
-
-        
-        return $this->formRefresh();
     }
 }

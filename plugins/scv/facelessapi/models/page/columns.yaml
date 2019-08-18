@@ -5,17 +5,23 @@ columns:
         searchable: true
         sortable: true
     title:
-        label: 'Page Title'
+        label: 'scv.facelessapi::lang.plugin.pages.title'
         type: text
         searchable: true
         sortable: true
-    client_id:
+    slug:
+        label: 'scv.facelessapi::lang.plugin.pages.slug'
+        type: text
+        searchable: true
+        sortable: true
+    client[name]:
         label: 'scv.facelessapi::lang.plugin.themes.client_id'
         type: text
         searchable: true
         sortable: true
     active:
-        label: Active
-        type: text
+        label: "scv.facelessapi::lang.plugin.clients.active"
+        type: partial
+        path: $/scv/facelessapi/partials/_columns_active.htm
         searchable: true
         sortable: true
