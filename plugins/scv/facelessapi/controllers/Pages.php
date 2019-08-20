@@ -55,6 +55,9 @@ class Pages extends FacelessAPIController
                         $field_type = "dropdown";
                     }
 
+                    $tab = (!empty($field["field_tab"])?$field["field_tab"]:"content");
+                    $tab = ($tab == "content" ? e(trans("scv.facelessapi::lang.plugin.blocks.field_tab_content")) : e(trans("scv.facelessapi::lang.plugin.blocks.field_tab_settings")));
+
                     $main = [
                         "label" => $field["field_label"],
                         "placeholder" => $field["field_label"],
@@ -62,7 +65,7 @@ class Pages extends FacelessAPIController
                         "type" => $field_type,
                         "span" => (!empty($field["field_span"])?$field["field_span"]:"auto"),
                         "cssClass" => (!empty($field["field_css_class"])?$field["field_css_class"]:""),
-                        "tab" => ucfirst(!empty($field["field_tab"])?$field["field_tab"]:"content"),
+                        "tab" => ucfirst($tab),
                     ];
 
                     $advanced = [];
@@ -80,10 +83,23 @@ class Pages extends FacelessAPIController
 
                     $fields[$field["field_code"]] = array_merge($main,$advanced);
 
-                    // var_dump($fields);
-                    // echo("<br>");
+                    $fields = array_merge($fields,[
+                        "block_purpose_code" => [
+                            "label" => "scv.facelessapi::lang.plugin.templates.block_purpose_code",
+                            "placeholder" => "scv.facelessapi::lang.plugin.templates.block_purpose_code",
+                            "comment" => "scv.facelessapi::lang.plugin.templates.block_purpose_code_description",
+                            "span" => "full",
+                            "readOnly" => true,
+                            "preset" =>[
+                                "type" => "slug",
+                                "field" => "block_purpose"
+                            ],
+                            "required" => true,
+                            "tab" => e(trans("scv.facelessapi::lang.plugin.blocks.field_tab_settings"))
+                        ]
+                    ]);
                 }
-                // die();
+                
                 $groups[$block->code] = [
                     "name" => $block->name,
                     "icon" => !empty($block->icon) ? $block->icon : "icon-align-justify",
@@ -94,38 +110,6 @@ class Pages extends FacelessAPIController
                             "form" => [
                                 "secondaryTabs" => [
                                     "fields" => $fields
-                                    // [
-                                    //     "block_purpose" => [
-                                    //         "label" => "scv.facelessapi::lang.plugin.templates.block_purpose",
-                                    //         "placeholder" => "scv.facelessapi::lang.plugin.templates.block_purpose",
-                                    //         "comment" => "scv.facelessapi::lang.plugin.templates.block_purpose_description",
-                                    //         "span" => "storm",
-                                    //         "cssClass" => "col-md-4",
-                                    //         "readOnly" => true,
-                                    //     ],
-                                    //     "block_purpose_code" => [
-                                    //         "label" => "scv.facelessapi::lang.plugin.templates.block_purpose_code",
-                                    //         "placeholder" => "scv.facelessapi::lang.plugin.templates.block_purpose_code",
-                                    //         "comment" => "scv.facelessapi::lang.plugin.templates.block_purpose_code_description",
-                                    //         "span" => "storm",
-                                    //         "cssClass" => "col-md-4",
-                                    //         "readOnly" => true,
-                                    //         "preset" =>[
-                                    //             "type" => "slug",
-                                    //             "field" => "block_purpose"
-                                    //         ],
-                                    //         "required" => true
-                                    //     ],
-                                    //     "block_code" => [
-                                    //         "label" => "scv.facelessapi::lang.plugin.blocks.code",
-                                    //         "placeholder" => "scv.facelessapi::lang.plugin.blocks.code",
-                                    //         "comment" => "scv.facelessapi::lang.plugin.blocks.code_description",
-                                    //         "span" => "storm",
-                                    //         "cssClass" => "col-md-4",
-                                    //         "readOnly" => true,
-                                    //         "default" => $block->code
-                                    //     ]
-                                    // ]
                                 ]
                             ]
                         ]

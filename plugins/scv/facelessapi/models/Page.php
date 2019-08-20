@@ -6,6 +6,7 @@ use BackendAuth;
 use scv\FacelessApi\Models\FacelessAPIModel;
 use scv\FacelessApi\Models\Client;
 use scv\FacelessApi\Models\Template;
+use scv\FacelessApi\Models\Page;
 
 /**
  * Model
@@ -120,6 +121,14 @@ class Page extends FacelessAPIModel
      * @var array Links of the pages.
      */
     public function getLinkOptions(){
-        return [];
+        return Page::where('client_id',$this->client_id)->get()->pluck('page_selection','id');
+    }
+
+    /**
+     * @var string Pages title and slug.
+     */
+    public function getPageSelectionAttribute()
+    {
+        return $this->title . ' [... /' . $this->slug."]";
     }
 }
