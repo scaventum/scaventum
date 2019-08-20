@@ -1,6 +1,6 @@
 list: $/scv/facelessapi/models/page/columns.yaml
 modelClass: scv\FacelessApi\Models\Page
-title: Pages
+title: scv.facelessapi::lang.plugin.pages.pages
 noRecordsMessage: 'backend::lang.list.no_records'
 showSetup: true
 showCheckboxes: true

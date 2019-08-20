@@ -84,16 +84,21 @@ class Pages extends FacelessAPIController
                     $fields[$field["field_code"]] = array_merge($main,$advanced);
 
                     $fields = array_merge($fields,[
+                        "block_code" => [
+                            "label" => "scv.facelessapi::lang.plugin.blocks.code",
+                            "placeholder" => "scv.facelessapi::lang.plugin.blocks.code",
+                            "comment" => "scv.facelessapi::lang.plugin.blocks.code_description",
+                            "span" => "left",
+                            "readOnly" => true,
+                            "required" => true,
+                            "tab" => e(trans("scv.facelessapi::lang.plugin.blocks.field_tab_settings"))
+                        ],
                         "block_purpose_code" => [
                             "label" => "scv.facelessapi::lang.plugin.templates.block_purpose_code",
                             "placeholder" => "scv.facelessapi::lang.plugin.templates.block_purpose_code",
                             "comment" => "scv.facelessapi::lang.plugin.templates.block_purpose_code_description",
-                            "span" => "full",
+                            "span" => "right",
                             "readOnly" => true,
-                            "preset" =>[
-                                "type" => "slug",
-                                "field" => "block_purpose"
-                            ],
                             "required" => true,
                             "tab" => e(trans("scv.facelessapi::lang.plugin.blocks.field_tab_settings"))
                         ]

@@ -1,4 +1,4 @@
-name: Pages
+name: scv.facelessapi::lang.plugin.pages.pages
 form: $/scv/facelessapi/models/page/fields.yaml
 modelClass: scv\FacelessApi\Models\Page
 defaultRedirect: scv/facelessapi/pages
