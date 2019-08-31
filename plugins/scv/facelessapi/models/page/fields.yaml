@@ -1,29 +1,15 @@
 fields:
     title:
         label: 'scv.facelessapi::lang.plugin.pages.title'
-        span: storm
-        cssClass: col-md-4
+        span: left
         placeholder: 'scv.facelessapi::lang.plugin.pages.title'
         required: 1
         type: text
         comment: 'scv.facelessapi::lang.plugin.pages.title_description'
-    slug:
-        label: 'scv.facelessapi::lang.plugin.pages.slug'
-        span: storm
-        cssClass: col-md-4
-        placeholder: 'scv.facelessapi::lang.plugin.pages.slug'
-        readOnly: 1
-        required: 1
-        preset:
-            field: title
-            type: slug
-        type: text
-        comment: 'scv.facelessapi::lang.plugin.pages.slug_description'
     client_id:
         label: "scv.facelessapi::lang.plugin.themes.client_id"
         showSearch: true
-        span: storm
-        cssClass: col-md-4
+        span: right
         placeholder: "scv.facelessapi::lang.plugin.themes.client_id"
         required: true
         type: dropdown
@@ -40,6 +26,26 @@ tabs:
             comment: 'scv.facelessapi::lang.plugin.pages.template_id_description'
             tab: 'scv.facelessapi::lang.plugin.pages.tab_content'
             dependsOn: client_id
+
+        slug:
+            label: 'scv.facelessapi::lang.plugin.pages.slug'
+            span: left
+            placeholder: 'scv.facelessapi::lang.plugin.pages.slug'
+            readOnly: 1
+            required: 1
+            preset:
+                field: title
+                type: slug
+            type: text
+            comment: 'scv.facelessapi::lang.plugin.pages.slug_description'
+            tab: 'scv.facelessapi::lang.plugin.pages.tab_category'
+        parent_id:
+            label: 'scv.facelessapi::lang.plugin.pages.parent_id'
+            span: right
+            placeholder: 'scv.facelessapi::lang.plugin.pages.parent_id'
+            type: dropdown
+            comment: 'scv.facelessapi::lang.plugin.pages.parent_id_description'
+            tab: 'scv.facelessapi::lang.plugin.pages.tab_category'
         # blocks:
         #     label: 'scv.facelessapi::lang.plugin.pages.blocks'
         #     span: full

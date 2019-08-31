@@ -14,7 +14,7 @@ use scv\FacelessApi\Models\Page;
 class Page extends FacelessAPIModel
 {
     use \October\Rain\Database\Traits\Validation;
-    
+    use \October\Rain\Database\Traits\Nullable;
 
     /**
      * @var string The database table used by the model.
@@ -48,6 +48,11 @@ class Page extends FacelessAPIModel
     public $jsonable = [
         'blocks'
     ];
+
+    /**
+     * @var array Nullable attributes.
+     */
+    protected $nullable = ['parent_id'];
 
     public function filterFields($fields, $context = null)
     {
@@ -127,6 +132,13 @@ class Page extends FacelessAPIModel
      */
     public function getLinkOptions(){
         return Page::where('client_id',$this->client_id)->get()->pluck('page_selection','id');
+    }
+
+     /**
+     * @var array Parent of the pages.
+     */
+    public function getParentIdOptions(){
+        return Page::where('id','!=',$this->id)->pluck('title','id');
     }
 
     /**
