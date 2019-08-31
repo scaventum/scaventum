@@ -1,0 +1,10 @@
+name: scv.facelessapi::lang.plugin.categories.categories
+form: $/scv/facelessapi/models/category/fields.yaml
+modelClass: scv\FacelessApi\Models\Category
+defaultRedirect: scv/facelessapi/categories
+create:
+    redirect: 'scv/facelessapi/categories/update/:id'
+    redirectClose: scv/facelessapi/categories
+update:
+    redirect: scv/facelessapi/categories
+    redirectClose: scv/facelessapi/categories

@@ -1,11 +1,11 @@
 fields:
     name:
-        label: 'scv.facelessapi::lang.plugin.theme_categories.name'
+        label: 'scv.facelessapi::lang.plugin.categories.name'
         span: storm
-        placeholder: 'scv.facelessapi::lang.plugin.theme_categories.name'
+        placeholder: 'scv.facelessapi::lang.plugin.categories.name'
         required: true
         type: text
-        comment: 'scv.facelessapi::lang.plugin.theme_categories.name_description'
+        comment: 'scv.facelessapi::lang.plugin.categories.name_description'
         cssClass: col-md-4
     client_id:
         label: 'scv.facelessapi::lang.plugin.themes.client_id'
@@ -17,15 +17,15 @@ fields:
         comment: 'scv.facelessapi::lang.plugin.themes.client_id_description'
         cssClass: col-md-4
     code:
-        label: 'scv.facelessapi::lang.plugin.theme_categories.code'
+        label: 'scv.facelessapi::lang.plugin.categories.code'
         span: storm
         readOnly: true
         required: true
-        placeholder: 'scv.facelessapi::lang.plugin.theme_categories.code'
+        placeholder: 'scv.facelessapi::lang.plugin.categories.code'
         required: 1
         preset:
             field: name
             type: slug
         type: text
-        comment: 'scv.facelessapi::lang.plugin.theme_categories.code_description'
+        comment: 'scv.facelessapi::lang.plugin.categories.code_description'
         cssClass: col-md-4

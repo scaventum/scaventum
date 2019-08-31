@@ -111,7 +111,12 @@ class Page extends FacelessAPIModel
         if(empty($this->blocks)){
             $template = Template::find($this->template_id);
 
-            return json_encode($template->blocks);
+            $blocks = [];
+            foreach($template->blocks as $key=>$block){
+                $blocks[] = ["blocks" => $block, "_group" => $block["_group"]];
+            }
+
+            return json_encode($blocks);
         }else{
             return $this->blocks;
         }

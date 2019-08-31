@@ -1,0 +1,21 @@
+columns:
+    id:
+        label: "#"
+        type: number
+        searchable: true
+        sortable: true
+    name:
+        label: "scv.facelessapi::lang.plugin.categories.name"
+        type: text
+        searchable: true
+        sortable: true
+    code:
+        label: "scv.facelessapi::lang.plugin.categories.code"
+        type: text
+        searchable: true
+        sortable: true
+    client[name]:
+        label: "scv.facelessapi::lang.plugin.themes.client_id"
+        type: text
+        searchable: true
+        sortable: true

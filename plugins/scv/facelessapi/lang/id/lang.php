@@ -18,6 +18,7 @@
                 'manage_configs' => 'Kelola Konfigurasi Faceless API',
                 'manage_themes' => 'Kelola Tema Faceless API',
                 'manage_theme_categories' => 'Kelola Kategori Tema Faceless API',
+                'manage_categories' => 'Kelola Kategori Halaman Faceless API',
                 'manage_blocks' => 'Kelola Konten Blok Faceless API',
                 'manage_client_blocks' => 'Kelola Konten Blok Klien Faceless API',
                 'manage_templates' => 'Kelola Pola Halaman Klien Faceless API',
@@ -106,6 +107,16 @@
                 'name_required' => 'Nama pengaturan harus diisi',
                 'name_alpha_dash' => 'Nama pengaturan harus berupa huruf, angka, _ atau - tanpa spasi',
                 'type_required' => 'Tipe pengaturan harus diisi'
+            ],
+        ],
+        'categories' => [
+            'categories' => 'Kategori Halaman',
+            'name' => 'Nama Kategori',
+            'name_description' => 'Nama kategori dari halaman',
+            'code' => 'Kode Kategori',
+            'code_description' => 'kode kategori yang mudah dibaca',
+            'validation' => [
+                'duplicate' => 'Nama kategori sudah dipakai oleh klien'
             ],
         ],
         'blocks' => [
