@@ -46,6 +46,17 @@ tabs:
             type: dropdown
             comment: 'scv.facelessapi::lang.plugin.pages.parent_id_description'
             tab: 'scv.facelessapi::lang.plugin.pages.tab_category'
+        _category_id:
+            label: 'scv.facelessapi::lang.plugin.pages.category_id'
+            type: checkboxlist
+            placeholder: 'scv.facelessapi::lang.plugin.pages.category_id'
+            # set to true to explicitly enable the "Select All", "Select None" options
+            # on lists that have <=10 items (>10 automatically enables it)
+            quickselect: true 
+            span: full
+            comment: 'scv.facelessapi::lang.plugin.pages.category_id_description'
+            tab: 'scv.facelessapi::lang.plugin.pages.tab_category'
+
         # blocks:
         #     label: 'scv.facelessapi::lang.plugin.pages.blocks'
         #     span: full

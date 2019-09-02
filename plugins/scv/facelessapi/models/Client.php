@@ -50,7 +50,10 @@ class Client extends FacelessAPIModel
     public $hasMany = [
         'themes' => ['scv\FacelessApi\Models\Theme'],
         'theme_categories' => ['scv\FacelessApi\Models\ThemeCategory'],
-        'blocks' => ['scv\FacelessApi\Models\Block']
+        'categories' => ['scv\FacelessApi\Models\Category'],
+        'blocks' => ['scv\FacelessApi\Models\Block'],
+        'templates' => ['scv\FacelessApi\Models\Template'],
+        'pages' => ['scv\FacelessApi\Models\Page']
     ];
 
     public function afterCreate(){
@@ -74,6 +77,18 @@ class Client extends FacelessAPIModel
             $delete = false;
         }
         if($this->theme_categories()->exists()){
+            $delete = false;
+        }
+        if($this->categories()->exists()){
+            $delete = false;
+        }
+        if($this->blocks()->exists()){
+            $delete = false;
+        }
+        if($this->templates()->exists()){
+            $delete = false;
+        }
+        if($this->pages()->exists()){
             $delete = false;
         }
 

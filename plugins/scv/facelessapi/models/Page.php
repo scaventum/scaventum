@@ -6,7 +6,8 @@ use BackendAuth;
 use scv\FacelessApi\Models\FacelessAPIModel;
 use scv\FacelessApi\Models\Client;
 use scv\FacelessApi\Models\Template;
-use scv\FacelessApi\Models\Page;
+use scv\FacelessApi\Models\Category;
+use scv\FacelessApi\Models\PageCategory;
 
 /**
  * Model
@@ -42,6 +43,10 @@ class Page extends FacelessAPIModel
         'template' => ['scv\FacelessApi\Models\Template']
     ];
 
+    public $belongsToMany = [
+        'categories' => ['scv\FacelessApi\Models\Category','table' => 'scv_facelessapi_page_categories']
+    ];
+
     /**
      * @var array Jsonable fields
      */
@@ -66,6 +71,18 @@ class Page extends FacelessAPIModel
                 $fields->template_id->readOnly = true;
             }
         }
+    }
+
+    public function afterSave(){
+        
+        $categories = [];
+        foreach(post('Page[category_id]') as $category){
+            $categories[] = ["page_id" => $this->id, "category_id" => intval($category)];
+        }
+        PageCategory::where('page_id', $this->id)->delete();
+        PageCategory::insert($categories);
+
+        //parent::beforeSave();
     }
 
     /**
@@ -114,14 +131,15 @@ class Page extends FacelessAPIModel
      */
     public function getBlocksAttribute(){
         if(empty($this->blocks)){
-            $template = Template::find($this->template_id);
-
-            $blocks = [];
-            foreach($template->blocks as $key=>$block){
-                $blocks[] = ["blocks" => $block, "_group" => $block["_group"]];
+            if(!empty($this->template_id)){
+                $template = Template::find($this->template_id);
+    
+                $blocks = [];
+                foreach($template->blocks as $key=>$block){
+                    $blocks[] = ["blocks" => $block, "_group" => $block["_group"]];
+                }
+                return json_encode($blocks);
             }
-
-            return json_encode($blocks);
         }else{
             return $this->blocks;
         }
@@ -131,14 +149,21 @@ class Page extends FacelessAPIModel
      * @var array Links of the pages.
      */
     public function getLinkOptions(){
-        return Page::where('client_id',$this->client_id)->get()->pluck('page_selection','id');
+        return self::where('client_id',$this->client_id)->get()->pluck('page_selection','id');
     }
 
-     /**
+    /**
      * @var array Parent of the pages.
      */
     public function getParentIdOptions(){
-        return Page::where('id','!=',$this->id)->pluck('title','id');
+        return self::where('id','!=',$this->id)->where('client_id',$this->client_id)->pluck('title','id');
+    } 
+
+    /**
+    * @var array Parent of the pages.
+    */
+    public function getCategoryIdOptions(){
+        return Category::where('client_id',$this->client_id)->pluck('name','id');
     }
 
     /**

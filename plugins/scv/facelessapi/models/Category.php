@@ -13,7 +13,7 @@ use scv\FacelessApi\Models\Client;
 class Category extends FacelessAPIModel
 {
     use \October\Rain\Database\Traits\Validation;
-    
+
     /**
      * @var string The database table used by the model.
      */
@@ -37,8 +37,8 @@ class Category extends FacelessAPIModel
     /**
      * @var array List of has many relationships.
      */
-    public $hasMany = [
-        'pages' => ['scv\FacelessApi\Models\Page']
+    public $belongsToMany = [
+        'pages' => ['scv\FacelessApi\Models\Page','table' => 'scv_facelessapi_page_categories']
     ];
 
     public function filterFields($fields, $context = null)
