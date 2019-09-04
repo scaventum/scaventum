@@ -217,6 +217,8 @@
             'tab_activity' => 'Activity',
             'parent_id' => 'Parent Page',
             'parent_id_description' => 'Parent of this page',
+            'category_id' => 'Page Category',
+            'category_id_description' => 'Category of this page',
             'preview_title' => 'Preview Title',
             'preview_title_description' => 'Preview title of the page',
             'preview_subtitle' => 'Preview Subtitle',

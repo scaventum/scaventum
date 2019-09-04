@@ -217,6 +217,8 @@
             'tab_activity' => 'Aktivitas',
             'parent_id' => 'Halaman Atas',
             'parent_id_description' => 'Halaman atas',
+            'category_id' => 'Kategori Halaman',
+            'category_id_description' => 'Kategori untuk halaman',
             'preview_title' => 'Judul Pendahuluan',
             'preview_title_description' => 'Judul pendahuluan untuk halaman',
             'preview_subtitle' => 'Subjudul Pendahuluan',

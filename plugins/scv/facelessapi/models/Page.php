@@ -1,5 +1,6 @@
 <?php namespace scv\FacelessApi\Models;
 
+use Illuminate\Support\Str;
 use ValidationException;
 use BackendAuth;
 
@@ -36,11 +37,19 @@ class Page extends FacelessAPIModel
     ];
 
     /**
+     * @var array List of has many relationships.
+     */
+    public $hasMany = [
+        'children' => ['scv\FacelessApi\Models\Page']
+    ];
+
+    /**
      * @var array List of belongs to relationships.
      */
     public $belongsTo = [
         'client' => ['scv\FacelessApi\Models\Client'],
-        'template' => ['scv\FacelessApi\Models\Template']
+        'template' => ['scv\FacelessApi\Models\Template'],
+        'parent' => ['scv\FacelessApi\Models\Page']
     ];
 
     public $belongsToMany = [
@@ -57,7 +66,10 @@ class Page extends FacelessAPIModel
     /**
      * @var array Nullable attributes.
      */
-    protected $nullable = ['parent_id'];
+    protected $nullable = [
+        'parent_id',
+        'seo_keywords'
+    ];
 
     public function filterFields($fields, $context = null)
     {
@@ -76,11 +88,13 @@ class Page extends FacelessAPIModel
     public function afterSave(){
         
         $categories = [];
-        foreach(post('Page[category_id]') as $category){
-            $categories[] = ["page_id" => $this->id, "category_id" => intval($category)];
-        }
         PageCategory::where('page_id', $this->id)->delete();
-        PageCategory::insert($categories);
+        if(is_array('Page[_category_id]')){
+            foreach(post('Page[_category_id]') as $category){
+                $categories[] = ["page_id" => $this->id, "category_id" => intval($category)];
+            }
+            PageCategory::insert($categories);
+        }
 
         //parent::beforeSave();
     }
@@ -153,13 +167,21 @@ class Page extends FacelessAPIModel
     }
 
     /**
-     * @var array Parent of the pages.
+     * @var array Categories available.
      */
     public function getParentIdOptions(){
-        return self::where('id','!=',$this->id)->where('client_id',$this->client_id)->pluck('title','id');
+        return self::where('parent_id',NULL)->where('id','!=',$this->id)->where('client_id',$this->client_id)->pluck('title','id');
     } 
 
     /**
+    * @var array Categories for the page.
+    */
+    public function getCategoryIdAttribute(){
+
+        return PageCategory::where('page_id',$this->id)->pluck('category_id')->toArray();
+    }
+
+     /**
     * @var array Parent of the pages.
     */
     public function getCategoryIdOptions(){
@@ -171,6 +193,17 @@ class Page extends FacelessAPIModel
      */
     public function getPageSelectionAttribute()
     {
-        return $this->title . ' [... /' . $this->slug."]";
+        return $this->title . ' [.../' . $this->slug."]";
+    }
+
+    /**
+     * @var string Slug of the page.
+     */
+    public function getSlugAttribute(){
+        $parent_slug = "";
+        if($this->parent_id){
+            $parent_slug = self::find($this->parent_id)->slug;
+        }
+        return $parent_slug."/".Str::slug($this->title,'-');
     }
 }

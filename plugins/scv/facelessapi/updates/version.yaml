@@ -96,3 +96,6 @@
 1.0.33:
     - 'Created table scv_facelessapi_page_categories'
     - builder_table_create_scv_facelessapi_page_categories.php
+1.0.34:
+    - 'Updated table scv_facelessapi_pages'
+    - builder_table_update_scv_facelessapi_pages_7.php
