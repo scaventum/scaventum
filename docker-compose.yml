@@ -1,23 +1,54 @@
-version: '3'
+version: "3"
+
 services:
-  web:
-    volumes:
-      - ./:/var/www/html/
-    image: aspendigital/octobercms:build.447-php7.1-apache
+  scaventum-www:
+    build:
+      context: .docker/www
+      dockerfile: Dockerfile
+    container_name: scaventum-www
     ports:
-      - 80:80
-    environment:
-      - DB_TYPE=mysql
-      - DB_HOST=mysql #DB_HOST should match the service name of the database container
-      - DB_DATABASE=scaventum
-      - DB_USERNAME=root
-      - DB_PASSWORD=root
-  mysql:
+      - "80:80"
+      - "443:443"
     volumes:
-      - ./mysql:/var/lib/mysql/
+      - .:/var/www/html:cached
+    networks:
+      - scaventum
+  scaventum-mysql:
     image: mysql:5.7
+    container_name: scaventum-mysql
     ports:
-      - 3306:3306
+      - "3306:3306"
+    volumes:
+      - scaventum-mysqldata:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=scaventum
+      - TZ=Pacific/Auckland
+    networks:
+      - scaventum
+  scaventum-redis:
+    image: redis:alpine
+    container_name: scaventum-redis
+    volumes:
+      - scaventum-redisdata:/data
+    networks:
+      - scaventum
+  scaventum-mailhog:
+    image: mailhog/mailhog:latest
+    container_name: scaventum-mailhog
+    ports:
+      - "8025:8025"
+      - "1025:1025"
+    networks:
+      - scaventum
+
+networks:
+  scaventum:
+    driver: "bridge"
+
+volumes:
+  scaventum-mysqldata:
+    driver: "local"
+  scaventum-redisdata:
+    driver: "local"
+
