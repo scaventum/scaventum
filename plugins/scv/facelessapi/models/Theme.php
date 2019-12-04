@@ -1,4 +1,6 @@
-<?php namespace scv\FacelessApi\Models;
+<?php
+
+namespace scv\FacelessApi\Models;
 
 use Model;
 use BackendAuth;
@@ -10,6 +12,7 @@ use scv\FacelessApi\Models\FacelessAPIModel;
 use scv\FacelessApi\Models\Client;
 use scv\FacelessApi\Models\ThemeValue;
 use scv\FacelessApi\Models\ThemeCategory;
+
 /**
  * Model
  */
@@ -41,7 +44,7 @@ class Theme extends FacelessAPIModel
         'custom_theme_values.*.*.name.alpha_dash' => 'scv.facelessapi::lang.plugin.theme_values.validation.name_alpha_dash',
         'custom_theme_values.*.*.type.required' => 'scv.facelessapi::lang.plugin.theme_values.validation.type_required'
     ];
-    
+
     /**
      * @var array List of fillable fields.
      */
@@ -61,7 +64,7 @@ class Theme extends FacelessAPIModel
         'theme_values' => ['scv\FacelessApi\Models\ThemeValue']
     ];
 
-    
+
     /**
      * @var array List of purgeable fields.
      */
@@ -71,34 +74,38 @@ class Theme extends FacelessAPIModel
 
     public function filterFields($fields, $context = null)
     {
-        if(count($this->getClientIdOptions()) <= 1){
-            $fields->client_id->readOnly = true;
+        if (count($this->getClientIdOptions()) <= 1) {
+            if (isset($fields->client_id)) {
+                $fields->client_id->readOnly = true;
+            }
         }
-        
+
         if ($context == 'update') {
             $fields->client_id->readOnly = true;
         }
     }
 
-    public function beforeCreate(){
+    public function beforeCreate()
+    {
         parent::beforeCreate();
         $this->active = 0;
     }
 
-    public function afterSave(){
-        if(post("Theme[custom_theme_values]")){
+    public function afterSave()
+    {
+        if (post("Theme[custom_theme_values]")) {
             $this->theme_values()->delete();
-    
+
             $newThemeValues = [];
-            foreach(post("Theme[custom_theme_values]") as $themeCategoryKey=>$themeCategory){
-                foreach($themeCategory as $themeValue){ 
+            foreach (post("Theme[custom_theme_values]") as $themeCategoryKey => $themeCategory) {
+                foreach ($themeCategory as $themeValue) {
                     $newThemeValues[] = [
                         "name" => $themeValue["name"],
                         "theme_id" => $this->id,
                         "theme_category_id" => $themeCategoryKey,
                         "type" => $themeValue["type"],
                         "value_text" => $themeValue["value_text"],
-                        "value_number" => is_numeric($themeValue["value_number"])?$themeValue["value_number"]:0,
+                        "value_number" => is_numeric($themeValue["value_number"]) ? $themeValue["value_number"] : 0,
                         "value_color" => $themeValue["value_color"],
                         "value_media" => $themeValue["value_media"],
                         "created_at" => date("Y-m-d H:i:s"),
@@ -108,19 +115,20 @@ class Theme extends FacelessAPIModel
                     ];
                 }
             }
-            
+
             ThemeValue::insert($newThemeValues);
         }
     }
 
-    public function beforeDelete(){
+    public function beforeDelete()
+    {
         $delete = true;
 
-        if($this->theme_values()->exists()){
+        if ($this->theme_values()->exists()) {
             $delete = false;
         }
 
-        if(!$delete){
+        if (!$delete) {
             throw new ValidationException(['id' => Lang::get("scv.facelessapi::lang.plugin.validations.delete_error_record_exists")]);
         }
     }
@@ -128,13 +136,13 @@ class Theme extends FacelessAPIModel
     /**
      * @var integer id of client if only has one user on create.
      */
-    public function getClientIdAttribute($values){
-        if($values==NULL){
+    public function getClientIdAttribute($values)
+    {
+        if ($values == NULL) {
             $client_id = Client::getClientIdAttribute($values);
-    
+
             return  $client_id;
-            
-        }else{
+        } else {
             return $values;
         }
     }
@@ -142,7 +150,8 @@ class Theme extends FacelessAPIModel
     /**
      * @var array clients related to login user.
      */
-    public function getClientIdOptions(){
+    public function getClientIdOptions()
+    {
         $clients = Client::getClientIdOptions();
         return $clients;
     }
@@ -150,15 +159,16 @@ class Theme extends FacelessAPIModel
     /**
      * @var array values related to theme.
      */
-    public function getCustomThemeValuesAttribute(){
+    public function getCustomThemeValuesAttribute()
+    {
         $currentThemeValues = [];
 
-        $themeCategories = ThemeCategory::where('client_id',$this->client_id)->get();
-        foreach($themeCategories as $themeCategory){
-            $themeValues = ThemeValue::where('theme_id',$this->id)
-                ->where('theme_category_id',$themeCategory->id)
+        $themeCategories = ThemeCategory::where('client_id', $this->client_id)->get();
+        foreach ($themeCategories as $themeCategory) {
+            $themeValues = ThemeValue::where('theme_id', $this->id)
+                ->where('theme_category_id', $themeCategory->id)
                 ->get();
-            foreach($themeValues as $themeValue){
+            foreach ($themeValues as $themeValue) {
                 $currentThemeValues[$themeCategory->id][] = [
                     "name" => $themeValue->name,
                     "type" => $themeValue->type,
@@ -172,13 +182,14 @@ class Theme extends FacelessAPIModel
 
         return $currentThemeValues;
     }
-    
-    public static function toggleActive($id, $active){
+
+    public static function toggleActive($id, $active)
+    {
         $client_id = Theme::find($id)->client_id;
 
-        if($client_id!=NULL){
-            if($active){
-                Theme::where('client_id',$client_id)->update([
+        if ($client_id != NULL) {
+            if ($active) {
+                Theme::where('client_id', $client_id)->update([
                     "active" => 0,
                 ]);
             }
