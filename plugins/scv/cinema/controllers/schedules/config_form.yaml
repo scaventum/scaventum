@@ -1,0 +1,10 @@
+name: Schedules
+form: $/scv/cinema/models/schedule/fields.yaml
+modelClass: Scv\Cinema\Models\Schedule
+defaultRedirect: scv/cinema/schedules
+create:
+    redirect: 'scv/cinema/schedules/update/:id'
+    redirectClose: scv/cinema/schedules
+update:
+    redirect: scv/cinema/schedules
+    redirectClose: scv/cinema/schedules

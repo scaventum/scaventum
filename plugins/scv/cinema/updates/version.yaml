@@ -1,0 +1,14 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table scv_cinema_movies'
+    - builder_table_create_scv_cinema_movies.php
+1.0.3:
+    - 'Created table scv_cinema_schedules'
+    - builder_table_create_scv_cinema_schedules.php
+1.0.4:
+    - 'Updated table scv_cinema_movies'
+    - builder_table_update_scv_cinema_movies.php
+1.0.5:
+    - 'Updated table scv_cinema_schedules'
+    - builder_table_update_scv_cinema_schedules.php

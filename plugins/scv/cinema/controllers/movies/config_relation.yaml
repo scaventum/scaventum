@@ -1,0 +1,12 @@
+# ===================================
+#  Relation Behavior Config
+# ===================================
+
+schedules:
+    label: Schedules
+    manage:
+        form: $/scv/cinema/models/schedule/fields.yaml
+        list: $/scv/cinema/models/schedule/columns.yaml
+    view:
+        list: $/scv/cinema/models/schedule/columns.yaml
+        toolbarButtons: create|delete

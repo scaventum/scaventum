@@ -1,0 +1,10 @@
+name: Movies
+form: $/scv/cinema/models/movie/fields.yaml
+modelClass: Scv\Cinema\Models\Movie
+defaultRedirect: scv/cinema/movies
+create:
+    redirect: 'scv/cinema/movies/update/:id'
+    redirectClose: scv/cinema/movies
+update:
+    redirect: scv/cinema/movies
+    redirectClose: scv/cinema/movies

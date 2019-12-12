@@ -1,0 +1,15 @@
+columns:
+    id:
+        label: ID
+        type: number
+        searchable: false
+    date_time:
+        label: 'Date Time'
+        type: text
+        searchable: true
+        sortable: true
+    movie[title]:
+        label: 'Movie Title'
+        type: text
+        searchable: true
+        sortable: true

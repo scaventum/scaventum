@@ -5,10 +5,13 @@ useContent = 1
 default = 0
 ==
 {# Background Tab #}
-{variable type="dropdown" name="backgroundSource" label="Source" span="full" tab="Background" options="color:Color|image:Image|video_upload:Video Upload|video_link:Video Link"}{/variable}
-{variable type="mediafinder" mode="image" name="backgroundImage" label="Image [Override Video Link on Mobile]" span="left" tab="Background"}{/variable}
+{variable type="dropdown" name="backgroundSource" label="Source" span="full" tab="Background"
+options="color:Color|image:Image|video_upload:Video Upload|video_link:Video Link"}{/variable}
+{variable type="mediafinder" mode="image" name="backgroundImage" label="Image [Override Video Link on Mobile]"
+span="left" tab="Background"}{/variable}
 {variable type="colorpicker" name="backgroundColor" label="Color" span="right" tab="Background"}{/variable}
-{variable type="mediafinder" mode="file" name="backgroundVideoUpload" label="Video Upload" span="right" tab="Background"}{/variable}
+{variable type="mediafinder" mode="file" name="backgroundVideoUpload" label="Video Upload" span="right"
+tab="Background"}{/variable}
 {variable type="text" name="backgroundVideoLink" label="Video Link" span="right" tab="Background"}{/variable}
 
 {#  Caption Tab #}
@@ -30,41 +33,40 @@ default = 0
     {% if backgroundSource != 'color' %}
         background-image:url('{{ backgroundImage|media }}')
     {% endif %}
-    "
->
-    
+    ">
+
     {% if backgroundSource == 'video_upload' %}
-        <video autoplay muted loop width="1280" height="720" class="landing--video-upload">
-            <source src="{{ backgroundVideoUpload|media }}" type="video/mp4">
-        </video>
+    <video autoplay muted loop width="1280" height="720" class="landing--video-upload">
+        <source src="{{ backgroundVideoUpload|media }}" type="video/mp4">
+    </video>
     {% elseif backgroundSource == 'video_link' %}
-        <iframe frameborder="0" width="1280" height="720" class="landing--video-link"
-            src="{{ backgroundVideoLink }}" allowfullscreen>
-        </iframe>
+    <iframe frameborder="0" width="1280" height="720" class="landing--video-link" src="{{ backgroundVideoLink }}"
+        allowfullscreen>
+    </iframe>
     {% endif %}
 
     <div class="landing--mask d-flex align-items-center justify-content-center" data-aos="fade-in">
         <div class="row landing--caption p-3">
             {% if heading %}
-                <div class="col-12 col-md-6">
-                    <h1 class="landing--caption--heading m-0">{{ heading }}</h1>
-                </div>
+            <div class="col-12 col-md-6">
+                <h1 class="landing--caption--heading m-0">{{ heading }}</h1>
+            </div>
             {% endif %}
-
             <div class="col-12 col-md-6">
 
-                {% if subheading %}<h2 class="landing--caption--subheading mt-3 mt-md-0 m-0">{{ subheading }}</h2>{% endif %}
+                {% if subheading %}<h2 class="landing--caption--subheading mt-3 mt-md-0 m-0">{{ subheading }}</h2>
+                {% endif %}
 
                 {% if description %}<h3 class="landing--caption--description mt-3 m-0">{{ description }}</h3>{% endif %}
                 {% if enableButton %}
-                    {% if externalLink %}
-                        <a href="{{ buttonLink }}" target="_blank">
+                {% if externalLink %}
+                <a href="{{ buttonLink }}" target="_blank">
                     {% else %}
-                        <a href="{{ buttonLink|app }}">
-                    {% endif %}
+                    <a href="{{ buttonLink|app }}">
+                        {% endif %}
                         <button class="landing--caption--button btn btn-primary mt-3 m-0">{{ buttonLabel }}</button>
                     </a>
-                {% endif %}
+                    {% endif %}
             </div>
         </div>
     </div>

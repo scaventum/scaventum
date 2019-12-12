@@ -1,0 +1,12 @@
+list: $/scv/cinema/models/schedule/columns.yaml
+modelClass: Scv\Cinema\Models\Schedule
+title: Schedules
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+recordsPerPage: 20
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'scv/cinema/schedules/update/:id'

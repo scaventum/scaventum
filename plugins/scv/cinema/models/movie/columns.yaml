@@ -1,0 +1,20 @@
+columns:
+    id:
+        label: ID
+        type: number
+    title:
+        label: Title
+        type: text
+        searchable: true
+        sortable: true
+    release_date:
+        label: 'Release Date'
+        type: text
+        searchable: true
+        sortable: true
+    revisions:
+        type: partial
+        path: ~/plugins/saurabhdhariwal/revisionhistory/models/revisionhistory/partials/_content_column.htm
+        searchable: false
+        sortable: false
+        valueFrom: id

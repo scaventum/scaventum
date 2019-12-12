@@ -1,0 +1,11 @@
+fields:
+    date_time:
+        label: 'Date Time'
+        span: left
+        mode: datetime
+        type: datepicker
+    movie:
+        label: 'Movie Title'
+        type: relation
+        nameFrom: title
+        span: right

@@ -1,0 +1,5 @@
+title: Movies
+modelClass: Scv\Cinema\Models\Movie
+nameFrom: title
+toolbar:
+    buttons: reorder_toolbar
